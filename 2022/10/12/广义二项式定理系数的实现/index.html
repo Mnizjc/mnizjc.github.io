@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>广义二项式定理系数的实现 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="今天晚自习的时候我又复习了一次二项式定理,在整理好思路之后就在想这个二项式系数怎么写,这里记录一下我写二项式系数是所有思路的历史 最早的想法是用公式: $$C_n^r&#x3D;\frac{n!}{r!(n-r!)}$$ 然后简单地写个阶乘就好了. 但是这不符合我的风格,我们知道 $$C_n^r&#x3D;C_n^{n-r}$$ 所以我当时就多添加了一个判断r是否大于n的一半,这样来减少资源占用(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="广义二项式定理系数的实现">
+<meta property="og:url" content="http://example.com/2022/10/12/%E5%B9%BF%E4%B9%89%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86%E7%B3%BB%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="今天晚自习的时候我又复习了一次二项式定理,在整理好思路之后就在想这个二项式系数怎么写,这里记录一下我写二项式系数是所有思路的历史 最早的想法是用公式: $$C_n^r&#x3D;\frac{n!}{r!(n-r!)}$$ 然后简单地写个阶乘就好了. 但是这不符合我的风格,我们知道 $$C_n^r&#x3D;C_n^{n-r}$$ 所以我当时就多添加了一个判断r是否大于n的一半,这样来减少资源占用(">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-12T11:33:30.000Z">
+<meta property="article:modified_time" content="2022-10-12T11:33:59.903Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="math,learn">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-广义二项式定理系数的实现" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/12/%E5%B9%BF%E4%B9%89%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86%E7%B3%BB%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/" class="article-date">
+  <time class="dt-published" datetime="2022-10-12T11:33:30.000Z" itemprop="datePublished">2022-10-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      广义二项式定理系数的实现
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>今天晚自习的时候我又复习了一次二项式定理,在整理好思路之后就在想这个二项式系数怎么写,这里记录一下我写二项式系数是所有思路的历史</p>
+<p>最早的想法是用公式:</p>
+<p>$$<br>C_n^r&#x3D;\frac{n!}{r!(n-r!)}<br>$$</p>
+<p>然后简单地写个阶乘就好了.</p>
+<p>但是这不符合我的风格,我们知道</p>
+<p>$$<br>C_n^r&#x3D;C_n^{n-r}<br>$$</p>
+<p>所以我当时就多添加了一个判断r是否大于n的一半,这样来减少资源占用(虽然这个一般情况下好像并不占用多少资源</p>
+<p>后来想想,老师上课时从来不用公式,而是直接这样算的</p>
+<p>eg.</p>
+<p>$$<br>C_7^2&#x3D;\frac{7\times 6}{2\times 1}&#x3D;7\times 3&#x3D;21<br>$$</p>
+<p>这个分子可以进一步优化,于是这是我的方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">comb</span>(<span class="params">base, amount</span>):</span><br><span class="line">    <span class="comment">#&quot;base&quot; choose &quot;amount&quot;</span></span><br><span class="line">    <span class="keyword">if</span> amount &gt; base:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> amount &gt; base//<span class="number">2</span>:</span><br><span class="line">        amount = base-amount</span><br><span class="line">    <span class="comment"># return fact(base)//(fact(amount)*fact(base-amount))</span></span><br><span class="line">    <span class="keyword">return</span> reduce(<span class="keyword">lambda</span> x, y: x*y, <span class="built_in">range</span>(base, base-amount, -<span class="number">1</span>))//fact(amount)</span><br></pre></td></tr></table></figure>
+
+<p>注释掉的return就是用公式的方法</p>
+<p>但是这种只能算整数的二项式系数,顿爷给咱整出来的广义二项式可是能算小数的,它长这样:</p>
+<p>$$<br>{a\choose b}&#x3D;\frac{a(a-1)(a-2)\cdots (a-b+1)}{b!}<br>$$</p>
+<p>所以我模仿了一下这种方法,这是我这节晚自习得到的东西</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">comb</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="comment"># &quot;a&quot; choose &quot;b&quot;</span></span><br><span class="line">    <span class="comment"># denominator:分母</span></span><br><span class="line">    <span class="comment"># numerator:分子</span></span><br><span class="line">    <span class="keyword">if</span> a == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    num = reduce(<span class="keyword">lambda</span> x, y: x*y, [a-n <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(b)], <span class="number">1</span>)</span><br><span class="line">    den = fact(b)</span><br><span class="line">    <span class="keyword">return</span> num/den</span><br></pre></td></tr></table></figure>
+
+<p>感觉不错,接下来我的问题就是它还能不能再次进行优化,因为这样如果带参数是整数的话就基本上跟用公式法差不多了.</p>
+<p>还有一个就是,能不能用这个方法写出用二项式定理计算$a^b$这种式子,有时间再说吧.</p>
+<p>(当然我晚自习不止做了这点事,还尝试给自己说明了一下为什么$e^x$的定义式和泰勒展开式二者等价)</p>
+<p>可能没人看,不过这就算给自己记录一下</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/12/%E5%B9%BF%E4%B9%89%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86%E7%B3%BB%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/" data-id="cl95k2qxg0003rcuw9d77981u" data-title="广义二项式定理系数的实现" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-learn/" rel="tag">math,learn</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/10/12/%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          四元数的实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/10/12/%E4%B8%89%E8%A7%92%E5%AE%9A%E4%BD%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">三角定位</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hello-world/" rel="tag">hello world</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learn/" rel="tag">learn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-learn/" rel="tag">math,learn</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/hello-world/" style="font-size: 10px;">hello world</a> <a href="/tags/learn/" style="font-size: 10px;">learn</a> <a href="/tags/math-learn/" style="font-size: 20px;">math,learn</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/10/12/%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/">四元数的实现</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/12/%E5%B9%BF%E4%B9%89%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86%E7%B3%BB%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/">广义二项式定理系数的实现</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/12/%E4%B8%89%E8%A7%92%E5%AE%9A%E4%BD%8D/">三角定位</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/12/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95/">hexo博客搭建踩坑实录</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/12/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

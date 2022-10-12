@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>三角定位 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="纯高中知识尝试解三角定位问题 推推,介绍介绍公式先用勾股定理推点东西我们需要AD的长度,所以$$\begin{aligned}BD^2&#x3D;c^2-AD^2 &amp;&#x3D; a^2-(b-AD)^2\c^2-AD^2 &amp;&#x3D; a^2-b^2+2a\cdot AD-AD^2\AD &amp;&#x3D; \frac{c^2+a^2-b^2}{2b}\end{aligne">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三角定位">
+<meta property="og:url" content="http://example.com/2022/10/12/%E4%B8%89%E8%A7%92%E5%AE%9A%E4%BD%8D/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="纯高中知识尝试解三角定位问题 推推,介绍介绍公式先用勾股定理推点东西我们需要AD的长度,所以$$\begin{aligned}BD^2&#x3D;c^2-AD^2 &amp;&#x3D; a^2-(b-AD)^2\c^2-AD^2 &amp;&#x3D; a^2-b^2+2a\cdot AD-AD^2\AD &amp;&#x3D; \frac{c^2+a^2-b^2}{2b}\end{aligne">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/35635cb2b7b24966844ad477cffd481a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATW5pempj,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/b94a264d574344aab42395d08c8538ae.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATW5pempj,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="article:published_time" content="2022-10-12T11:29:17.000Z">
+<meta property="article:modified_time" content="2022-10-12T11:32:36.881Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="math,learn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/35635cb2b7b24966844ad477cffd481a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATW5pempj,size_20,color_FFFFFF,t_70,g_se,x_16">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-三角定位" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/12/%E4%B8%89%E8%A7%92%E5%AE%9A%E4%BD%8D/" class="article-date">
+  <time class="dt-published" datetime="2022-10-12T11:29:17.000Z" itemprop="datePublished">2022-10-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      三角定位
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>纯高中知识尝试解三角定位问题</p>
+<h2 id="推推-介绍介绍公式"><a href="#推推-介绍介绍公式" class="headerlink" title="推推,介绍介绍公式"></a>推推,介绍介绍公式</h2><p>先用勾股定理推点东西<br><img src="https://img-blog.csdnimg.cn/35635cb2b7b24966844ad477cffd481a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATW5pempj,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>我们需要AD的长度,所以<br>$$<br>\begin{aligned}<br>BD^2&#x3D;c^2-AD^2 &amp;&#x3D; a^2-(b-AD)^2\<br>c^2-AD^2 &amp;&#x3D; a^2-b^2+2a\cdot AD-AD^2\<br>AD &amp;&#x3D; \frac{c^2+a^2-b^2}{2b}<br>\end{aligned}<br>$$<br>我们这里称作公式1,这个也可以通过余弦定理推出,这里不多加赘述</p>
+<p>(为什么csdn的katex对齐用的是aligned而不是align,突然有点不习惯</p>
+<p>还有一个定比分点公式<br>$$<br>对于P_1(x_1,y_1)和P_3(x_3,y_3)的连线段上的一个动点P_2(x_2,y_2)\<br>已知P_2分P_1P_3有以下关系:\<br>\frac{P_1P_2}{P_2P_3}&#x3D;\lambda\<br>则P_2为(\frac{x_1+\lambda x_3}{1+\lambda},\frac{y_1+\lambda y_3}{1+\lambda})<br>$$<br>称作公式2</p>
+<h2 id="手算一遍"><a href="#手算一遍" class="headerlink" title="手算一遍"></a>手算一遍</h2><p>OKOK正片开始<br><img src="https://img-blog.csdnimg.cn/b94a264d574344aab42395d08c8538ae.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATW5pempj,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>已知条件:<br>$P_1(0,0),P_2(13,0),P_3(5,10),r_1&#x3D;5,r_2&#x3D;3\sqrt{10},r_3&#x3D;5\sqrt{2}$</p>
+<p>做过N垂直于P<del>1</del>P<del>2</del>的垂线交P<del>1</del>P<del>2</del>与A,垂直于P<del>1</del>P<del>3</del>的交P<del>1</del>P<del>3</del>与C</p>
+<p>注意到$\Delta P_1P_2N$可以用公式1并求出两线段比值</p>
+<p>$$<br>|P_1P_2|&#x3D;13\<br>|P_1A|&#x3D;\frac{r_1^2+|P_1P_2|^2-r_2^2}{2|P_1P_2|}&#x3D;4\<br>\frac{|P_1A|}{|AP_2|}&#x3D;\frac{|P_1A|}{|P_1P_2|-|P_1A|}&#x3D;\frac{4}{9}\<br>$$</p>
+<p>有了比值就可以用公式2了</p>
+<p>$$<br>A&#x3D;(\frac{\frac{4}{9}\times 13}{1+\frac{4}{9}},0)&#x3D;(4,0)<br>$$</p>
+<p>这里想求过A和N的直线的方程,用点斜式试试,先求斜率</p>
+<p>$$<br>k_{P_1P_2}&#x3D;0,k_{P_1P_2}k_{\bot A}&#x3D;-1,k_{\bot A}无解<br>$$</p>
+<p>k<del>⊥A</del>不存在!那就直接代点的横坐标,所以l<del>A</del>就是</p>
+<p>$$<br>l_A:x&#x3D;4<br>$$</p>
+<p>对C做相同的流程(实际上这里选另一个点完全可以)</p>
+<p>$$<br>|P_1C|&#x3D;\frac{r_1^2+|P_1P_3|^2-r_3^2}{2|P_1P_3|}&#x3D;2\sqrt{5}\<br>\frac{|P_1C|}{|CP_3|}&#x3D;\frac{2\sqrt{5}}{5\sqrt{5}-2\sqrt{5}}&#x3D;\frac{2}{3}\<br>\therefore C&#x3D;(\frac{\frac{2}{3}\times5}{1+\frac{2}{3}},\frac{\frac{2}{3}\times10}{1+\frac{2}{3}})&#x3D;(2,4)\<br>k_{P_1P_3}&#x3D;2,k_{P_1P_3}k_{\bot C}&#x3D;-1,k_{\bot C}&#x3D;-\frac{1}{2}\<br>\begin{aligned}<br>l_C:(y-4) &amp;&#x3D; -\frac{1}{2}(x-2)\<br>y &amp;&#x3D; -\frac{1}{2}x+5<br>\end{aligned}<br>$$</p>
+<p>联立l<del>A</del>和l<del>C</del></p>
+<p>$$<br>\begin{cases}<br>x&#x3D;4\<br>y&#x3D;-\frac{1}{2}x+5<br>\end{cases}\Rightarrow\begin{cases}<br>x&#x3D;4\<br>y&#x3D;3<br>\end{cases}<br>$$</p>
+<p>也就是说目标点就在(4,3)</p>
+<h2 id="一点奇技淫巧"><a href="#一点奇技淫巧" class="headerlink" title="一点奇技淫巧"></a>一点奇技淫巧</h2><p>如果真按照手动计算来说的话,可能还要创建一个直线的类,不过我们用到直线的功能不多,就两个:点斜式和解交点,那我们就可以做一做思路的变换</p>
+<p>对于二元一次方程组,可以把它化成一个向量方程,eg.</p>
+<p>$$<br>\begin{cases}<br>ax+by&#x3D;c\<br>dx+ey&#x3D;f<br>\end{cases}\Leftrightarrow\begin{bmatrix}<br>a&amp;b\d&amp;e<br>\end{bmatrix}\begin{bmatrix}<br>x\y<br>\end{bmatrix}&#x3D;\begin{bmatrix}<br>c\f<br>\end{bmatrix}<br>$$</p>
+<p>那么方程组的解就是</p>
+<p>$$<br>\begin{bmatrix}<br>x\y<br>\end{bmatrix}&#x3D;\begin{bmatrix}<br>a&amp;b\d&amp;e<br>\end{bmatrix}^{-1}\begin{bmatrix}<br>c\f<br>\end{bmatrix}<br>$$</p>
+<p>这一步刚好可以通过numpy实现</p>
+<p>当然这里可以用克莱姆法则就是现在还没有对比一下谁更快一点</p>
+<p>可能有人会说:哎呀你这还是高中知识吗,是不是超纲了</p>
+<p>实际上这就是一个解一元二次方程的东西,只不过换了一个形式,换了个写法</p>
+<p>先把前面几个公式写好</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">point</span>():<span class="comment">#写个点的类方便区分横纵坐标值,当然你直接用元组或者numpy数组</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x, y</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dist</span>(<span class="params">a: point, b: point</span>):  <span class="comment"># distance,两点间距离</span></span><br><span class="line">    <span class="keyword">return</span> sqrt((b.x-a.x)**<span class="number">2</span>+(b.y-a.y)**<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dpsp</span>(<span class="params">p1: point, p2: point, ratio</span>):  <span class="comment"># definite proportion and separated points,定比分点</span></span><br><span class="line">    <span class="keyword">return</span> point((p1.x+ratio*p2.x)/(<span class="number">1</span>+ratio), (p1.y+ratio*p2.y)/(<span class="number">1</span>+ratio))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ratio</span>(<span class="params">r1, r2, dst</span>):</span><br><span class="line">    <span class="keyword">return</span> (r1**<span class="number">2</span>+dst**<span class="number">2</span>-r2**<span class="number">2</span>)/(<span class="number">2</span>*dst)</span><br></pre></td></tr></table></figure>
+
+<p>那么对于建立方程组这个问题,我们对点斜式做点手脚</p>
+<p>通过那个向量方程的例子你也可以看出,为了一次性解决问题,x和y不带任何符号,所以为了方便我们做的时候一次性做好这个工作</p>
+<p>这是点斜式和变形过程</p>
+<p>$$<br>\begin{aligned}<br>y-y_0 &amp;&#x3D; k(x-x_0)\<br>y-y_0 &amp;&#x3D; kx-kx_0\<br>y-kx &amp;&#x3D; y_0-kx_0\<br>kx-y &amp;&#x3D; kx_0-y_0<br>\end{aligned}<br>$$</p>
+<p>如果k和点知道了那么等号右边就是常数了,现在看左边</p>
+<p>如果称y系数为a,x系数是k,y系数是-1,并且一半都是-1,除非斜率不存在.</p>
+<p>如果斜率不存在,那么对于直线方程就是$x&#x3D;x_0$,相当于k&#x3D;1,a&#x3D;0.并且,如果求的是垂线斜率的话我们可以直接变形啊</p>
+<p>$$<br>k&#x3D;\frac{y_2-y_1}{x_2-x_1}\<br>l_1\bot l_2\Rightarrow k_1k_2&#x3D;-1\Rightarrow k_1&#x3D;-\frac{1}{k_2}&#x3D;\frac{x_1-x_2}{y_2-y_1}<br>$$</p>
+<p>按这个思路,先默认a&#x3D;-1,k正常求,斜率不存在时设k&#x3D;1,a&#x3D;0即可</p>
+<p>整个方程式长这样</p>
+<p>$$<br>\begin{bmatrix}<br>k_1&amp;a_1\k_2&amp;a_2<br>\end{bmatrix}<br>\begin{bmatrix}<br>x\y<br>\end{bmatrix}&#x3D;<br>\begin{bmatrix}<br>k_1x_1+a_1y_1\<br>k_2x_2+a_2y_2<br>\end{bmatrix}<br>$$</p>
+<p>这是核心逻辑</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">trianglepos</span>(<span class="params">p1: point, p2: point, p3: point, r1, r2, r3</span>):</span><br><span class="line">    a1 = a2 = -<span class="number">1</span></span><br><span class="line">    p1p2 = dist(p1, p2)</span><br><span class="line">    p1a = ratio(r1, r2, p1p2)</span><br><span class="line">    rate1 = p1a/(p1p2-p1a)</span><br><span class="line">    A = dpsp(p1, p2, rate1)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        k1 = (p1.x-p2.x)/(p2.y-p1.y)<span class="comment">#恭喜我debug成功</span></span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        k1 = <span class="number">1</span></span><br><span class="line">        a1 = <span class="number">0</span></span><br><span class="line">    p1p3 = dist(p1, p3)</span><br><span class="line">    p1c = ratio(r1, r3, p1p3)</span><br><span class="line">    rate2 = p1c/(p1p3-p1c)</span><br><span class="line">    C = dpsp(p1, p3, rate2)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        k2 = (p1.x-p3.x)/(p3.y-p1.y)</span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        k2 = <span class="number">1</span></span><br><span class="line">        a2 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> np.matrix([[k1, a1],</span><br><span class="line">                      [k2, a2]])**-<span class="number">1</span> *\</span><br><span class="line">        np.matrix([[k1*A.x+a1*A.y],</span><br><span class="line">                   [k2*C.x+a2*C.y]])</span><br></pre></td></tr></table></figure>
+
+<p>恭喜我成功解决了这个隔了快两年才填的坑,不过这只是初步,下一步就是尝试验证这种方法是否能用于经纬度</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/12/%E4%B8%89%E8%A7%92%E5%AE%9A%E4%BD%8D/" data-id="cl95k2qxb0000rcuw5nu16nxt" data-title="三角定位" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math-learn/" rel="tag">math,learn</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/10/12/%E5%B9%BF%E4%B9%89%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86%E7%B3%BB%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          广义二项式定理系数的实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/10/12/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo博客搭建踩坑实录</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hello-world/" rel="tag">hello world</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/learn/" rel="tag">learn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math-learn/" rel="tag">math,learn</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/hello-world/" style="font-size: 10px;">hello world</a> <a href="/tags/learn/" style="font-size: 10px;">learn</a> <a href="/tags/math-learn/" style="font-size: 20px;">math,learn</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/10/12/%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/">四元数的实现</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/12/%E5%B9%BF%E4%B9%89%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86%E7%B3%BB%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/">广义二项式定理系数的实现</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/12/%E4%B8%89%E8%A7%92%E5%AE%9A%E4%BD%8D/">三角定位</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/12/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95/">hexo博客搭建踩坑实录</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/12/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
