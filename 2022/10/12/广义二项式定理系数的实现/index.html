@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-cn">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="learn,math," />
+  <meta name="keywords" content="math,learn,python," />
 
 
 
@@ -85,12 +85,13 @@
 <meta property="og:url" content="http://example.com/2022/10/12/%E5%B9%BF%E4%B9%89%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86%E7%B3%BB%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/index.html">
 <meta property="og:site_name" content="OMG!IT&#39;S 11!!">
 <meta property="og:description" content="今天晚自习的时候我又复习了一次二项式定理,在整理好思路之后就在想这个二项式系数怎么写,这里记录一下我写二项式系数是所有思路的历史 最早的想法是用公式:  然后简单地写个阶乘就好了. 但是这不符合我的风格,我们知道  所以我当时就多添加了一个判断r是否大于n的一半,这样来减少资源占用(虽然这个一般情况下好像并不占用多少资源 后来想想,老师上课时从来不用公式,而是直接这样算的 eg.">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale">
 <meta property="article:published_time" content="2022-10-12T11:33:30.000Z">
-<meta property="article:modified_time" content="2022-10-13T01:04:12.825Z">
-<meta property="article:author" content="GOAT">
-<meta property="article:tag" content="learn">
+<meta property="article:modified_time" content="2022-10-13T03:44:08.074Z">
+<meta property="article:author" content="Mnizjc">
 <meta property="article:tag" content="math">
+<meta property="article:tag" content="learn">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 
 
@@ -107,7 +108,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -251,7 +252,7 @@ mjx-container[display="true"] + br {
 }
 </style></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -299,7 +300,37 @@ mjx-container[display="true"] + br {
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -309,7 +340,7 @@ mjx-container[display="true"] + br {
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -373,9 +404,9 @@ mjx-container[display="true"] + br {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-10-12T19:33:30+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-10-12T19:33:30+08:00">
                 2022-10-12
               </time>
             
@@ -385,6 +416,39 @@ mjx-container[display="true"] + br {
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -451,9 +515,11 @@ mjx-container[display="true"] + br {
       
         <div class="post-tags">
           
+            <a href="/tags/math/" rel="tag"># math</a>
+          
             <a href="/tags/learn/" rel="tag"># learn</a>
           
-            <a href="/tags/math/" rel="tag"># math</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -547,21 +613,30 @@ mjx-container[display="true"] + br {
                 <a href="/archives/%7C%7C%20archive">
               
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">tags</span>
-                
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
               </div>
             
 
@@ -600,13 +675,13 @@ mjx-container[display="true"] + br {
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">GOAT</span>
+  <span class="author" itemprop="copyrightHolder">Mnizjc</span>
 
   
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -614,7 +689,7 @@ mjx-container[display="true"] + br {
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
 
 
 
