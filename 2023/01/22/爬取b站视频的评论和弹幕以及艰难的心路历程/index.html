@@ -87,7 +87,7 @@
 <meta property="og:description" content="碎碎念1: 这篇文章实际上应该在22年就写好并发布的,但是就行之前说的,这个小破网站有段时间访问不了,所以写好了程序也一直没写文章,只是当时讨论的时候写了一个notebook记了一下过程   碎碎念2: 我真的很想直接把内个notebook转成markdown然后加个标题啥的直接上传,但是因为那里面有执行结果所以整个文件有16.2MB之大.纯文字!16.2MB!什么概念?并且这还只是">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-01-22T06:05:47.000Z">
-<meta property="article:modified_time" content="2023-01-29T23:39:19.512Z">
+<meta property="article:modified_time" content="2023-01-31T16:26:25.680Z">
 <meta property="article:author" content="Mnizjc">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -385,25 +385,12 @@
 <p>碎碎念2:
 我真的很想直接把内个notebook转成markdown然后加个标题啥的直接上传,但是因为那里面有执行结果所以整个文件有16.2MB之大.纯文字!16.2MB!什么概念?并且这还只是完成了基础的爬取,还没算保存的事,不知道整个写完之后有多大</p>
 </blockquote>
-<table style="width:6%;">
-<colgroup>
-<col style="width: 5%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>这次介绍一个新玩意:<code>httpx</code>这个库说是既能同步又能异步,并且同步的时候还比<code>requests</code>快,所以这次玩玩这个库</td>
-</tr>
-<tr class="even">
-<td>为了不剧透,这次我就只是按我最初的思路一步一步来,中途遇到的情况中途再说</td>
-</tr>
-<tr class="odd">
-<td>先说<code>httpx</code>,在同步的时候,用法和<code>requests</code>一样,异步的时候,只是和<code>aiohttp</code>有一点点不一样:虽然建立session的类(<code>aiohttps</code>是<code>ClientSession</code>,<code>httpx</code>是<code>AsyncClient</code>)都有上下文管理器,但是<code>aiohttp</code>里建立session之后它的实例的<code>get</code>,<code>post</code>之类的函数都是有异步上下文管理器的;而<code>httpx</code>的session建立起来之后它的实例的那些函数都可以直接<code>await</code>.我不知道他们两个的性能差异是不是就是这里的问题但是用<code>httpx</code>异步请求的时候要写的东西确实少多了</td>
-</tr>
-<tr class="even">
-<td>正片</td>
-</tr>
-</tbody>
-</table>
+<hr />
+<p>这次介绍一个新玩意:<code>httpx</code>这个库说是既能同步又能异步,并且同步的时候还比<code>requests</code>快,所以这次玩玩这个库</p>
+<p>为了不剧透,这次我就只是按我最初的思路一步一步来,中途遇到的情况中途再说</p>
+<p>先说<code>httpx</code>,在同步的时候,用法和<code>requests</code>一样,异步的时候,只是和<code>aiohttp</code>有一点点不一样:虽然建立session的类(<code>aiohttps</code>是<code>ClientSession</code>,<code>httpx</code>是<code>AsyncClient</code>)都有上下文管理器,但是<code>aiohttp</code>里建立session之后它的实例的<code>get</code>,<code>post</code>之类的函数都是有异步上下文管理器的;而<code>httpx</code>的session建立起来之后它的实例的那些函数都可以直接<code>await</code>.我不知道他们两个的性能差异是不是就是这里的问题但是用<code>httpx</code>异步请求的时候要写的东西确实少多了</p>
+<p>正片</p>
+<hr />
 <h2 id="基础变量函数">基础变量&amp;函数</h2>
 <p>再到一个对于b站的爬虫的一个关键:bv号转av号,这个东西在b站宣布使用bv号之后一天之内在知乎上就有人破解了(<a
 target="_blank" rel="noopener" href="https://www.zhihu.com/question/381784377/answer/1099438784">如何看待
