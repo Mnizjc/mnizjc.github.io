@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="机房的电脑装了anaconda,本来想着看看这个机房内网有哪些机子能ping通,但是又想到手动ping实在太慢了,于是就想到了机子上的python. 既然要执行shell命令,那就要用到subprocess库,所以我上手就来了 123456789101112from subprocess import Popendef shell(cmd):    cmd &#x3D; Popen(cmd)    cm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python asyncio 异步执行shell命令&amp;将同步函数「改造」成异步函数">
+<meta property="og:url" content="http://example.com/2023/03/15/Python-asyncio-%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8Cshell%E5%91%BD%E4%BB%A4-%E5%B0%86%E5%90%8C%E6%AD%A5%E5%87%BD%E6%95%B0%E3%80%8C%E6%94%B9%E9%80%A0%E3%80%8D%E6%88%90%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="OMG!IT&#39;S 11!!">
+<meta property="og:description" content="机房的电脑装了anaconda,本来想着看看这个机房内网有哪些机子能ping通,但是又想到手动ping实在太慢了,于是就想到了机子上的python. 既然要执行shell命令,那就要用到subprocess库,所以我上手就来了 123456789101112from subprocess import Popendef shell(cmd):    cmd &#x3D; Popen(cmd)    cm">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-03-15T13:32:32.000Z">
+<meta property="article:modified_time" content="2023-03-15T14:44:02.565Z">
+<meta property="article:author" content="Mnizjc">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2023/03/15/Python-asyncio-异步执行shell命令-将同步函数「改造」成异步函数/"/>
+
+
+
+
+
+  <title>Python asyncio 异步执行shell命令&将同步函数「改造」成异步函数 | OMG!IT'S 11!!</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<script>
+  fetch('https://v1.hitokoto.cn?c=b&c=d&c=i&c=k&c=j')
+    .then(response => response.json())
+    .then(data => {
+      const hitokoto = document.getElementById('hitokoto_text')
+      hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+      hitokoto.innerText = data.hitokoto
+
+      const from = document.getElementById('hitokoto_from')
+      from.href = 'https://hitokoto.cn/?uuid=' + data.uuid 
+      from.innerText = data.from
+
+      const who = document.getElementById('hitokoto_who')
+      who.href = 'https://hitokoto.cn/?uuid=' + data.uuid 
+      who.innerText = data.from_who
+    })
+    .catch(console.error)
+</script>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">OMG!IT'S 11!!</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">HELL,YEAH!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ 
+      <p style="text-align:center">
+        <span id="hitokoto_text"></span>--
+        <span id="hitokoto_who"></span>
+        <span id="hitokoto_from"></span>
+      </p>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/15/Python-asyncio-%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8Cshell%E5%91%BD%E4%BB%A4-%E5%B0%86%E5%90%8C%E6%AD%A5%E5%87%BD%E6%95%B0%E3%80%8C%E6%94%B9%E9%80%A0%E3%80%8D%E6%88%90%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/beluga.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OMG!IT'S 11!!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python asyncio 异步执行shell命令&将同步函数「改造」成异步函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-03-15T21:32:32+08:00">
+                2023-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>机房的电脑装了anaconda,本来想着看看这个机房内网有哪些机子能ping通,但是又想到手动ping实在太慢了,于是就想到了机子上的python.</p>
+<p>既然要执行shell命令,那就要用到<code>subprocess</code>库,所以我上手就来了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> Popen</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">shell</span>(<span class="params">cmd</span>):</span><br><span class="line">    cmd = Popen(cmd)</span><br><span class="line">    cmd.communicate()</span><br><span class="line">    <span class="keyword">return</span> cmd.returncode</span><br><span class="line"></span><br><span class="line">command = <span class="string">&quot;ping 192.168.***.%s&quot;</span> <span class="comment">#我忘了星号处是啥</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">    shell(command%i)</span><br><span class="line">    <span class="comment">#然后就是一些信息统计工作</span></span><br></pre></td></tr></table></figure>
+<p>这个方法很明显,虽然确实都运行起来了,但是同时只能执行一个命令,python解释器还是被阻塞的.</p>
+<p>既然是阻塞的,那就可以异步.所以接下来的两天就是令人痛苦的查资料读文档的时候了.</p>
+<p>或许是还不太习惯读文档吧,每次想学会什么api之类的东西第一反应不是直接去找文档(不过u1s1有时候内个文档真的读不懂),而是去找csdn之类的地方.而这次,我有幸无意间点进了python官方文档,又有幸点进了python事件循环的api文档,然后找到了解决我一直以来疑惑的地方--怎么异步执行shell命令,以及怎么把任意阻塞的同步函数异步化.</p>
+<p>两句话说多了不说,对于解决异步执行命令,asyncio是这样解决的</p>
+<p>python asyncio高级api中有这么一个函数(<a
+target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/asyncio-subprocess.html#asyncio.create_subprocess_shell">子进程集
+— Python 3.11.2
+文档</a>),看完参数之后的第一反应就是「卧槽,这玩意和<code>Popen</code>的参数形式好像」,所以上面那玩意就可以这么改造:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio <span class="keyword">as</span> acio</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">ashell</span>(<span class="params">command</span>):</span><br><span class="line">    cmd = <span class="keyword">await</span> acio.process.create_subprocess_shell(command)</span><br><span class="line">    <span class="keyword">await</span> cmd.communicate()</span><br><span class="line">    <span class="keyword">return</span> cmd.returncode</span><br><span class="line"></span><br><span class="line">command = <span class="string">&quot;ping 192.168.***.%s&quot;</span></span><br><span class="line">tasks = [ashell(command%i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>)] <span class="comment">#可能这里用生成器会省内存</span></span><br><span class="line"></span><br><span class="line">loop = acio.get_event_loop()</span><br><span class="line">loop.run_until_complete(acio.gather(*tasks))</span><br></pre></td></tr></table></figure>
+<p>至于分析,可以通过<code>communicate</code>函数返回的东西做分析(我这里就没管了,单纯用命令返回值做分析了)</p>
+<p>那现在下一个问题就是:我怎么把任意阻塞函数包裹成异步函数</p>
+<p>同样是不经意间,</p>
+<p>我也是看到了这个函数(<a
+target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/asyncio-eventloop.html#executing-code-in-thread-or-process-pools">事件循环
+— Python 3.11.2
+文档</a>),看完之后,除了这玩意不允许函数带参数这一点很恶心之外,其他的都还不错,直接解决了我最大的问题.</p>
+<p>举个例子,几乎所有讲asyncio的文章模拟异步阻塞操作的时候都用的是<code>asyncio</code>里自带的<code>sleep</code>,但是这玩意本身就是个协程啊,如果我要用<code>time</code>里的<code>sleep</code>,</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio <span class="keyword">as</span> acio</span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> partial</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint, random</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep, time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不让代参数是吧?有参数的函数只能固定是吧?必须要用partial是吧?????</span></span><br><span class="line"><span class="comment"># 如果这样的话我好像可以直接用partial带参数,比如下面这段</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">block_sim</span>(<span class="params">secs, ide</span>):</span><br><span class="line">    <span class="comment"># 这是一个阻塞5s的方法,需要参数</span></span><br><span class="line">    <span class="comment">#secs = randint(1, 5)</span></span><br><span class="line">    <span class="comment">#ide = int(random()*1e10)</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;function id: <span class="subst">&#123;ide&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;I&#x27;ll sleep <span class="subst">&#123;secs&#125;</span> sec<span class="subst">&#123;<span class="string">&#x27;&#x27;</span> <span class="keyword">if</span> secs==<span class="number">1</span> <span class="keyword">else</span> <span class="string">&#x27;s&#x27;</span>&#125;</span>&quot;</span>)</span><br><span class="line">    sleep(secs)</span><br><span class="line">    <span class="keyword">return</span> ide, secs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">asynchronos</span>(<span class="params">loop: acio.AbstractEventLoop</span>):</span><br><span class="line">    <span class="comment"># 这是包装用的方法</span></span><br><span class="line">    <span class="comment"># 用这个函数包装成协程</span></span><br><span class="line">    tasks = [loop.run_in_executor(</span><br><span class="line">        <span class="literal">None</span>,</span><br><span class="line">        <span class="comment"># 因为不让给里面的函数代参数,所以用partial</span></span><br><span class="line">        partial(block_sim, randint(<span class="number">1</span>, <span class="number">5</span>), <span class="built_in">int</span>(random()*<span class="number">1e10</span>))</span><br><span class="line">        <span class="comment"># 10个任务并发</span></span><br><span class="line">    ) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)]</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> acio.gather(*tasks)</span><br><span class="line"></span><br><span class="line">loop = acio.get_event_loop()</span><br><span class="line">start_t = time()</span><br><span class="line">res = loop.run_until_complete(asynchronos(loop))</span><br><span class="line">time_delta = time()-start_t</span><br><span class="line"><span class="built_in">print</span>(res)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;all functions cost <span class="subst">&#123;time_delta&#125;</span> &quot;</span></span><br><span class="line">      <span class="string">f&quot;sec<span class="subst">&#123;<span class="string">&#x27;&#x27;</span> <span class="keyword">if</span> time_delta==<span class="number">1</span> <span class="keyword">else</span> <span class="string">&#x27;s&#x27;</span>&#125;</span> in total&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>结果是这样的:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function id: 4100044138</span><br><span class="line">I&#x27;ll sleep 3 secs</span><br><span class="line">function id: 9878184880</span><br><span class="line">I&#x27;ll sleep 4 secs</span><br><span class="line">function id: 3372437288</span><br><span class="line">function id: 9057381097</span><br><span class="line">I&#x27;ll sleep 2 secs</span><br><span class="line">I&#x27;ll sleep 3 secs</span><br><span class="line">function id: 7570094969</span><br><span class="line">function id: 2847061880</span><br><span class="line">function id: 1613272128</span><br><span class="line">function id: 3939187516</span><br><span class="line">I&#x27;ll sleep 5 secs</span><br><span class="line">function id: 5609952432</span><br><span class="line">function id: 9528077965</span><br><span class="line">I&#x27;ll sleep 5 secs</span><br><span class="line">I&#x27;ll sleep 3 secs</span><br><span class="line">I&#x27;ll sleep 3 secs</span><br><span class="line">I&#x27;ll sleep 4 secs</span><br><span class="line">I&#x27;ll sleep 5 secs</span><br><span class="line">[(4100044138, 3), (9878184880, 4), (3372437288, 2), (9057381097, 3), (3939187516, 4), (7570094969, 5), (2847061880, 5), (1613272128, 5), (9528077965, 3), (5609952432, 3)]</span><br><span class="line">all functions cost 5.004961729049683 secs in total</span><br></pre></td></tr></table></figure>
+<p>代码里也可以见到,对于被当做参数的函数不让带参数的解决方法就是用<code>partial</code>函数.</p>
+<p>虽然说这样写的有点恶心,但是至少应该是能把所有的阻塞函数异步化了.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/02/05/%E6%B5%85%E8%B0%88%E4%BF%A1%E6%81%AF%E7%86%B5/" rel="next" title="浅谈信息熵">
+                <i class="fa fa-chevron-left"></i> 浅谈信息熵
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/beluga.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mnizjc</span>
+
+  
+</div>
+
+<!--添加运行时间-->
+<span id="sitetime"></span>
+<br/>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* 
+      Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+      year - 作为date对象的年份，为4位年份值
+      month - 0-11之间的整数，做为date对象的月份
+      day - 1-31之间的整数，做为date对象的天数
+      hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+      minutes - 0-59之间的整数，做为date对象的分钟数
+      seconds - 0-59之间的整数，做为date对象的秒数
+      microseconds - 0-999之间的整数，做为date对象的毫秒数
+     */
+		var t1 = Date.UTC(2022,10,12,18,0,0); //北京时间2018-2-13 00:00:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 我活了"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}
+	siteTime();
+</script>
+<!--// 添加运行时间-->
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
