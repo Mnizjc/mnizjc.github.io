@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -82,19 +82,19 @@
 <meta name="description" content="散度定理证明完了, 现在该旋度了. 旋度的一旦搞完就可以准备写麦克斯韦方程组相关的东西了. 证明前还需要说一下 Green&#39;s 公式, 长这样  证明大致如下, 摘自 我们先对y积分在对x   green_formula_y  对于右边带Q项  对于左边带Q项, 设L1, L2为关于y的函数  所以  同理对于带p项如图示   gauss_formula_x">
 <meta property="og:type" content="article">
 <meta property="og:title" content="斯托克斯旋度定理证明">
-<meta property="og:url" content="http://example.com/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/index.html">
+<meta property="og:url" content="http://mnizjc.github.io/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/index.html">
 <meta property="og:site_name" content="OMG!IT&#39;S 11!!">
 <meta property="og:description" content="散度定理证明完了, 现在该旋度了. 旋度的一旦搞完就可以准备写麦克斯韦方程组相关的东西了. 证明前还需要说一下 Green&#39;s 公式, 长这样  证明大致如下, 摘自 我们先对y积分在对x   green_formula_y  对于右边带Q项  对于左边带Q项, 设L1, L2为关于y的函数  所以  同理对于带p项如图示   gauss_formula_x">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/green_formula_y.png">
-<meta property="og:image" content="http://example.com/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/green_formula_x.png">
-<meta property="og:image" content="http://example.com/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/stokes_curl_theorem.png">
+<meta property="og:image" content="http://mnizjc.github.io/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/green_formula_y.png">
+<meta property="og:image" content="http://mnizjc.github.io/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/green_formula_x.png">
+<meta property="og:image" content="http://mnizjc.github.io/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/stokes_curl_theorem.png">
 <meta property="article:published_time" content="2023-12-08T19:07:30.000Z">
 <meta property="article:modified_time" content="2023-12-09T19:18:12.289Z">
 <meta property="article:author" content="Mnizjc">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/green_formula_y.png">
+<meta name="twitter:image" content="http://mnizjc.github.io/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/green_formula_y.png">
 
 
 
@@ -102,7 +102,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -124,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2023/12/09/斯托克斯旋度定理证明/"/>
+  <link rel="canonical" href="http://mnizjc.github.io/2023/12/09/斯托克斯旋度定理证明/"/>
 
 
 
@@ -404,7 +404,7 @@ mjx-container[display="true"] + br {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/">
+    <link itemprop="mainEntityOfPage" href="http://mnizjc.github.io/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -832,7 +832,7 @@ Green 公式了. 但是我能找到的的证明, 无论我看懂与否, 我看�
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
