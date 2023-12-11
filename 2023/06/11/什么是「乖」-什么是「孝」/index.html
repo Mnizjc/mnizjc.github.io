@@ -511,7 +511,7 @@ you.」(你的子女)他们通过你来到这个世上却非因你而来,他们�
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -597,7 +597,7 @@ you.」(你的子女)他们通过你来到这个世上却非因你而来,他们�
 		var todayHour = today.getHours();
 		var todayMinute = today.getMinutes();
 		var todaySecond = today.getSeconds();
-		/* 
+		/*
       Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
       year - 作为date对象的年份，为4位年份值
       month - 0-11之间的整数，做为date对象的月份
@@ -607,7 +607,7 @@ you.」(你的子女)他们通过你来到这个世上却非因你而来,他们�
       seconds - 0-59之间的整数，做为date对象的秒数
       microseconds - 0-999之间的整数，做为date对象的毫秒数
      */
-		var t1 = Date.UTC(2022,10,12,18,0,0); //北京时间2018-2-13 00:00:00
+		var t1 = Date.UTC(2022,10,12,18,0,0);
 		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
 		var diff = t2-t1;
 		var diffYears = Math.floor(diff/years);
@@ -615,7 +615,7 @@ you.」(你的子女)他们通过你来到这个世上却非因你而来,他们�
 		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
 		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
 		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
-		document.getElementById("sitetime").innerHTML=" 我活了"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+		document.getElementById("sitetime").innerHTML=" 我活了 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
 	}
 	siteTime();
 </script>

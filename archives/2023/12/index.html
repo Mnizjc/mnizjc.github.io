@@ -282,7 +282,7 @@
         
           
         
-        嗯..! 目前共计 22 篇日志。 继续努力。
+        嗯..! 目前共计 23 篇日志。 继续努力。
       </span>
 
       
@@ -296,6 +296,43 @@
           <div class="collection-title">
             <h1 class="archive-year" id="archive-year-2023">2023</h1>
           </div>
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2023/12/10/Mathjax%E6%8F%92%E5%85%A5%E9%97%AD%E5%90%88%E6%9B%B2%E9%9D%A2%E7%A7%AF%E5%88%86%E7%AC%A6%E5%8F%B7/" itemprop="url">
+              
+                <span itemprop="name">Mathjax插入闭合曲面积分符号</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2023-12-10T08:51:20+08:00"
+              content="2023-12-10" >
+          12-10
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
         
         
 
@@ -421,7 +458,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -507,7 +544,7 @@
 		var todayHour = today.getHours();
 		var todayMinute = today.getMinutes();
 		var todaySecond = today.getSeconds();
-		/* 
+		/*
       Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
       year - 作为date对象的年份，为4位年份值
       month - 0-11之间的整数，做为date对象的月份
@@ -517,7 +554,7 @@
       seconds - 0-59之间的整数，做为date对象的秒数
       microseconds - 0-999之间的整数，做为date对象的毫秒数
      */
-		var t1 = Date.UTC(2022,10,12,18,0,0); //北京时间2018-2-13 00:00:00
+		var t1 = Date.UTC(2022,10,12,18,0,0);
 		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
 		var diff = t2-t1;
 		var diffYears = Math.floor(diff/years);
@@ -525,7 +562,7 @@
 		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
 		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
 		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
-		document.getElementById("sitetime").innerHTML=" 我活了"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+		document.getElementById("sitetime").innerHTML=" 我活了 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
 	}
 	siteTime();
 </script>
