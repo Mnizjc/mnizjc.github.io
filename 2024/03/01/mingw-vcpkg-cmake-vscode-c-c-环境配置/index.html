@@ -86,16 +86,17 @@
 <meta property="og:site_name" content="OMG!IT&#39;S 11!!">
 <meta property="og:description" content="苍天保佑, 这个过程总算是圆满结束了 从我两天前冒出一个用c&#x2F;c++做网络请求的想法(因为可能用得到), 到今天整个环境配置完毕, 花了我两三天的时间. 中间断断续续有超级多的动作, 这里我尽可能详细的把它记录下来. 清单 如标题所示, 我们这次主要需要四样东西:  (MinGW)[https:&#x2F;&#x2F;github.com&#x2F;niXman&#x2F;mingw-builds-binaries&#x2F;rel">
 <meta property="og:locale">
-<meta property="og:image" content="http://mnizjc.github.io/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/cmake-ext.jpg">
-<meta property="og:image" content="http://mnizjc.github.io/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/cmake-tools-ext.jpg">
+<meta property="og:image" content="http://mnizjc.github.io/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/c-cpp-extension-pack.jpg">
+<meta property="og:image" content="http://mnizjc.github.io/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/cmake-ext.jpg">
+<meta property="og:image" content="http://mnizjc.github.io/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/cmake-tools-ext.jpg">
 <meta property="article:published_time" content="2024-02-29T18:25:57.000Z">
-<meta property="article:modified_time" content="2024-03-12T13:43:12.589Z">
+<meta property="article:modified_time" content="2024-03-12T20:34:06.410Z">
 <meta property="article:author" content="Mnizjc">
 <meta property="article:tag" content="learn">
 <meta property="article:tag" content="hello world">
 <meta property="article:tag" content="c&#x2F;c++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://mnizjc.github.io/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/cmake-ext.jpg">
+<meta name="twitter:image" content="http://mnizjc.github.io/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/c-cpp-extension-pack.jpg">
 
 
 
@@ -407,24 +408,20 @@
 但是安装完了之后需要再安装几个插件</p>
 <p>C/C++ Extension Pack:</p>
 <figure>
-<img
-src="mingw-vcpkg-cmake-vscode-c-c-环境配置\c-cpp-extension-pack.jpg"
-alt="c-cpp-entension-pack" />
+<img src="c-cpp-extension-pack.jpg" alt="c-cpp-entension-pack" />
 <figcaption aria-hidden="true">c-cpp-entension-pack</figcaption>
 </figure>
 <p>它直接包含了c/c++的两个基础扩展</p>
 <p>还有就是这个</p>
 <p>CMake</p>
 <figure>
-<img src="mingw-vcpkg-cmake-vscode-c-c-环境配置\cmake-ext.jpg"
-alt="cmake-ext" />
+<img src="cmake-ext.jpg" alt="cmake-ext" />
 <figcaption aria-hidden="true">cmake-ext</figcaption>
 </figure>
 <p>和</p>
 <p>CMake Tools</p>
 <figure>
-<img src="mingw-vcpkg-cmake-vscode-c-c-环境配置\cmake-tools-ext.jpg"
-alt="cmake-tools-ext" />
+<img src="cmake-tools-ext.jpg" alt="cmake-tools-ext" />
 <figcaption aria-hidden="true">cmake-tools-ext</figcaption>
 </figure>
 <p>最后就是vcpkg, 就这玩意比较复杂, 以下内容摘自<a
