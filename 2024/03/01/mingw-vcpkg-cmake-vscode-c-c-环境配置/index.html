@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="苍天保佑, 这个过程总算是圆满结束了 从我两天前冒出一个用c&#x2F;c++做网络请求的想法(因为可能用得到), 到今天整个环境配置完毕, 花了我两三天的时间. 中间断断续续有超级多的动作, 这里我尽可能详细的把它记录下来. 清单 如标题所示, 我们这次主要需要四样东西:  (MinGW)[https:&#x2F;&#x2F;github.com&#x2F;niXman&#x2F;mingw-builds-binaries&#x2F;rel">
+<meta name="description" content="苍天保佑, 这个过程总算是圆满结束了 从我两天前冒出一个用c&#x2F;c++做网络请求的想法(因为可能用得到), 到今天整个环境配置完毕, 花了我两三天的时间. 中间断断续续有超级多的动作, 这里我尽可能详细的把它记录下来. 清单如标题所示, 我们这次主要需要四样东西:  (MinGW)[https:&#x2F;&#x2F;github.com&#x2F;niXman&#x2F;mingw-builds-binaries&#x2F;releas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mingw+vcpkg+cmake+vscode c&#x2F;c++环境配置">
 <meta property="og:url" content="http://mnizjc.github.io/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="OMG!IT&#39;S 11!!">
-<meta property="og:description" content="苍天保佑, 这个过程总算是圆满结束了 从我两天前冒出一个用c&#x2F;c++做网络请求的想法(因为可能用得到), 到今天整个环境配置完毕, 花了我两三天的时间. 中间断断续续有超级多的动作, 这里我尽可能详细的把它记录下来. 清单 如标题所示, 我们这次主要需要四样东西:  (MinGW)[https:&#x2F;&#x2F;github.com&#x2F;niXman&#x2F;mingw-builds-binaries&#x2F;rel">
+<meta property="og:description" content="苍天保佑, 这个过程总算是圆满结束了 从我两天前冒出一个用c&#x2F;c++做网络请求的想法(因为可能用得到), 到今天整个环境配置完毕, 花了我两三天的时间. 中间断断续续有超级多的动作, 这里我尽可能详细的把它记录下来. 清单如标题所示, 我们这次主要需要四样东西:  (MinGW)[https:&#x2F;&#x2F;github.com&#x2F;niXman&#x2F;mingw-builds-binaries&#x2F;releas">
 <meta property="og:locale">
 <meta property="og:image" content="http://mnizjc.github.io/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/c-cpp-extension-pack.jpg">
 <meta property="og:image" content="http://mnizjc.github.io/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/cmake-ext.jpg">
@@ -384,129 +384,95 @@
 
       
         <p>苍天保佑, 这个过程总算是圆满结束了</p>
-<p>从我两天前冒出一个用c/c++做网络请求的想法(因为可能用得到),
-到今天整个环境配置完毕, 花了我两三天的时间. 中间断断续续有超级多的动作,
-这里我尽可能详细的把它记录下来.</p>
-<h2 id="清单">清单</h2>
-<p>如标题所示, 我们这次主要需要四样东西:</p>
+<p>从我两天前冒出一个用c&#x2F;c++做网络请求的想法(因为可能用得到), 到今天整个环境配置完毕, 花了我两三天的时间. 中间断断续续有超级多的动作, 这里我尽可能详细的把它记录下来.</p>
+<h2 id="清单"><a href="#清单" class="headerlink" title="清单"></a>清单</h2><p>如标题所示, 我们这次主要需要四样东西:</p>
 <ul>
-<li>(MinGW)[https://github.com/niXman/mingw-builds-binaries/releases]
-(说起来我好像有段时间没更新了)</li>
-<li>(vcpkg)[https://github.com/Microsoft/vcpkg]</li>
-<li>(CMake)[https://cmake.org/]</li>
-<li>(vscode)[https://code.visualstudio.com/]</li>
+<li>(MinGW)[<a target="_blank" rel="noopener" href="https://github.com/niXman/mingw-builds-binaries/releases]">https://github.com/niXman/mingw-builds-binaries/releases]</a> (说起来我好像有段时间没更新了)</li>
+<li>(vcpkg)[<a target="_blank" rel="noopener" href="https://github.com/Microsoft/vcpkg]">https://github.com/Microsoft/vcpkg]</a></li>
+<li>(CMake)[<a target="_blank" rel="noopener" href="https://cmake.org/]">https://cmake.org/]</a></li>
+<li>(vscode)[<a target="_blank" rel="noopener" href="https://code.visualstudio.com/]">https://code.visualstudio.com/]</a></li>
 </ul>
 <p>其中mingw和vcpkg可以用git clone下载</p>
-<h2 id="安装">安装</h2>
-<p>最简单就是安装cmake, 这玩意有安装向导, 跟着向导走就完了,
-最后在测试一下cmake命令是否存在, 有则安装成功</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>最简单就是安装cmake, 这玩意有安装向导, 跟着向导走就完了, 最后在测试一下cmake命令是否存在, 有则安装成功</p>
 <p>然后就是mingw, 我的安装过程很简单</p>
-<p>下载release -&gt; 把压缩包解压到什么地方 -&gt;
-把解压文件夹中的bin文件夹加入path环境变量 -&gt;
-去命令行中测试有没有gcc命令, 如果有, 则安装成功</p>
-<p>再就是vscode, 这玩意也有安装向导,
-但是安装完了之后需要再安装几个插件</p>
-<p>C/C++ Extension Pack:</p>
-<figure>
-<img src="c-cpp-extension-pack.jpg" alt="c-cpp-entension-pack" />
-<figcaption aria-hidden="true">c-cpp-entension-pack</figcaption>
-</figure>
-<p>它直接包含了c/c++的两个基础扩展</p>
+<p>下载release -&gt; 把压缩包解压到什么地方 -&gt; 把解压文件夹中的bin文件夹加入path环境变量 -&gt; 去命令行中测试有没有gcc命令, 如果有, 则安装成功</p>
+<p>再就是vscode, 这玩意也有安装向导, 但是安装完了之后需要再安装几个插件</p>
+<p>C&#x2F;C++ Extension Pack:</p>
+<p><img src="/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/c-cpp-extension-pack.jpg" alt="c-cpp-entension-pack"></p>
+<p>它直接包含了c&#x2F;c++的两个基础扩展</p>
 <p>还有就是这个</p>
 <p>CMake</p>
-<figure>
-<img src="cmake-ext.jpg" alt="cmake-ext" />
-<figcaption aria-hidden="true">cmake-ext</figcaption>
-</figure>
+<p><img src="/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/cmake-ext.jpg" alt="cmake-ext"></p>
 <p>和</p>
 <p>CMake Tools</p>
-<figure>
-<img src="cmake-tools-ext.jpg" alt="cmake-tools-ext" />
-<figcaption aria-hidden="true">cmake-tools-ext</figcaption>
-</figure>
-<p>最后就是vcpkg, 就这玩意比较复杂, 以下内容摘自<a
-target="_blank" rel="noopener" href="https://vcpkg.io/en/getting-started">Get started with
-vcpkg</a></p>
-<ol type="1">
+<p><img src="/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/cmake-tools-ext.jpg" alt="cmake-tools-ext"></p>
+<p>最后就是vcpkg, 就这玩意比较复杂, 以下内容摘自<a target="_blank" rel="noopener" href="https://vcpkg.io/en/getting-started">Get started with vcpkg</a></p>
+<ol>
 <li><p>克隆仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Microsoft/vcpkg.git</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Microsoft/vcpkg.git</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>执行引导程序构建vcpkg</p>
 <p>克隆完之后在这个文件夹中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\vcpkg\bootstrap-vcpkg.bat</span><br></pre></td></tr></table></figure>
-<p>或者你直接找到<code>bootstrap-vcpkg.bat</code>也可以直接执行</p></li>
+
+<p>或者你直接找到<code>bootstrap-vcpkg.bat</code>也可以直接执行</p>
+</li>
 </ol>
 <p>安装基本上也完成了</p>
 <p>接下来是最让我难受的地方:</p>
-<h2 id="配置">配置</h2>
-<p>之前我从来没用过cmake和vcpkg,
-也就是说我基本就是除了玩一玩标准库和在网上下载的一些比较有意思的
-header-only 的东西, 没有想过用c/c++写什么大的东西,
-像什么网络请求之类的东西我都用的python, 因为内玩意配置起来真的太方便了,
-一条命令的事.</p>
-<p>好了闲话少说, 这次我们以安装<code>libcurl</code>为例,
-说说要配置什么和怎么配置</p>
-<p>先下载库, 如果没有vcpkg, 那么找起来, 说难也没有那么难,
-只不过不方便而已. 现在有了vcpkg, 就像python中的pip,
-管理起来方便太多了.</p>
-<p>因为这次我们用的是mingw-w64编译器,
-所以我们要告诉vcpkg下载对应x64-mingw-dynamic版本的库</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>之前我从来没用过cmake和vcpkg, 也就是说我基本就是除了玩一玩标准库和在网上下载的一些比较有意思的 header-only 的东西, 没有想过用c&#x2F;c++写什么大的东西, 像什么网络请求之类的东西我都用的python, 因为内玩意配置起来真的太方便了, 一条命令的事.</p>
+<p>好了闲话少说, 这次我们以安装<code>libcurl</code>为例, 说说要配置什么和怎么配置</p>
+<p>先下载库, 如果没有vcpkg, 那么找起来, 说难也没有那么难, 只不过不方便而已. 现在有了vcpkg, 就像python中的pip, 管理起来方便太多了.</p>
+<p>因为这次我们用的是mingw-w64编译器, 所以我们要告诉vcpkg下载对应x64-mingw-dynamic版本的库</p>
 <p>我们在环境变量中添加这三个变量 (注意这里不是添加到path环境变量!)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">VCPKG_DEFAULT_HOST_TRIPLET -&gt; x64-mingw-dynamic</span><br><span class="line">VCPKG_DEFAULT_TRIPLET -&gt; x64-mingw-dynamic</span><br><span class="line">VCPKG_ROOT -&gt; vcpkg.exe所在文件夹</span><br></pre></td></tr></table></figure>
+
 <p>接下来就可以用这两个命令下载库了:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vcpkg install curl</span><br><span class="line">vcpkg integrate install</span><br></pre></td></tr></table></figure>
+
 <p>之后你可以用</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vcpkg list</span><br></pre></td></tr></table></figure>
+
 <p>查看你已安装的库, 用</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vcpkg search [package_name]</span><br></pre></td></tr></table></figure>
+
 <p>搜索一个包</p>
-<p>这个用法真的很像pip (并不是说谁是爷爷谁是孙子,
-我说像pip单纯是因为我先接触pip)</p>
+<p>这个用法真的很像pip (并不是说谁是爷爷谁是孙子, 我说像pip单纯是因为我先接触pip)</p>
 <p>然后就是一个最严重的大问题, 我安装完了这个包我该咋用?</p>
-<p>这中间我也查了不少资料, 也花了好长时间,
-其中有一篇中对于这个问题的拆分我感觉非常合理, 那就是</p>
-<ol type="1">
+<p>这中间我也查了不少资料, 也花了好长时间, 其中有一篇中对于这个问题的拆分我感觉非常合理, 那就是</p>
+<ol>
 <li>告诉编辑器(即我们这次用的vscode)库在哪</li>
-<li>告诉编译器/链接器库在哪</li>
+<li>告诉编译器&#x2F;链接器库在哪</li>
 </ol>
 <p>第一个问题好解决</p>
-<p>在vscode中, 找到<code>c_cpp_properties.json</code>,
-打开在其中找到<code>includePath</code>项,
-添加一条<code>$&#123;VCPKG_ROOT&#125;/installed/x64-mingw-dynamic/include</code>.</p>
+<p>在vscode中, 找到<code>c_cpp_properties.json</code>, 打开在其中找到<code>includePath</code>项, 添加一条<code>$&#123;VCPKG_ROOT&#125;/installed/x64-mingw-dynamic/include</code>.</p>
 <p>这样你的vscode就可以找到你用vcpkg安装的包的头文件了</p>
 <p>第二个问题挺变态的, 至少我搞了挺久没搞明白</p>
 <p>之前手动编译的时候, 用的指令是这样的:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc 源文件 -o 目标文件</span><br></pre></td></tr></table></figure>
-<p>它只会检查标准库和源文件所在文件夹, 要搜索其他文件夹下的东西,
-你就得加个-I</p>
+
+<p>它只会检查标准库和源文件所在文件夹, 要搜索其他文件夹下的东西, 你就得加个-I</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -I 头文件所在位置 源文件 -o 目标文件</span><br></pre></td></tr></table></figure>
+
 <p>(好像说这个-I一定要在源文件之前? 确实是这样, 但是为啥我不清楚)</p>
-<p>但是光指定头文件不行, 因为libcurl还有lib和dll用于链接,
-所以我们还得指定lib的位置, 加个-L</p>
+<p>但是光指定头文件不行, 因为libcurl还有lib和dll用于链接, 所以我们还得指定lib的位置, 加个-L</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -I 头文件所在位置 -L lib文件所在位置 源文件 -o 目标文件</span><br></pre></td></tr></table></figure>
-<p>这样还是有问题, 你没指定要用哪个lib库, 所以还得加一个参数-l,
-就拿我们这次的libcurl举例子好了</p>
+
+<p>这样还是有问题, 你没指定要用哪个lib库, 所以还得加一个参数-l, 就拿我们这次的libcurl举例子好了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -I 头文件所在位置 -L lib文件所在位置 源文件 -o 目标文件 -lcurl</span><br></pre></td></tr></table></figure>
-<p>直到我把这条命令拼成这个求样子, 编译才算通过.
-之前一直有链接器报错未知的符号, 但是当时不知道为啥, 可以一阵难受.</p>
-<p>但是也如你所见, 这条命令真的太老太太的裹脚布了.
-所以我决定转向一个简单点的方法 -- cmake</p>
-<p>这一段我甚至没有查出来什么对我有用的简中的文章写, 英文的又不想看,
-所以我就直接问Copilot了, 我仿照它的结果和自己的粗浅理解,
-最终的<code>CMakeList.txt</code>长这样</p>
+
+<p>直到我把这条命令拼成这个求样子, 编译才算通过. 之前一直有链接器报错未知的符号, 但是当时不知道为啥, 可以一阵难受.</p>
+<p>但是也如你所见, 这条命令真的太老太太的裹脚布了. 所以我决定转向一个简单点的方法 – cmake</p>
+<p>这一段我甚至没有查出来什么对我有用的简中的文章写, 英文的又不想看, 所以我就直接问Copilot了, 我仿照它的结果和自己的粗浅理解, 最终的<code>CMakeList.txt</code>长这样</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.10</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">project</span>(curlget)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 确定输出文件名, 相当于gcc编译中-o选项</span></span><br><span class="line"><span class="keyword">add_executable</span>(curlget curlget.c)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CURL_INCLUDE_DIR <span class="string">&quot;D:\\vcpkg\\vcpkg\\installed\\x64-mingw-dynamic\\include&quot;</span>)<span class="comment">#设置变量方便输入</span></span><br><span class="line"><span class="keyword">set</span>(CURL_LIBRARY <span class="string">&quot;D:\\vcpkg\\vcpkg\\installed\\x64-mingw-dynamic\\lib&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">include_directories</span>(curlget PRIVATE <span class="variable">$&#123;CURL_INCLUDE_DIR&#125;</span>)<span class="comment">#include搜索路径</span></span><br><span class="line"><span class="keyword">link_directories</span>(curlget PRIVATE <span class="variable">$&#123;CURL_LIBRARY&#125;</span>)<span class="comment">#lib搜索路径</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置目标include路径, 相当于gcc编译中的-I选项</span></span><br><span class="line"><span class="keyword">target_include_directories</span>(curlget PRIVATE <span class="variable">$&#123;CURL_INCLUDE_DIR&#125;</span>)</span><br><span class="line"><span class="comment"># 设置目标lib路径, 相当于gcc编译中的-L选项</span></span><br><span class="line"><span class="keyword">target_link_directories</span>(curlget PRIVATE <span class="variable">$&#123;CURL_LIBRARY&#125;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 链接lib, 相当于gcc编译中添加了-lcurl选项</span></span><br><span class="line"><span class="keyword">target_link_libraries</span>(curlget PRIVATE curl)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最终需要执行的两条命令完成编译</span></span><br><span class="line"><span class="comment"># cmake -G &quot;MinGW Makefiles&quot;</span></span><br><span class="line"><span class="comment"># cmake --build .</span></span><br></pre></td></tr></table></figure>
+
 <p>这上面也写了, 最终编译就只需要再执行两条命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmake -G <span class="string">&quot;MinGW Makefiles&quot;</span> <span class="comment">#-DCMAKE_TOOLCHAIN_FILE=&quot;%VCPKG_ROOT%\scripts\buildsystems\vcpkg.cmake&quot;</span></span><br><span class="line">cmake --build .</span><br></pre></td></tr></table></figure>
-<p>其中第一条命令中本来应该有内个-D选项的, 但是这玩意可以放到环境变量中,
-所以后面就不需要这玩意了</p>
+
+<p>其中第一条命令中本来应该有内个-D选项的, 但是这玩意可以放到环境变量中, 所以后面就不需要这玩意了</p>
 <p>注意第二条命令有个点表示当前文件夹! 别忘了!</p>
 <p>至此整个过程终于算是结束了, 可喜可贺可喜可贺🥹</p>
-<h2 id="ps">PS</h2>
-<p>之后我把编译出来的可执行文件放到虚拟机里跑了一下,
-发现它并没有把整个库都带进去, 执行的时候还是需要带上对应的dll文件,
-比如这次的<code>libcurl.dll</code>(而这玩意又需要<code>libzlib1.dll</code>,
-所以一共带上了两个dll文件).
-也就是说后期我如果真的想用这套方法写出来点什么东西并发布出来,
-可能真的需要一个安装程序了.</p>
+<h2 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h2><p>之后我把编译出来的可执行文件放到虚拟机里跑了一下, 发现它并没有把整个库都带进去, 执行的时候还是需要带上对应的dll文件, 比如这次的<code>libcurl.dll</code>(而这玩意又需要<code>libzlib1.dll</code>, 所以一共带上了两个dll文件). 也就是说后期我如果真的想用这套方法写出来点什么东西并发布出来, 可能真的需要一个安装程序了.</p>
 <p>我也是才开始玩这些东西, 还有好多要学的, 看后面遇到什么问题了吧.</p>
 
       
@@ -686,7 +652,7 @@ header-only 的东西, 没有想过用c/c++写什么大的东西,
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E5%8D%95"><span class="nav-number">1.</span> <span class="nav-text">清单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ps"><span class="nav-number">4.</span> <span class="nav-text">PS</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E5%8D%95"><span class="nav-number">1.</span> <span class="nav-text">清单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PS"><span class="nav-number">4.</span> <span class="nav-text">PS</span></a></li></ol></div>
             
 
           </div>
