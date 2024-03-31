@@ -79,18 +79,29 @@
 
 
 
-<meta name="description" content="碎碎念1: 这篇文章实际上应该在22年就写好并发布的,但是就行之前说的,这个小破网站有段时间访问不了,所以写好了程序也一直没写文章,只是当时讨论的时候写了一个notebook记了一下过程   碎碎念2: 我真的很想直接把内个notebook转成markdown然后加个标题啥的直接上传,但是因为那里面有执行结果所以整个文件有16.2MB之大.纯文字!16.2MB!什么概念?并且这还只是">
+<meta name="description" content="碎碎念1: 这篇文章实际上应该在22年就写好并发布的,但是就行之前说的,这个小破网站有段时间访问不了,所以写好了程序也一直没写文章,只是当时讨论的时候写了一个notebook记了一下过程   碎碎念2: 我真的很想直接把内个notebook转成markdown然后加个标题啥的直接上传,但是因为那里面有执行结果所以整个文件有16.2MB之大.纯文字!16.2MB!什么概念?并且这还只是完成了基础的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="爬取b站视频的评论和弹幕以及艰难的心路历程">
 <meta property="og:url" content="http://mnizjc.github.io/2023/01/22/%E7%88%AC%E5%8F%96b%E7%AB%99%E8%A7%86%E9%A2%91%E7%9A%84%E8%AF%84%E8%AE%BA%E5%92%8C%E5%BC%B9%E5%B9%95%E4%BB%A5%E5%8F%8A%E8%89%B0%E9%9A%BE%E7%9A%84%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/index.html">
 <meta property="og:site_name" content="OMG!IT&#39;S 11!!">
-<meta property="og:description" content="碎碎念1: 这篇文章实际上应该在22年就写好并发布的,但是就行之前说的,这个小破网站有段时间访问不了,所以写好了程序也一直没写文章,只是当时讨论的时候写了一个notebook记了一下过程   碎碎念2: 我真的很想直接把内个notebook转成markdown然后加个标题啥的直接上传,但是因为那里面有执行结果所以整个文件有16.2MB之大.纯文字!16.2MB!什么概念?并且这还只是">
+<meta property="og:description" content="碎碎念1: 这篇文章实际上应该在22年就写好并发布的,但是就行之前说的,这个小破网站有段时间访问不了,所以写好了程序也一直没写文章,只是当时讨论的时候写了一个notebook记了一下过程   碎碎念2: 我真的很想直接把内个notebook转成markdown然后加个标题啥的直接上传,但是因为那里面有执行结果所以整个文件有16.2MB之大.纯文字!16.2MB!什么概念?并且这还只是完成了基础的">
 <meta property="og:locale">
+<meta property="og:image" content="https://s1.ax1x.com/2023/01/30/pSdrZEn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/01/30/pSdrK3T.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/01/30/pSdrEHs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/01/30/pSdrm40.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/01/30/pSdrwvD.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/01/30/pSdr1u4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/01/30/pSdr8b9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/01/30/pSdreNq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/01/30/pSdrQvF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2023/01/30/pSdrMgU.png">
 <meta property="article:published_time" content="2023-01-22T06:05:47.000Z">
 <meta property="article:modified_time" content="2023-01-31T16:26:25.680Z">
 <meta property="article:author" content="Mnizjc">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/01/30/pSdrZEn.png">
 
 
 
@@ -378,157 +389,128 @@
 
       
         <blockquote>
-<p>碎碎念1:
-这篇文章实际上应该在22年就写好并发布的,但是就行之前说的,这个小破网站有段时间访问不了,所以写好了程序也一直没写文章,只是当时讨论的时候写了一个notebook记了一下过程</p>
+<p>碎碎念1: 这篇文章实际上应该在22年就写好并发布的,但是就行之前说的,这个小破网站有段时间访问不了,所以写好了程序也一直没写文章,只是当时讨论的时候写了一个notebook记了一下过程</p>
 </blockquote>
 <blockquote>
-<p>碎碎念2:
-我真的很想直接把内个notebook转成markdown然后加个标题啥的直接上传,但是因为那里面有执行结果所以整个文件有16.2MB之大.纯文字!16.2MB!什么概念?并且这还只是完成了基础的爬取,还没算保存的事,不知道整个写完之后有多大</p>
+<p>碎碎念2: 我真的很想直接把内个notebook转成markdown然后加个标题啥的直接上传,但是因为那里面有执行结果所以整个文件有16.2MB之大.纯文字!16.2MB!什么概念?并且这还只是完成了基础的爬取,还没算保存的事,不知道整个写完之后有多大</p>
 </blockquote>
-<hr />
+<hr>
 <p>这次介绍一个新玩意:<code>httpx</code>这个库说是既能同步又能异步,并且同步的时候还比<code>requests</code>快,所以这次玩玩这个库</p>
 <p>为了不剧透,这次我就只是按我最初的思路一步一步来,中途遇到的情况中途再说</p>
 <p>先说<code>httpx</code>,在同步的时候,用法和<code>requests</code>一样,异步的时候,只是和<code>aiohttp</code>有一点点不一样:虽然建立session的类(<code>aiohttps</code>是<code>ClientSession</code>,<code>httpx</code>是<code>AsyncClient</code>)都有上下文管理器,但是<code>aiohttp</code>里建立session之后它的实例的<code>get</code>,<code>post</code>之类的函数都是有异步上下文管理器的;而<code>httpx</code>的session建立起来之后它的实例的那些函数都可以直接<code>await</code>.我不知道他们两个的性能差异是不是就是这里的问题但是用<code>httpx</code>异步请求的时候要写的东西确实少多了</p>
 <p>正片</p>
-<hr />
-<h2 id="基础变量函数">基础变量&amp;函数</h2>
-<p>再到一个对于b站的爬虫的一个关键:bv号转av号,这个东西在b站宣布使用bv号之后一天之内在知乎上就有人破解了(<a
-target="_blank" rel="noopener" href="https://www.zhihu.com/question/381784377/answer/1099438784">如何看待
-2020 年 3 月 23 日哔哩哔哩将稿件的「av 号」变更为「BV 号」？ - 知乎
-(zhihu.com)</a>),这里把关键的我们需要用的源码贴一下:</p>
+<hr>
+<h2 id="基础变量-函数"><a href="#基础变量-函数" class="headerlink" title="基础变量&amp;函数"></a>基础变量&amp;函数</h2><p>再到一个对于b站的爬虫的一个关键:bv号转av号,这个东西在b站宣布使用bv号之后一天之内在知乎上就有人破解了(<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/381784377/answer/1099438784">如何看待 2020 年 3 月 23 日哔哩哔哩将稿件的「av 号」变更为「BV 号」？ - 知乎 (zhihu.com)</a>),这里把关键的我们需要用的源码贴一下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">table = <span class="string">&quot;fZodR9XQDSUm21yCkr6zBqiveYah8bt4xsWpHnJE7jL5VG3guMTKNPAwcF&quot;</span></span><br><span class="line">xor = <span class="number">177451812</span></span><br><span class="line">add = <span class="number">8728348608</span></span><br><span class="line">s = [<span class="number">11</span>, <span class="number">10</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">4</span>, <span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bv2av</span>(<span class="params">x</span>):</span><br><span class="line">    r = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>):</span><br><span class="line">        r += table.index(x[s[i]])*<span class="number">58</span>**i</span><br><span class="line">    <span class="keyword">return</span> (r-add) ^ xor</span><br></pre></td></tr></table></figure>
+
 <p>至于这次怎么指定视频,我选择用正则表达式来从视频链接里提取出bv号,这样不用人手动提取了,直接粘贴分享连接就行</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#url = r&quot;https://www.bilibili.com/video/BV18s411W7ct/?spm_id_from=333.337.search-card.all.click&amp;vd_source=eefc59265c12893f0397514feee3cac8&quot;</span></span><br><span class="line"><span class="comment">#url = r&quot;https://www.bilibili.com/video/BV1Za41157Sp/?spm_id_from=333.999.0.0&amp;vd_source=eefc59265c12893f0397514feee3cac8&quot;</span></span><br><span class="line">url = <span class="string">r&quot;https://www.bilibili.com/video/BV14K411d7Hj/?spm_id_from=333.999.0.0&amp;vd_source=eefc59265c12893f0397514feee3cac8&quot;</span></span><br><span class="line"><span class="comment"># 我专门挑了一个评论少的</span></span><br><span class="line">bvid = re.findall(<span class="string">r&quot;BV1..4.1.7..&quot;</span>, url)[<span class="number">0</span>]</span><br><span class="line">avid = bv2av(bvid)</span><br><span class="line"><span class="built_in">print</span>(bvid, avid)</span><br></pre></td></tr></table></figure>
+
 <p>注释的url是拿来测试的</p>
 <p>这样还有一个好处,可以直接访问视频连接拿到视频标题,就像这样:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">titleHTML = httpx.get(url, headers=createUA()).text</span><br><span class="line">titlePser = etree.HTML(titleHTML)</span><br><span class="line">title = titlePser.xpath(<span class="string">r&quot;//h1[@class=&#x27;video-title tit&#x27;]/text()&quot;</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(title)</span><br></pre></td></tr></table></figure>
+
 <p>u1s1,用xpath在找标签这件事上实在比<code>bs4</code>优雅多了,一句话的事</p>
-<hr />
-<h2 id="评论">评论</h2>
-<p>抓包思路:<a
-target="_blank" rel="noopener" href="https://blog.csdn.net/a1397852386/article/details/109764881"
-class="uri">https://blog.csdn.net/a1397852386/article/details/109764881</a></p>
-<p>现在 b 站有些 api 接口都更新了一下,原来别人在 csdn
-上公布的接口已经不好使了,但是抓包的方法还是可以用,所以我也去抓了个包,得到了下面这个东西</p>
+<hr>
+<h2 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h2><p>抓包思路:<a target="_blank" rel="noopener" href="https://blog.csdn.net/a1397852386/article/details/109764881">https://blog.csdn.net/a1397852386/article/details/109764881</a></p>
+<p>现在 b 站有些 api 接口都更新了一下,原来别人在 csdn 上公布的接口已经不好使了,但是抓包的方法还是可以用,所以我也去抓了个包,得到了下面这个东西</p>
 <p>测试了几个参数之后发现可以只剩下这两个参数,省事</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">comment_api = <span class="string">f&quot;https://api.bilibili.com/x/v2/reply/main?oid=<span class="subst">&#123;avid&#125;</span>&amp;type=1&quot;</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>来自正在处理子评论问题的抓:</p>
-<p>这里有个<code>type</code>参数,应该在说明不同的客户端类型,它的选项好像就是
-1 是网页,2/3 是客户端,因为后二者都有评论成员的 ip 归属地信息</p>
-<p>至于哪个是哪个客户端,这里我们就先不管了(这两个返回出来的结果就因为有个
-ip
-归属地的问题所以整个结构不一定和现在分析出来的一样了,又要花时间,况且现在没有要搜
-ip 归属地的需求,所以就先默认 1 了)</p>
+<p>这里有个<code>type</code>参数,应该在说明不同的客户端类型,它的选项好像就是 1 是网页,2&#x2F;3 是客户端,因为后二者都有评论成员的 ip 归属地信息</p>
+<p>至于哪个是哪个客户端,这里我们就先不管了(这两个返回出来的结果就因为有个 ip 归属地的问题所以整个结构不一定和现在分析出来的一样了,又要花时间,况且现在没有要搜 ip 归属地的需求,所以就先默认 1 了)</p>
 </blockquote>
 <p>开搞</p>
-<p>这部分就先按同步的方法写了,因为要考虑到顺序,到实际 py
-文件里可以直接把弹幕和评论都拿了在写个函数分析就行了</p>
+<p>这部分就先按同步的方法写了,因为要考虑到顺序,到实际 py 文件里可以直接把弹幕和评论都拿了在写个函数分析就行了</p>
 <blockquote>
 <p>这里我已经处理过ua了,所以有个<code>createUA</code>函数,这玩意之前讲过</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resjson = httpx.get(comment_api, headers=createUA()).text</span><br><span class="line">resdict = loads(resjson)</span><br><span class="line"><span class="built_in">print</span>(dumps(resdict, ensure_ascii=<span class="number">0</span>, indent=<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrZEn"><img
-src="https://s1.ax1x.com/2023/01/30/pSdrZEn.png"
-alt="pSdrZEn.png" /></a></p>
+
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrZEn"><img src="https://s1.ax1x.com/2023/01/30/pSdrZEn.png" alt="pSdrZEn.png"></a></p>
 <p>大概长这个样子</p>
-<p>这个 json
-的结构好像是这样的(括号内为数据类型,这里只列我们现在可能需要的,并且以下都是我的猜测):</p>
+<p>这个 json 的结构好像是这样的(括号内为数据类型,这里只列我们现在可能需要的,并且以下都是我的猜测):</p>
 <ul>
 <li><code>code</code>: 是否成功,0 则是(<code>int</code>)</li>
-<li><code>data</code>: 所有评论(<code>dict</code>)
-<ul>
-<li><code>cursor</code>: 标识(?)(<code>dict</code>)
-<ul>
+<li><code>data</code>: 所有评论(<code>dict</code>)<ul>
+<li><code>cursor</code>: 标识(?)(<code>dict</code>)<ul>
 <li><code>all_count</code>: 总评论数(<code>int</code>)</li>
 <li><code>is_end</code>: 是否为最后一页(<code>bool</code>) *</li>
-</ul></li>
-<li><code>replies</code>: 评论(<code>list</code>)
-<ul>
+</ul>
+</li>
+<li><code>replies</code>: 评论(<code>list</code>)<ul>
 <li><code>like</code>: 点赞数(<code>int</code>)</li>
 <li><code>rpid</code>: 该评论对应编号(<code>int</code>)</li>
-<li><code>member</code>: 成员信息(<code>dict</code>)
-<ul>
+<li><code>member</code>: 成员信息(<code>dict</code>)<ul>
 <li><code>mid</code>: 用户 id(<code>str</code>)</li>
 <li><code>uname</code>: 用户名(<code>str</code>)</li>
 <li><code>sex</code>: 性别(可能用不到)(<code>str</code>)</li>
 <li><code>sign</code>: 签名(可能用不到)(<code>str</code>)</li>
 <li><code>avatar</code>: 头像链接(可能用不到)(<code>str</code>)</li>
-<li><code>level_info</code>: 等级信息(<code>dict</code>)
-<ul>
+<li><code>level_info</code>: 等级信息(<code>dict</code>)<ul>
 <li><code>current_level</code>: 当前等级(<code>int</code>)</li>
-</ul></li>
-</ul></li>
-<li><code>content</code>: 评论内容(<code>dict</code>)
-<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>content</code>: 评论内容(<code>dict</code>)<ul>
 <li><code>message</code>: 评论内容(<code>str</code>)</li>
-</ul></li>
-<li><code>replies</code>:
-评论回复,其下结构参考上文(<code>list</code>)</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+<li><code>replies</code>: 评论回复,其下结构参考上文(<code>list</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p>标注星号的是后来发现作用的</p>
 <p>然后打印</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;获取评论失败&quot;</span><span class="keyword">if</span> resdict[<span class="string">&quot;code&quot;</span>] <span class="keyword">else</span> <span class="string">&quot;获取评论成功&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;视频标题:&quot;</span>, title, <span class="string">f&quot;(<span class="subst">&#123;bvid&#125;</span>)&quot;</span>)</span><br><span class="line"><span class="comment"># 这回先默认成功,因为就现在而言确实已经成功了</span></span><br><span class="line">replyData = resdict[<span class="string">&quot;data&quot;</span>]</span><br><span class="line">replyCount = replyData[<span class="string">&quot;cursor&quot;</span>][<span class="string">&quot;all_count&quot;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;共 <span class="subst">&#123;replyCount&#125;</span> 条评论&#x27;</span>)</span><br><span class="line"><span class="comment"># print(len(replyData[&#x27;replies&#x27;]))</span></span><br><span class="line"><span class="comment"># 先整一个打印一项的函数,因为有回复,如果直接带进去代码会很难看</span></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">oneReplyPrint</span>(<span class="params">oneReply, secondary=<span class="literal">False</span></span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;-&#x27;</span>*(<span class="number">5</span> <span class="keyword">if</span> secondary <span class="keyword">else</span> <span class="number">10</span>))</span><br><span class="line">    placeHolder = <span class="string">&quot;\t&quot;</span><span class="keyword">if</span> secondary <span class="keyword">else</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    member = oneReply[<span class="string">&quot;member&quot;</span>]</span><br><span class="line">    <span class="comment">#print(placeHolder, member[&quot;uname&quot;], &quot;(性别%s,Lv%d)&quot; % (member[&quot;sex&quot;], member[&#x27;level_info&#x27;][&#x27;current_level&#x27;]))</span></span><br><span class="line">    <span class="built_in">print</span>(</span><br><span class="line">        <span class="string">f&quot;<span class="subst">&#123;oneReply[<span class="string">&#x27;rpid&#x27;</span>]&#125;</span> <span class="subst">&#123;placeHolder&#125;</span> <span class="subst">&#123;member[<span class="string">&#x27;uname&#x27;</span>]&#125;</span> (性别<span class="subst">&#123;member[<span class="string">&#x27;sex&#x27;</span>]&#125;</span>,Lv<span class="subst">&#123;member[<span class="string">&#x27;level_info&#x27;</span>][<span class="string">&#x27;current_level&#x27;</span>]&#125;</span>)&quot;</span>)</span><br><span class="line">    <span class="comment"># 我是傻逼,今天才知道f-字符串这个东西,太爽了</span></span><br><span class="line">    content = oneReply[<span class="string">&#x27;content&#x27;</span>]</span><br><span class="line">    <span class="built_in">print</span>(placeHolder, content[<span class="string">&quot;message&quot;</span>])</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> replyData[<span class="string">&quot;replies&quot;</span>]:</span><br><span class="line">    oneReplyPrint(i)</span><br><span class="line">    replies = i[<span class="string">&#x27;replies&#x27;</span>]</span><br><span class="line">    <span class="keyword">if</span> replies:  <span class="comment"># 如果有评论</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> replies:</span><br><span class="line">            oneReplyPrint(j, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrK3T"><img
-src="https://s1.ax1x.com/2023/01/30/pSdrK3T.png"
-alt="pSdrK3T.png" /></a></p>
+
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrK3T"><img src="https://s1.ax1x.com/2023/01/30/pSdrK3T.png" alt="pSdrK3T.png"></a></p>
 <blockquote>
 <p>这里已经是我把打印的部分好好修改了一下的结果,最开始不是这样的,这样至少可以分辨出谁是根评论谁是子评论</p>
 </blockquote>
 <p>然后就遇到了一个新的问题:每次获得的评论只有20条并且每个根评论的子评论最多3条.又是漫长的查资料的过程</p>
-<hr />
-<h3 id="怎么只有20条根评论">怎么只有20条根评论?</h3>
-<p>功夫不负有心人,我看到了这篇文章:<a
-target="_blank" rel="noopener" href="https://www.cnblogs.com/Kled/p/16023225.html">python爬B站评论（一通百通）
-- KledKled - 博客园
-(cnblogs.com)</a>,虽然里面的api现在用不成了,但是他的思路启发了我,我需要再好好分析一下需要那些api了</p>
+<hr>
+<h3 id="怎么只有20条根评论"><a href="#怎么只有20条根评论" class="headerlink" title="怎么只有20条根评论?"></a>怎么只有20条根评论?</h3><p>功夫不负有心人,我看到了这篇文章:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Kled/p/16023225.html">python爬B站评论（一通百通） - KledKled - 博客园 (cnblogs.com)</a>,虽然里面的api现在用不成了,但是他的思路启发了我,我需要再好好分析一下需要那些api了</p>
 <p>最开始的时候我们说到评论的api需要的参数硬是被我砍到了只剩两个,但是这样我们拿到的根评论个数只有20个,所以我就从第21个根评论开始找,然后发现了这个东西:</p>
-<p><a
-target="_blank" rel="noopener" href="https://api.bilibili.com/x/v2/reply/main?csrf=87d9440b8e6b504fdadd12ea0619f789&amp;mode=3&amp;next=0&amp;oid=59359056&amp;plat=1&amp;seek_rpid=&amp;type=1"
-class="uri">https://api.bilibili.com/x/v2/reply/main?csrf=87d9440b8e6b504fdadd12ea0619f789&amp;mode=3&amp;next=0&amp;oid=59359056&amp;plat=1&amp;seek_rpid=&amp;type=1</a></p>
+<p><a target="_blank" rel="noopener" href="https://api.bilibili.com/x/v2/reply/main?csrf=87d9440b8e6b504fdadd12ea0619f789&amp;mode=3&amp;next=0&amp;oid=59359056&amp;plat=1&amp;seek_rpid=&amp;type=1">https://api.bilibili.com/x/v2/reply/main?csrf=87d9440b8e6b504fdadd12ea0619f789&amp;mode=3&amp;next=0&amp;oid=59359056&amp;plat=1&amp;seek_rpid=&amp;type=1</a></p>
 <p>这是直接复制粘贴过来的地址,我们要找的就是那个被我们忽视了的参数.可以发现里面有一个<code>next</code>参数,在试验时候发现这确实是指定页数的参数,所以我们可以把每一页的内容都拿到手了</p>
 <p>一个新的问题出现了:一共多少页?</p>
 <blockquote>
 <p>刚开始的时候有一个想法:既然一页20个评论,那我可以用总评论数除以20得到总页数</p>
-<p>比如截至2022-12-20,视频BV1Za41157Sp共有1884条评论,那么页数就是[1884/20]+1</p>
+<p>比如截至2022-12-20,视频BV1Za41157Sp共有1884条评论,那么页数就是[1884&#x2F;20]+1</p>
 <p>但是这个想法有个问题:有种东西叫子评论,一页20个评论是根评论的数量,这样页数就太多了,遂放弃</p>
 </blockquote>
 <p>无奈就先随便指定一个比较大的数字每个都带进去试一遍呗.因为这次选的数有点大,所以我就想用异步请求可能会快一点,所以我写了一个异步的:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">asyncFetch</span>(<span class="params">url</span>):</span><br><span class="line">   <span class="keyword">async</span> <span class="keyword">with</span> httpx.AsyncClient() <span class="keyword">as</span> client:</span><br><span class="line">       resp = <span class="keyword">await</span> client.get(url, headers=createUA())</span><br><span class="line">       <span class="keyword">return</span> resp.text</span><br></pre></td></tr></table></figure>
+
 <p>希望这样请求能快点,然而</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrEHs"><img
-src="https://s1.ax1x.com/2023/01/30/pSdrEHs.png"
-alt="pSdrEHs.png" /></a></p>
-<p>请求被拦截...</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrEHs"><img src="https://s1.ax1x.com/2023/01/30/pSdrEHs.png" alt="pSdrEHs.png"></a></p>
+<p>请求被拦截…</p>
 <p>看样子一味追求快好像并不是什么好事,虽然我只是想节省一下时间</p>
-<p>异步访问可能就是因为太快了所以被拦截了,看来只有一个<code>fake-useragent</code>也不一定能很好伪装,如果寄希望与频繁换ip的话...有另一个行为和它很相似,它叫DDoS</p>
+<p>异步访问可能就是因为太快了所以被拦截了,看来只有一个<code>fake-useragent</code>也不一定能很好伪装,如果寄希望与频繁换ip的话…有另一个行为和它很相似,它叫DDoS</p>
 <p>这把被拦截之后,我等到第二天才能接着正常访问.这样的事情因为在这次任务中发生的有点小频繁,再加上我本人也想偷懒摆烂,所以这个任务我花了半个月才完成(一旦被拦截除了摆烂也不能做别的事,但是「摆烂一时爽,一直摆烂一直爽」,所以还是拖了很久才写完这东西)</p>
-<p>不管怎么说,这个任务是不能异步执行了(之前测试invidious
-api的时候由于每个api都不是同一个域名下的东西并且只是为了测试连接性所以这个任务用异步再合适不过了,没人会认为你在搞事情),异步快我承认,7s搞定所有访问,然后得到一堆「请求被拦截」...</p>
+<p>不管怎么说,这个任务是不能异步执行了(之前测试invidious api的时候由于每个api都不是同一个域名下的东西并且只是为了测试连接性所以这个任务用异步再合适不过了,没人会认为你在搞事情),异步快我承认,7s搞定所有访问,然后得到一堆「请求被拦截」…</p>
 <p>如果接下来所有请求只能靠同步,那么这个任务到时候就会超级耗时间</p>
 <p>在后来老老实实同步按顺序搞了500个请求之后发现,返回的json中有个东西我一直是忽略的:在<code>data/cursor</code>里有一个叫<code>is_end</code>的变量,那解决方法就很清晰了:还是挨个访问,但是直到啥时候<code>is_end</code>为<code>True</code>了就跳出循环,并且到时候如果用<code>list</code>来存储每一次的结果那么就应该是先判断<code>is_end</code>再<code>append</code>,因为<code>True</code>的时候已经没有评论了</p>
 <p>现在按页打印根评论(子评论待会再说)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">c = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> reslist:  <span class="comment"># 遍历页数</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;   ----   第 <span class="subst">&#123;c&#125;</span> 页   ----&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> i[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;replies&#x27;</span>]:  <span class="comment"># 每一页的评论(主评论)</span></span><br><span class="line">        oneReplyPrint(j)</span><br><span class="line"></span><br><span class="line">    c += <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrm40"><img
-src="https://s1.ax1x.com/2023/01/30/pSdrm40.png"
-alt="pSdrm40.png" /></a></p>
-<hr />
-<h3 id="每个根评论怎么才3条子评论">每个根评论怎么才3条子评论?</h3>
-<p>一个及时止损了的错误思路:</p>
+
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrm40"><img src="https://s1.ax1x.com/2023/01/30/pSdrm40.png" alt="pSdrm40.png"></a></p>
+<hr>
+<h3 id="每个根评论怎么才3条子评论"><a href="#每个根评论怎么才3条子评论" class="headerlink" title="每个根评论怎么才3条子评论?"></a>每个根评论怎么才3条子评论?</h3><p>一个及时止损了的错误思路:</p>
 <blockquote>
 <p>如果还是从刚才那个评论下刀子的话</p>
-<p><a
-target="_blank" rel="noopener" href="https://api.bilibili.com/x/v2/reply/main?csrf=87d9440b8e6b504fdadd12ea0619f789&amp;mode=3&amp;next=0&amp;oid=59359056&amp;plat=1&amp;seek_rpid=&amp;type=1"
-class="uri">https://api.bilibili.com/x/v2/reply/main?csrf=87d9440b8e6b504fdadd12ea0619f789&amp;mode=3&amp;next=0&amp;oid=59359056&amp;plat=1&amp;seek_rpid=&amp;type=1</a></p>
+<p><a target="_blank" rel="noopener" href="https://api.bilibili.com/x/v2/reply/main?csrf=87d9440b8e6b504fdadd12ea0619f789&amp;mode=3&amp;next=0&amp;oid=59359056&amp;plat=1&amp;seek_rpid=&amp;type=1">https://api.bilibili.com/x/v2/reply/main?csrf=87d9440b8e6b504fdadd12ea0619f789&amp;mode=3&amp;next=0&amp;oid=59359056&amp;plat=1&amp;seek_rpid=&amp;type=1</a></p>
 <p>里面有一个<code>seek_rpid</code>,我不知道这是不是要带根评论的id得到子评论,还是说像那篇文章中说的一样它应该是一个新的api</p>
 <p>或许我应该去抓个包</p>
 <p>事实证明重新抓个包是对的,子评论确实是一个新的api</p>
 </blockquote>
-<p><a
-target="_blank" rel="noopener" href="https://api.bilibili.com/x/v2/reply/reply?csrf=87d9440b8e6b504fdadd12ea0619f789&amp;oid=214755885&amp;pn=1&amp;ps=10&amp;root=115768225232&amp;type=1"
-class="uri">https://api.bilibili.com/x/v2/reply/reply?csrf=87d9440b8e6b504fdadd12ea0619f789&amp;oid=214755885&amp;pn=1&amp;ps=10&amp;root=115768225232&amp;type=1</a></p>
+<p><a target="_blank" rel="noopener" href="https://api.bilibili.com/x/v2/reply/reply?csrf=87d9440b8e6b504fdadd12ea0619f789&amp;oid=214755885&amp;pn=1&amp;ps=10&amp;root=115768225232&amp;type=1">https://api.bilibili.com/x/v2/reply/reply?csrf=87d9440b8e6b504fdadd12ea0619f789&amp;oid=214755885&amp;pn=1&amp;ps=10&amp;root=115768225232&amp;type=1</a></p>
 <p>那如果还是按那片文章的思路,那这里要动的参数有这些:</p>
 <p><code>oid</code>: 视频 aid</p>
 <p><code>root</code>: 评论 rpid</p>
@@ -536,114 +518,96 @@ class="uri">https://api.bilibili.com/x/v2/reply/reply?csrf=87d9440b8e6b504fdadd1
 <p><code>ps</code>: 一页几个回复</p>
 <p>所以这里就可以仿照一下找根评论时的思路,先写</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sub_reply_api = <span class="string">f&quot;https://api.bilibili.com/x/v2/reply/reply?oid=<span class="subst">&#123;avid&#125;</span>&amp;pn=1&amp;ps=10&amp;root=115768225232&amp;type=1&quot;</span></span><br><span class="line"><span class="comment"># 这里是《光纤!真正厉害的不是速度！让铜线望尘莫及的是它的这个特性！》中第一个评论的子评论.</span></span><br><span class="line">subReplyjson = httpx.get(sub_reply_api).text</span><br><span class="line"><span class="comment"># print(subReplyjson)</span></span><br><span class="line">subReplydict = loads(subReplyjson)</span><br><span class="line"><span class="built_in">print</span>(dumps(subReplydict, ensure_ascii=<span class="number">0</span>, indent=<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrwvD"><img
-src="https://s1.ax1x.com/2023/01/30/pSdrwvD.png"
-alt="pSdrwvD.png" /></a></p>
+
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrwvD"><img src="https://s1.ax1x.com/2023/01/30/pSdrwvD.png" alt="pSdrwvD.png"></a></p>
 <p>能用</p>
 <p>那么现在就又到了那个问题:几页?</p>
 <p>所以还是老办法:直接500</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">subResultlist = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">501</span>):</span><br><span class="line">    sub_reply_test = <span class="string">f&quot;https://api.bilibili.com/x/v2/reply/reply?oid=<span class="subst">&#123;avid&#125;</span>&amp;pn=<span class="subst">&#123;i&#125;</span>&amp;ps=10&amp;root=115768225232&amp;type=1&quot;</span></span><br><span class="line">    oneResp = httpx.get(sub_reply_test, headers=createUA()).text</span><br><span class="line">    subResultlist.append(oneResp)</span><br><span class="line">    <span class="comment"># sleep(1)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(subResultlist)</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>话说这一步为什么在我notebook上有记录而在根评论的时候只有文字记录没有代码和结果?</p>
 <p>这一步因为我怕连同步请求都被ban了所以访问了一半直接停止了,现在留下的记录是报错,这里就不贴结果了</p>
-<p>再抱怨一句:500要花的时间太长了,13m
-21.5s,我三个魔方都还原了它还没结束</p>
+<p>再抱怨一句:500要花的时间太长了,13m 21.5s,我三个魔方都还原了它还没结束</p>
 </blockquote>
-<p>发现循环了...</p>
+<p>发现循环了…</p>
 <p>这里一共11页的子评论,但是第12页的内容和第1页一样了,并且还没有像根评论一样有个什么标识能直接拿来确定有没有完事的,这下就很让人挠头了</p>
 <p>并且,还不能单纯拿第12页的东西和第1页做「<code>==</code>」比较,因为有的标识符每一页都不一样,所以要找出内个特殊的才行</p>
 <p>仔细对比之后发现第12个replies的值已经是null了,所以</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">subResultlist = []</span><br><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    sub_reply_url = <span class="string">f&quot;https://api.bilibili.com/x/v2/reply/reply?oid=<span class="subst">&#123;avid&#125;</span>&amp;pn=<span class="subst">&#123;i&#125;</span>&amp;ps=10&amp;root=115768225232&amp;type=1&quot;</span></span><br><span class="line">    oneResp = httpx.get(sub_reply_url, headers=createUA()).text</span><br><span class="line">    oneRespdict = loads(oneResp)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> oneRespdict[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;replies&#x27;</span>]:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    subResultlist.append(oneRespdict)</span><br><span class="line">    <span class="comment"># sleep(1)</span></span><br><span class="line">    i += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
 <p>然后再打印一下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> subResultlist:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> j[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;replies&#x27;</span>]:</span><br><span class="line">        oneReplyPrint(i, <span class="number">1</span>)</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;-&#x27;</span>*<span class="number">8</span>)</span><br><span class="line"><span class="built_in">print</span>(count, <span class="string">&quot;个子评论&quot;</span>)  <span class="comment"># 114(截至2022-12-23)</span></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdr1u4"><img
-src="https://s1.ax1x.com/2023/01/30/pSdr1u4.png"
-alt="pSdr1u4.png" /></a></p>
-<hr />
-<h3 id="整合">整合</h3>
-<p>把上述过程整合一下,写成一个函数,这样在用的时候优雅一点</p>
+
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdr1u4"><img src="https://s1.ax1x.com/2023/01/30/pSdr1u4.png" alt="pSdr1u4.png"></a></p>
+<hr>
+<h3 id="整合"><a href="#整合" class="headerlink" title="整合"></a>整合</h3><p>把上述过程整合一下,写成一个函数,这样在用的时候优雅一点</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">getMainReply</span>():  <span class="comment"># 再用的时候可以在这里整一个参数avid</span></span><br><span class="line">    mainReplies = []</span><br><span class="line">    <span class="comment"># for i in range(1, pageCount+1):</span></span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        comment_url = <span class="string">f&quot;https://api.bilibili.com/x/v2/reply/main?oid=<span class="subst">&#123;avid&#125;</span>&amp;type=1&amp;next=<span class="subst">&#123;i&#125;</span>&quot;</span></span><br><span class="line">        oneelem = loads(httpx.get(comment_url, headers=createUA()).text)</span><br><span class="line">        <span class="keyword">if</span> oneelem[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;cursor&#x27;</span>][<span class="string">&#x27;is_end&#x27;</span>]:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        mainReplies.append(oneelem)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> mainReplies</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">getSubReplies</span>(<span class="params">root: <span class="built_in">str</span></span>):  <span class="comment"># 这里也可以指明一下avid</span></span><br><span class="line">    subResultlist = []</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        fsub_reply_url = <span class="string">f&quot;https://api.bilibili.com/x/v2/reply/reply?oid=<span class="subst">&#123;avid&#125;</span>&amp;pn=<span class="subst">&#123;i&#125;</span>&amp;ps=10&amp;root=<span class="subst">&#123;root&#125;</span>&amp;type=1&quot;</span></span><br><span class="line">        oneResp = httpx.get(fsub_reply_url, headers=createUA()).text</span><br><span class="line">        oneRespdict = loads(oneResp)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> oneRespdict[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;replies&#x27;</span>]:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        subResultlist.append(oneRespdict)</span><br><span class="line">        <span class="comment"># sleep(1)</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> subResultlist</span><br></pre></td></tr></table></figure>
+
 <p>然后想个办法打印好看点</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">all_main_replies = getMainReply()</span><br><span class="line"><span class="comment">#all_main_replies</span></span><br><span class="line"><span class="keyword">for</span> reply <span class="keyword">in</span> all_main_replies:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> reply[<span class="string">&#x27;data&#x27;</span>][<span class="string">&quot;replies&quot;</span>]:</span><br><span class="line">        oneReplyPrint(i)</span><br><span class="line">        replies = i[<span class="string">&#x27;replies&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> replies:  <span class="comment"># 如果有评论</span></span><br><span class="line">            all_sub_replies = getSubReplies(i[<span class="string">&#x27;rpid&#x27;</span>])</span><br><span class="line">            <span class="comment"># all_sub_replies</span></span><br><span class="line">            <span class="keyword">for</span> sub_pages <span class="keyword">in</span> all_sub_replies:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> sub_pages[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;replies&#x27;</span>]:</span><br><span class="line">                    oneReplyPrint(j, <span class="number">1</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdr8b9"><img
-src="https://s1.ax1x.com/2023/01/30/pSdr8b9.png"
-alt="pSdr8b9.png" /></a></p>
-<p>就是...在不用异步的时候等待请求是真的煎熬</p>
+
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdr8b9"><img src="https://s1.ax1x.com/2023/01/30/pSdr8b9.png" alt="pSdr8b9.png"></a></p>
+<p>就是…在不用异步的时候等待请求是真的煎熬</p>
 <p>并且在这样等待的时候还害怕它突然就报个错,因为这样就他妈的白等了</p>
-<hr />
-<h2 id="弹幕">弹幕</h2>
-<p>整个过程,除了最开始的时候发现这个接口用的是cid这一点在我刚开始的时候让我十分不适应以外,其他的时候就是行云流水</p>
+<hr>
+<h2 id="弹幕"><a href="#弹幕" class="headerlink" title="弹幕"></a>弹幕</h2><p>整个过程,除了最开始的时候发现这个接口用的是cid这一点在我刚开始的时候让我十分不适应以外,其他的时候就是行云流水</p>
 <p>cid我不知道有没有对应的转换计算函数,但是有api用,所以</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cidapi = <span class="string">f&quot;https://api.bilibili.com/x/player/pagelist?bvid=<span class="subst">&#123;bvid&#125;</span>&amp;jsonp=jsonp&quot;</span></span><br><span class="line">cidresp = httpx.get(cidapi, headers=createUA()).text</span><br><span class="line">cidjson = loads(cidresp)</span><br><span class="line"><span class="built_in">print</span>(cidresp)</span><br><span class="line">cid = cidjson[<span class="string">&quot;data&quot;</span>][<span class="number">0</span>][<span class="string">&quot;cid&quot;</span>]</span><br><span class="line"><span class="built_in">print</span>(cid)</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdreNq"><img
-src="https://s1.ax1x.com/2023/01/30/pSdreNq.png"
-alt="pSdreNq.png" /></a></p>
+
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdreNq"><img src="https://s1.ax1x.com/2023/01/30/pSdreNq.png" alt="pSdreNq.png"></a></p>
 <p>然后访问并挑出需要的东西</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bullet_url = <span class="string">f&quot;https://comment.bilibili.com/<span class="subst">&#123;cid&#125;</span>.xml&quot;</span></span><br><span class="line">bres = httpx.get(bullet_url, headers=createUA()).content</span><br><span class="line"><span class="comment"># print(bres)</span></span><br><span class="line">bullet_pser = etree.XML(bres)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> bullet_pser.xpath(<span class="string">r&quot;//d[@p]/text()&quot;</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrQvF"><img
-src="https://s1.ax1x.com/2023/01/30/pSdrQvF.png"
-alt="pSdrQvF.png" /></a></p>
+
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrQvF"><img src="https://s1.ax1x.com/2023/01/30/pSdrQvF.png" alt="pSdrQvF.png"></a></p>
 <p>爬虫的时候用xpath实在太太太太太爽了</p>
-<hr />
-<h2 id="保存到文件">保存到文件</h2>
-<p>这里就用一个csv文件保存一下了</p>
+<hr>
+<h2 id="保存到文件"><a href="#保存到文件" class="headerlink" title="保存到文件"></a>保存到文件</h2><p>这里就用一个csv文件保存一下了</p>
 <p>先想想这个表格应该怎么设计一下</p>
 <p>我们需要保存的内容是什么?</p>
 <p>根评论,子评论,谁评论的</p>
 <p>那我们就可以吧这个结构这样设计一下</p>
 <table>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 22%" />
-<col style="width: 32%" />
-<col style="width: 11%" />
-<col style="width: 18%" />
-</colgroup>
 <thead>
-<tr class="header">
-<th style="text-align: center;">    rpid    </th>
-<th style="text-align: center;">      root        </th>
-<th style="text-align: center;">         member          </th>
-<th style="text-align: center;">   uid    </th>
-<th style="text-align: center;">    reply      </th>
+<tr>
+<th align="center">rpid</th>
+<th align="center">root</th>
+<th align="center">member</th>
+<th align="center">uid</th>
+<th align="center">reply</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">  评论 id    </td>
-<td style="text-align: center;">根评论 id(如果有)</td>
-<td style="text-align: center;">  用户名及性别等级信息    </td>
-<td style="text-align: center;"> 用户 id  </td>
-<td style="text-align: center;">     评论      </td>
+<tbody><tr>
+<td align="center">评论 id</td>
+<td align="center">根评论 id(如果有)</td>
+<td align="center">用户名及性别等级信息</td>
+<td align="center">用户 id</td>
+<td align="center">评论</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">115768623776</td>
-<td style="text-align: center;">  115768225232    </td>
-<td style="text-align: center;">爱上半导体 (性别保密,Lv6)</td>
-<td style="text-align: center;">395188578</td>
-<td style="text-align: center;">解释一下带宽吧</td>
+<tr>
+<td align="center">115768623776</td>
+<td align="center">115768225232</td>
+<td align="center">爱上半导体 (性别保密,Lv6)</td>
+<td align="center">395188578</td>
+<td align="center">解释一下带宽吧</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>大概就是这样,第一行是表头解释,第二行是举例</p>
 <p>先搞一下试试</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">f&quot;<span class="subst">&#123;bvid&#125;</span>.csv&quot;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    fieldnames = [<span class="string">&#x27;rpid&#x27;</span>, <span class="string">&#x27;root&#x27;</span>, <span class="string">&#x27;member&#x27;</span>, <span class="string">&#x27;uid&#x27;</span>, <span class="string">&#x27;reply&#x27;</span>]</span><br><span class="line">    writer = csv.DictWriter(f, fieldnames=fieldnames,</span><br><span class="line">                            quotechar=<span class="string">&#x27;&quot;&#x27;</span>, lineterminator=<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    writer.writeheader()</span><br><span class="line">    <span class="comment"># 这里把之前打印的部分改改</span></span><br><span class="line">    <span class="comment"># writer.writerow(&#123;&#x27;rpid&#x27;:&#125;)</span></span><br><span class="line">    all_main_replies = getMainReply()</span><br><span class="line">    <span class="keyword">for</span> reply <span class="keyword">in</span> all_main_replies:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> reply[<span class="string">&#x27;data&#x27;</span>][<span class="string">&quot;replies&quot;</span>]:</span><br><span class="line">            <span class="comment"># oneReplyPrint(i)</span></span><br><span class="line">            Mmember = i[<span class="string">&#x27;member&#x27;</span>]</span><br><span class="line">            writer.writerow(&#123;<span class="string">&#x27;rpid&#x27;</span>: i[<span class="string">&#x27;rpid&#x27;</span>],</span><br><span class="line">                             <span class="string">&#x27;member&#x27;</span>: <span class="string">f&quot;<span class="subst">&#123;Mmember[<span class="string">&#x27;uname&#x27;</span>]&#125;</span> (性别<span class="subst">&#123;Mmember[<span class="string">&#x27;sex&#x27;</span>]&#125;</span>,Lv<span class="subst">&#123;Mmember[<span class="string">&#x27;level_info&#x27;</span>][<span class="string">&#x27;current_level&#x27;</span>]&#125;</span>)&quot;</span>,</span><br><span class="line">                             <span class="string">&#x27;uid&#x27;</span>: Mmember[<span class="string">&#x27;mid&#x27;</span>],</span><br><span class="line">                             <span class="string">&#x27;reply&#x27;</span>: i[<span class="string">&#x27;content&#x27;</span>][<span class="string">&#x27;message&#x27;</span>]&#125;)</span><br><span class="line">            replies = i[<span class="string">&#x27;replies&#x27;</span>]</span><br><span class="line">            <span class="keyword">if</span> replies:  <span class="comment"># 如果有评论</span></span><br><span class="line">                all_sub_replies = getSubReplies(i[<span class="string">&#x27;rpid&#x27;</span>])</span><br><span class="line">                <span class="keyword">for</span> sub_pages <span class="keyword">in</span> all_sub_replies:</span><br><span class="line">                    <span class="keyword">for</span> j <span class="keyword">in</span> sub_pages[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;replies&#x27;</span>]:</span><br><span class="line">                        <span class="comment">#oneReplyPrint(j, 1)</span></span><br><span class="line">                        Smember = j[<span class="string">&#x27;member&#x27;</span>]</span><br><span class="line">                        writer.writerow(&#123;<span class="string">&#x27;rpid&#x27;</span>: j[<span class="string">&#x27;rpid&#x27;</span>],</span><br><span class="line">                                         <span class="string">&#x27;root&#x27;</span>: i[<span class="string">&#x27;rpid&#x27;</span>],</span><br><span class="line">                                         <span class="string">&#x27;member&#x27;</span>: <span class="string">f&quot;<span class="subst">&#123;Smember[<span class="string">&#x27;uname&#x27;</span>]&#125;</span> (<span class="subst">&#123;Smember[<span class="string">&#x27;mid&#x27;</span>]&#125;</span>,性别<span class="subst">&#123;Smember[<span class="string">&#x27;sex&#x27;</span>]&#125;</span>,Lv<span class="subst">&#123;Smember[<span class="string">&#x27;level_info&#x27;</span>][<span class="string">&#x27;current_level&#x27;</span>]&#125;</span>)&quot;</span>,</span><br><span class="line">                                         <span class="string">&#x27;uid&#x27;</span>: Smember[<span class="string">&#x27;mid&#x27;</span>],</span><br><span class="line">                                         <span class="string">&#x27;reply&#x27;</span>: j[<span class="string">&#x27;content&#x27;</span>][<span class="string">&#x27;message&#x27;</span>]&#125;)</span><br></pre></td></tr></table></figure>
+
 <p>有人用了回车(<code>\n</code>)所以先打印一下试试看这个东西长啥样</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">i = -<span class="number">1</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">f&#x27;<span class="subst">&#123;bvid&#125;</span>.csv&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> reader:</span><br><span class="line">        <span class="built_in">print</span>(line)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;i&#125;</span> 条评论&quot;</span>)</span><br></pre></td></tr></table></figure>
+
 <p>(这里截图只管关键位置)</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrMgU"><img
-src="https://s1.ax1x.com/2023/01/30/pSdrMgU.png"
-alt="pSdrMgU.png" /></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pSdrMgU"><img src="https://s1.ax1x.com/2023/01/30/pSdrMgU.png" alt="pSdrMgU.png"></a></p>
 <p>可以看到这里把回车都转义成<code>\n</code>了,这样至少读取的时候不会有什么异常</p>
-<hr />
-<h2 id="让它不要这么散">让它不要这么散</h2>
-<p>之前说如果直接用notebook运行整个程序那就实在有太多冗余了,不说其他思路,就连打开这个notebook都比较困难(16.2MB,内存受不了),所以在整理了一些东西之后,把它封装成了一个类,这样就可以一次只用输入一个链接就可以直接包揽所有如bvid,cid等内容的获取而不需要分函数导致每个函数都要带上一个长长的字符串或者一个变量之类的看上去并不怎么优雅的操作</p>
+<hr>
+<h2 id="让它不要这么散"><a href="#让它不要这么散" class="headerlink" title="让它不要这么散"></a>让它不要这么散</h2><p>之前说如果直接用notebook运行整个程序那就实在有太多冗余了,不说其他思路,就连打开这个notebook都比较困难(16.2MB,内存受不了),所以在整理了一些东西之后,把它封装成了一个类,这样就可以一次只用输入一个链接就可以直接包揽所有如bvid,cid等内容的获取而不需要分函数导致每个函数都要带上一个长长的字符串或者一个变量之类的看上去并不怎么优雅的操作</p>
 <p>既然「万物皆对象」那索性就把「对象」的思想再深刻落实一下</p>
-<p>这玩意我就直接放到github上了<a
-target="_blank" rel="noopener" href="https://github.com/Mnizjc/Bilibili-Native-API-Encapsulation">Bilibili-Native-API-Encapsulation</a></p>
-<hr />
-<h2 id="post-script">Post Script</h2>
-<p>看看整个过程,把这些东西封装成这样,搞得让刚来的人感觉这么复杂,阿b也是费心了</p>
+<p>这玩意我就直接放到github上了<a target="_blank" rel="noopener" href="https://github.com/Mnizjc/Bilibili-Native-API-Encapsulation">Bilibili-Native-API-Encapsulation</a></p>
+<hr>
+<h2 id="Post-Script"><a href="#Post-Script" class="headerlink" title="Post Script"></a>Post Script</h2><p>看看整个过程,把这些东西封装成这样,搞得让刚来的人感觉这么复杂,阿b也是费心了</p>
 <p>回顾下来整个过程,我突然萌生一个想法:也许可以用异步同时请求评论和弹幕来节约时间,不过这样可能任务调度起来会有些麻烦,有空再考虑这样优化一下吧</p>
 <p>或者,如果只是想看一眼有那些评论,仅打印到屏幕上而不多占用内存的话,既然b站api默认是用的页的形式来获取评论,那我们也可以用这一点来节约内存(就像流一样),不过这样想,「流」的这一想法好像可以不止用于拿来看,也可以用于写入文件,这样确实更节约内存(原先的模型为了能分析内容所以直接一次性全获取了).并且写入文件的时候也可以用类似于pandas的库</p>
 
@@ -824,7 +788,7 @@ target="_blank" rel="noopener" href="https://github.com/Mnizjc/Bilibili-Native-A
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%8F%98%E9%87%8F%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">基础变量&amp;函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA"><span class="nav-number">2.</span> <span class="nav-text">评论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%8F%AA%E6%9C%8920%E6%9D%A1%E6%A0%B9%E8%AF%84%E8%AE%BA"><span class="nav-number">2.1.</span> <span class="nav-text">怎么只有20条根评论?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%8F%E4%B8%AA%E6%A0%B9%E8%AF%84%E8%AE%BA%E6%80%8E%E4%B9%88%E6%89%8D3%E6%9D%A1%E5%AD%90%E8%AF%84%E8%AE%BA"><span class="nav-number">2.2.</span> <span class="nav-text">每个根评论怎么才3条子评论?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E5%90%88"><span class="nav-number">2.3.</span> <span class="nav-text">整合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%B9%E5%B9%95"><span class="nav-number">3.</span> <span class="nav-text">弹幕</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%9D%E5%AD%98%E5%88%B0%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">保存到文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A9%E5%AE%83%E4%B8%8D%E8%A6%81%E8%BF%99%E4%B9%88%E6%95%A3"><span class="nav-number">5.</span> <span class="nav-text">让它不要这么散</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#post-script"><span class="nav-number">6.</span> <span class="nav-text">Post Script</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%8F%98%E9%87%8F-%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">基础变量&amp;函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA"><span class="nav-number">2.</span> <span class="nav-text">评论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%8F%AA%E6%9C%8920%E6%9D%A1%E6%A0%B9%E8%AF%84%E8%AE%BA"><span class="nav-number">2.1.</span> <span class="nav-text">怎么只有20条根评论?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%8F%E4%B8%AA%E6%A0%B9%E8%AF%84%E8%AE%BA%E6%80%8E%E4%B9%88%E6%89%8D3%E6%9D%A1%E5%AD%90%E8%AF%84%E8%AE%BA"><span class="nav-number">2.2.</span> <span class="nav-text">每个根评论怎么才3条子评论?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E5%90%88"><span class="nav-number">2.3.</span> <span class="nav-text">整合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%B9%E5%B9%95"><span class="nav-number">3.</span> <span class="nav-text">弹幕</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%9D%E5%AD%98%E5%88%B0%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">保存到文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A9%E5%AE%83%E4%B8%8D%E8%A6%81%E8%BF%99%E4%B9%88%E6%95%A3"><span class="nav-number">5.</span> <span class="nav-text">让它不要这么散</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Post-Script"><span class="nav-number">6.</span> <span class="nav-text">Post Script</span></a></li></ol></div>
             
 
           </div>
