@@ -1,0 +1,411 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>OMG!IT'S 11!! - I've got my nose in the air like a Boeing!</title><meta name="author" content="Mnizjc"><meta name="copyright" content="Mnizjc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="I&#39;ve got my nose in the air like a Boeing!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OMG!IT&#39;S 11!!">
+<meta property="og:url" content="https://mnizjc.qzz.io/page/4/index.html">
+<meta property="og:site_name" content="OMG!IT&#39;S 11!!">
+<meta property="og:description" content="I&#39;ve got my nose in the air like a Boeing!">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png">
+<meta property="article:author" content="Mnizjc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mnizjc.qzz.io/page/4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 8 || hour >= 22
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-6572853481816595',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'OMG!IT\'S 11!!',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/url(https:/cdn.jsdelivr.net/gh/Mnizjc/img-repository/blog-bg.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OMG!IT'S 11!!</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">OMG!IT'S 11!!</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/Mnizjc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:mnizjc@mnizjc.qzz.io" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2023/05/25/%E9%87%8D%E8%A8%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%81%E6%98%8E/" title="重言表达式证明"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3dba07c2e.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="重言表达式证明"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/05/25/%E9%87%8D%E8%A8%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%81%E6%98%8E/" title="重言表达式证明">重言表达式证明</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-25T11:49:16.000Z" title="发表于 2023-05-25 19:49:16">2023-05-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/math/">math</a></span></div><div class="content">今天周四, 有节线代课, 实在不想听课, 于是在睡了半节课之后, 把这玩意拿出来推了一下. 所以,我们就按给的顺序来, 先从附加律开始 附加律  现在「下雨了」那么现在「下雨了」或者「晴天了」 化简律  「-3.14是小数也是负数」那么「-3.14是小数」 这两个还是挺简单的 假言推理 先看箭头左边的 实际上到这里就已经可以用化简律得到 B 然后证明完毕了, 但是总觉得怪怪的,所以我还是接着往下推了一点, 至少这样后面用的时候安心一点 再结合箭头右边的 「下雨了要打伞」然后现在「下雨了」那么「你要打伞」 拒取式 先看箭头左边的 同样到这里也可以用化简律得到¬A,但是,嗯. 再看右边 「下雨了要打伞」但你「没打伞」说明「没下雨」 到这里为止, 之后的内容可能会用到以上已经证明过的内容 析取三段论 先看左边 可以化简律得到A 再看右边 「一个数是3或5」但「这个数不是5」那么「这个数是3」 也有可能是从这里开始 假言三段论  这里用到一个拒取式, 或的前件就是一个¬A  这里再用到一个化简律, 且的前件被化简  我们这里直接推出了结论, 所以假言三段论得证. 「我不早起我就不能看课」...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/05/17/%E4%BD%95%E8%B0%93%E3%80%8C%E7%83%A6%E6%81%BC%E3%80%8D-%E4%BD%95%E6%9D%A5%E3%80%8C%E7%83%A6%E6%81%BC%E3%80%8D/" title="何谓「烦恼」?何来「烦恼」?"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3dc5cd8ba.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="何谓「烦恼」?何来「烦恼」?"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/05/17/%E4%BD%95%E8%B0%93%E3%80%8C%E7%83%A6%E6%81%BC%E3%80%8D-%E4%BD%95%E6%9D%A5%E3%80%8C%E7%83%A6%E6%81%BC%E3%80%8D/" title="何谓「烦恼」?何来「烦恼」?">何谓「烦恼」?何来「烦恼」?</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-17T05:57:35.000Z" title="发表于 2023-05-17 13:57:35">2023-05-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/thought/">thought</a></span></div><div class="content">何谓「烦恼」？何来「烦恼」？ 因为是胡思乱想，所以前后语句语段可能没什么逻辑。 我们先来做几个实验，接下来请放轻松。 现在，闭上眼，什么都不要想，保持一分钟。 请告诉我，这一分钟内，你真的什么都没想吗？还是说总会有一些念头冒出来？这些念头可能是你最近遇到的什么事，或者你在想待会吃什么干什么。也可能是还在回味前两天让你快乐的事，又或者是让你难过的事。 如果这样的念头都没有，那么你最近活的很轻松。 再做一个实验，你现在随便想一句话，要求是很少在你的输入法中出现过的，然后打出来。 中途你会看见输入法给你提供了很多联想供你选择，在挑选你需要的词语的时候，难免会瞟见一些无关的词。在看到这些词的时候，你的大脑中有没有闪过一些想法？这些想法可能是这个词你在哪里见过，前两天你可能还用过，又或者这个词让你想起来以前经常用这个词，后来因为什么原因慢慢很少用了。 同样，如果你没有这样的想法，说实话，我很羡慕你现在的心态。 当然，不可以作弊，不可以主动去思考什么，因为思考会让你把注意力全部放在你所思考的内容上而忽略了别的东西。 在论语里，孔子曾这样称赞过颜回：  一箪食，一瓢饮，在陋巷，人不堪其忧，回也...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/03/15/Python-asyncio-%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8Cshell%E5%91%BD%E4%BB%A4-%E5%B0%86%E5%90%8C%E6%AD%A5%E5%87%BD%E6%95%B0%E3%80%8C%E6%94%B9%E9%80%A0%E3%80%8D%E6%88%90%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0/" title="Python asyncio 异步执行shell命令&amp;将同步函数「改造」成异步函数"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3db74eed2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python asyncio 异步执行shell命令&amp;将同步函数「改造」成异步函数"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/03/15/Python-asyncio-%E5%BC%82%E6%AD%A5%E6%89%A7%E8%A1%8Cshell%E5%91%BD%E4%BB%A4-%E5%B0%86%E5%90%8C%E6%AD%A5%E5%87%BD%E6%95%B0%E3%80%8C%E6%94%B9%E9%80%A0%E3%80%8D%E6%88%90%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0/" title="Python asyncio 异步执行shell命令&amp;将同步函数「改造」成异步函数">Python asyncio 异步执行shell命令&amp;将同步函数「改造」成异步函数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-15T13:32:32.000Z" title="发表于 2023-03-15 21:32:32">2023-03-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/python/">python</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/python/">python</a></span></div><div class="content">机房的电脑装了anaconda,本来想着看看这个机房内网有哪些机子能ping通,但是又想到手动ping实在太慢了,于是就想到了机子上的python. 既然要执行shell命令,那就要用到subprocess库,所以我上手就来了 123456789101112from subprocess import Popendef shell(cmd):    cmd = Popen(cmd)    cmd.communicate()    return cmd.returncodecommand = &quot;ping 192.168.***.%s&quot; #我忘了星号处是啥for i in range(256):    shell(command%i)    #然后就是一些信息统计工作 这个方法很明显,虽然确实都运行起来了,但是同时只能执行一个命令,python解释器还是被阻塞的. 既然是阻塞的,那就可以异步.所以接下来的两天就是令人痛苦的查资料读文档的时候了. 或许是还不太习惯读文档吧,每次想学会什么api之类的东西第一反应不是直接去找文档(不过u1s1有时候内个文档真的读不懂)...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/02/05/%E6%B5%85%E8%B0%88%E4%BF%A1%E6%81%AF%E7%86%B5/" title="浅谈信息熵"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3dafe60d3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浅谈信息熵"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/05/%E6%B5%85%E8%B0%88%E4%BF%A1%E6%81%AF%E7%86%B5/" title="浅谈信息熵">浅谈信息熵</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-05T04:28:03.000Z" title="发表于 2023-02-05 12:28:03">2023-02-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/learn/">learn</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/math/">math</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/thought/">thought</a></span></div><div class="content">如果你只能通过一个硬币来表示或者传递信息,你会怎么做?如果是一个骰子呢? 我们先从一个最简单的,「量子化」做的比较好的一个模型–硬币来说 现在你面前有一个盒子,里面有一黑一白两个球,你从中随机摸到一个球并且用这个硬币告诉别人你抽到了什么球,你应该怎么做? 或者,有人问了你一个「yes or no」问题,你也只能用硬币来传递信息,你该怎么做? 这个问题看起来确实挺简单的,只要简单规定一下硬币的正反面分别代表什么内容就可以用硬币来传递信息了 如果这个盒子里有三种颜色的球呢?实际上也好说,两个硬币四种情况完全可以包含所有情况了 如果这个盒子里有4种,5种,甚至于更多颜色的球呢? 现在这个问题就变成了:盒子里有n中颜色的球,你用多少个硬币可以处理所有的情况? 你完全可以想到 如果手上有个硬币那它们所能代表的情况有个 那我们就可以反过来由情况数求硬币数 如果有中情况就需要有个硬币但因实际工程上无法实现所以实际上需要个硬币 工程上无法实现并不阻碍我们对于本质的理解 但是上面的情况都有一个特点:每件事发生概率相等(古典概型) 现在回到盒子的例子中,如果这个盒子里还是只有两种颜色的球,但是数量不...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/02/05/%E5%AF%B9%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E4%B8%AD%E7%AD%89%E6%95%88%E5%8E%9F%E7%90%86%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%E5%92%8C%E6%80%9D%E8%80%83/" title="对广义相对论中等效原理的简单理解和思考"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3dbda8d09.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="对广义相对论中等效原理的简单理解和思考"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/05/%E5%AF%B9%E5%B9%BF%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%AE%BA%E4%B8%AD%E7%AD%89%E6%95%88%E5%8E%9F%E7%90%86%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%E5%92%8C%E6%80%9D%E8%80%83/" title="对广义相对论中等效原理的简单理解和思考">对广义相对论中等效原理的简单理解和思考</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-04T19:00:03.000Z" title="发表于 2023-02-05 03:00:03">2023-02-05</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/thought/">thought</a></span></div><div class="content">请注意 以下内容不一定符合物理事实,请注意甄别 正文 什么是等效原理? 假设你待在一个完全封闭的一节不透风不透光的车厢内,不能与车厢外的一切有任何信息交流.如果在这节车厢里除了大气压和与车厢壁接触的力以外什么力都感受不到,那么你觉得你现在是出于一种什么样的状态?是在太空中飘行还是在某一个星球上做自由落体? 还是在这节车厢上,你确实感受到了一个大小和地球上重力加速度一样的加速度,那么请问这节车厢是静止在地球上的某个地方还是在太空中做加速度恰好为g的加速运动呢? 实际上上述两种情况在这节车厢内,无论你想尽任何办法做任何实验,只要不与车厢外有任何信息交流,你都无法分辨出到底是在太空中还是在某个星球/地球上的.爱因斯坦在做完这样的思想实验后就大胆假设这两种情况是等效的(当然在后来的实验中已经验证了无数次这个假设是正确的).它也有个名字,就是等效原理 那我们现在再看一个实验:哈佛塔 这只是一个思想实验,不考虑任何工程实现的问题 这座塔很高,从塔底发射了一束光可以照到塔顶.为了方便讨论所以我们选一个在可见光波长内靠中间的位置吧:黄色.这束光在塔底发射的时候是黄色的,如果有个人在塔顶上看这束光...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/01/22/%E7%88%AC%E5%8F%96b%E7%AB%99%E8%A7%86%E9%A2%91%E7%9A%84%E8%AF%84%E8%AE%BA%E5%92%8C%E5%BC%B9%E5%B9%95%E4%BB%A5%E5%8F%8A%E8%89%B0%E9%9A%BE%E7%9A%84%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" title="爬取b站视频的评论和弹幕以及艰难的心路历程"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3db89dd7f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="爬取b站视频的评论和弹幕以及艰难的心路历程"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/01/22/%E7%88%AC%E5%8F%96b%E7%AB%99%E8%A7%86%E9%A2%91%E7%9A%84%E8%AF%84%E8%AE%BA%E5%92%8C%E5%BC%B9%E5%B9%95%E4%BB%A5%E5%8F%8A%E8%89%B0%E9%9A%BE%E7%9A%84%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" title="爬取b站视频的评论和弹幕以及艰难的心路历程">爬取b站视频的评论和弹幕以及艰难的心路历程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-01-22T06:05:47.000Z" title="发表于 2023-01-22 14:05:47">2023-01-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/python/">python</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/python/">python</a></span></div><div class="content"> 碎碎念1: 这篇文章实际上应该在22年就写好并发布的,但是就行之前说的,这个小破网站有段时间访问不了,所以写好了程序也一直没写文章,只是当时讨论的时候写了一个notebook记了一下过程   碎碎念2: 我真的很想直接把内个notebook转成markdown然后加个标题啥的直接上传,但是因为那里面有执行结果所以整个文件有16.2MB之大.纯文字!16.2MB!什么概念?并且这还只是完成了基础的爬取,还没算保存的事,不知道整个写完之后有多大   这次介绍一个新玩意:httpx这个库说是既能同步又能异步,并且同步的时候还比requests快,所以这次玩玩这个库 为了不剧透,这次我就只是按我最初的思路一步一步来,中途遇到的情况中途再说 先说httpx,在同步的时候,用法和requests一样,异步的时候,只是和aiohttp有一点点不一样:虽然建立session的类(aiohttps是ClientSession,httpx是AsyncClient)都有上下文管理器,但是aiohttp里建立session之后它的实例的get,post之类的函数都是有异步上下文管理器的;而httpx的...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/01/21/Welcome-Back/" title="Welcome Back"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3db4bff4f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Welcome Back"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/01/21/Welcome-Back/" title="Welcome Back">Welcome Back</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-01-21T11:06:53.000Z" title="发表于 2023-01-21 19:06:53">2023-01-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hexo/">Hexo</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Hexo/">Hexo</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Nothingness/">Nothingness</a></span></div><div class="content">前段时间我在github上的博客突然不能访问了,所以我就停更了好长时间 今天2023年除夕,突然发现我的小网站又可以正常访问了,所以今天把之前的内容都更新一下 新春快乐! </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/11/20/%E4%BB%8E%E8%AF%95%E9%A2%98%E5%A4%A7%E5%85%A8%E6%89%92%E9%A2%98%E6%89%93%E6%88%90api%E5%B9%B6%E7%94%A8%E4%BA%8Eocs%E7%BD%91%E8%AF%BE%E5%8A%A9%E6%89%8B/" title="从试题大全扒题打成api并用于ocs网课助手"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3dc5cd8ba.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从试题大全扒题打成api并用于ocs网课助手"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/11/20/%E4%BB%8E%E8%AF%95%E9%A2%98%E5%A4%A7%E5%85%A8%E6%89%92%E9%A2%98%E6%89%93%E6%88%90api%E5%B9%B6%E7%94%A8%E4%BA%8Eocs%E7%BD%91%E8%AF%BE%E5%8A%A9%E6%89%8B/" title="从试题大全扒题打成api并用于ocs网课助手">从试题大全扒题打成api并用于ocs网课助手</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-11-19T20:32:23.000Z" title="发表于 2022-11-20 04:32:23">2022-11-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/python/">python</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/python/">python</a></span></div><div class="content">ocs网课助手默认自带两个题库,一个准确率是挺高但是只能免费100次,一个免费但是不一定能查到一些题.去找没查到的题的时候发现可以从试题大全上找到,但是这样每发现一个题没查到我就要去手动查一次,所以我就想能不能直接用ocs把试题大全的也带上了,于是就有了这一篇 从试题大全扒题 如果不算数据清洗,这一部分还是比较简单的 该用的库要带上 123456from fake_useragent import UserAgent  # 防爬检测import requests as req  # 主要请求库from bs4 import BeautifulSoup as bs  # 解析htmlimport difflib  # 计算字符串相似度from numpy import array  # 既然涉及计算那就有numpy fake_useragent:换着添加ua避免被认为是爬虫 requests:网络请求库 bs4:主要用于html解析和数据清洗 difflib,numpy:计算字符串相似度来判断应该「点」哪道题 因为我这里访问不了fake-useragent的网站所以我已经把内容下载...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/10/19/%E7%94%9F%E5%91%BD%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88/" title="生命的意义是什么"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3db5ca4c3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="生命的意义是什么"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/19/%E7%94%9F%E5%91%BD%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88/" title="生命的意义是什么">生命的意义是什么</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-18T16:33:21.000Z" title="发表于 2022-10-19 00:33:21">2022-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/thought/">thought</a></span></div><div class="content">注意 本文内容不一定合理合逻辑,请仔细甄别 正文 之前写过一个对于生命刻进DNA里的自私,这次就是在看过RNN之后对「智能」的思考  PS.时至这篇文章为止,除了转载的,所有胡思乱想都是我高中时写的,也就是说这里的「看过」到现在我已经看过很久了  图灵提出过一个实验–图灵测试,讲的就是如果测试者和被试者被完全物理分隔开,只能通过键盘或者纸条等非面对面的方式交流.被试者可以是一个人或者一个机器,如果测试者无法通过对方的回答判断出对方是否是机器,则该机器被认为具有人类智能.现在在人工智能领域,无数人都在尝试通过一些方法在高出这样一个机器.即使大多数都只是用一些类似通用算法的神经网络并将之用于商业. 现在已经有程序通过模拟秀丽隐杆线虫的神经结构来完全模拟一只秀丽隐杆线虫的完整生命活动.不过这样按神经模拟需要消耗的算力实在太大.用这种方法模拟一个人的大脑神经活动根本不现实.但是这也引出一个问题:既然神经活动都可以被计算机模拟,连这种东西都不是你独有的了,你还有什么办法证明你是你吗? 有种东西叫学科金字塔,如果以数学为工具,那么物理就是这个金字塔的底层,在往上就是化学,生物,再往上就是人文...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/10/19/%E5%81%8F%E6%89%A7%E7%9A%84%E6%84%8F%E4%B9%89/" title="偏执的意义"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3dafa11bc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="偏执的意义"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/19/%E5%81%8F%E6%89%A7%E7%9A%84%E6%84%8F%E4%B9%89/" title="偏执的意义">偏执的意义</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-18T16:20:59.000Z" title="发表于 2022-10-19 00:20:59">2022-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/learn/">learn</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%BD%AC%E8%BD%BD/">转载</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/thought/">thought</a></span></div><div class="content">今天看完《辩论史上最经典的战役——2001国际大专辩论赛决赛 钱是/不是万恶之源》这场辩论赛,双方的论证都很精彩.其中反方四辩周玄毅《偏执的意义》一文,我觉得内容很深刻,于是决定把它转载过来. 以下是正文,摘自周玄毅《偏执的意义》：双方各执真理的两面_辩论 (sohu.com)  令人亘古纠结的辩题，大多是一个真理剖成两半的结果。 比如说，人性本就善恶杂糅，所以“人性本善”还是“人性本恶”就很难辩得清楚；又比如，知识与实践本是一体两面，所以“知难行易”和“知易行难”也就只能各执一词。 我刚开始学辩论的时候，最困惑的就是这个问题——说好的辩证法呢？说好的不偏执呢？说好的求真向善呢？ 如果辩论就是有意把真理切成两个谬误，让双方吵得不可开交以博人一笑，它和斗蛐蛐有什么分别？正好当时看到一个段子，说大多数辩题，其实都是类似于“斑马是黑还是白”这样的无聊闲扯，哑然失笑之后，拳拳服膺深以为然。 不过，后来看到一篇科普文章，说“斑马是黑底白条纹，还是白底黑条纹”其实并不是个无聊的问题，从胚胎发育的证据和进化论的推理来说，斑马原本都应该是一种黑色的动物，白条纹是后来才在黑底上长出来的。 这个结论...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Mnizjc</div><div class="author-info-description">I've got my nose in the air like a Boeing!</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Mnizjc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Mnizjc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:mnizjc@mnizjc.qzz.io" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">¡Buena suerte!</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇"><img src="https://free.picui.cn/free/2026/02/01/697e3dbc384ad.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="神奇"/></a><div class="content"><a class="title" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇">神奇</a><time datetime="2026-02-18T18:21:33.000Z" title="发表于 2026-02-19 02:21:33">2026-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题"><img src="https://free.picui.cn/free/2026/02/01/697e3db4bff4f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo渲染引擎和数学公式渲染问题"/></a><div class="content"><a class="title" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题">hexo渲染引擎和数学公式渲染问题</a><time datetime="2026-02-13T15:32:43.000Z" title="发表于 2026-02-13 23:32:43">2026-02-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/05/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" title="中心极限定理"><img src="https://free.picui.cn/free/2026/01/30/697cd1575ee3c.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中心极限定理"/></a><div class="content"><a class="title" href="/2026/02/05/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" title="中心极限定理">中心极限定理</a><time datetime="2026-02-05T14:18:18.000Z" title="发表于 2026-02-05 22:18:18">2026-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/" title="又开始胡思乱想了"><img src="https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="又开始胡思乱想了"/></a><div class="content"><a class="title" href="/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/" title="又开始胡思乱想了">又开始胡思乱想了</a><time datetime="2026-02-04T18:50:25.000Z" title="发表于 2026-02-05 02:50:25">2026-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/04/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" title="傅里叶级数、傅里叶变换和不确定性原理"><img src="https://s1.ax1x.com/2020/08/27/dhZ4JS.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="傅里叶级数、傅里叶变换和不确定性原理"/></a><div class="content"><a class="title" href="/2026/02/04/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" title="傅里叶级数、傅里叶变换和不确定性原理">傅里叶级数、傅里叶变换和不确定性原理</a><time datetime="2026-02-04T10:04:19.000Z" title="发表于 2026-02-04 18:04:19">2026-02-04</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hello-World-%E6%8E%A5%E8%A7%A6%E6%96%B0%E4%B8%9C%E8%A5%BF/"><span class="card-category-list-name">Hello World--接触新东西</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/c-c/"><span class="card-category-list-name">c/c++</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/python/"><span class="card-category-list-name">python</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/rust/"><span class="card-category-list-name">rust</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/"><span class="card-category-list-name">数学</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%89%A9%E7%90%86/"><span class="card-category-list-name">物理</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B/"><span class="card-category-list-name">网络工程</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/rust/" style="font-size: 1.1em; color: #999">rust</a> <a href="/tags/Github/" style="font-size: 1.16em; color: #999b9e">Github</a> <a href="/tags/git/" style="font-size: 1.1em; color: #999">git</a> <a href="/tags/physics/" style="font-size: 1.1em; color: #999">physics</a> <a href="/tags/learn/" style="font-size: 1.5em; color: #99a9bf">learn</a> <a href="/tags/Hexo/" style="font-size: 1.39em; color: #99a4b4">Hexo</a> <a href="/tags/Nothingness/" style="font-size: 1.16em; color: #999b9e">Nothingness</a> <a href="/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 1.33em; color: #99a2af">转载</a> <a href="/tags/network-engineering/" style="font-size: 1.1em; color: #999">network-engineering</a> <a href="/tags/python/" style="font-size: 1.27em; color: #99a0a9">python</a> <a href="/tags/c-c/" style="font-size: 1.1em; color: #999">c/c++</a> <a href="/tags/math/" style="font-size: 1.44em; color: #99a7ba">math</a> <a href="/tags/hello-world/" style="font-size: 1.21em; color: #999ea4">hello world</a> <a href="/tags/thought/" style="font-size: 1.5em; color: #99a9bf">thought</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/02/">
+            <span class="card-archive-list-date">
+              二月 2026
+            </span>
+            <span class="card-archive-list-count">6</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              一月 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              七月 2025
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/01/">
+            <span class="card-archive-list-date">
+              一月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/09/">
+            <span class="card-archive-list-date">
+              九月 2024
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/05/">
+            <span class="card-archive-list-date">
+              五月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/04/">
+            <span class="card-archive-list-date">
+              四月 2024
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">49</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-02-23T14:48:50.485Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2022 - 2026 By Mnizjc</span></div><div class="footer_custom_text">salaam 'alaikum, 看什么呢哥们</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@3.0.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = [].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const from = '出自 ' + data.from
+      typedJSFn.processSubtitle(data.hitokoto, [from])
+    })
+    .catch(err => {
+      console.error('Failed to get the Hitokoto API:', err)
+      typedJSFn.processSubtitle([])
+    })
+}
+typedJSFn.run(subtitleType)
+</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

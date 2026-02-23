@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Zerotier Moon 全设备覆盖 | OMG!IT'S 11!!</title><meta name="author" content="Mnizjc"><meta name="copyright" content="Mnizjc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="虽然叫网络工程，但是实际上就是小打小闹。毕竟我们这种穷的只能玩SDN的肯定不如那些正儿八经从网线开始的网络工程师那么厉害 说起来这件事，还挺奇妙的，中间我也确实学到了一点点东西。毕竟之前就了解过一些，奈何没钱，所以没有细究。 我知道这玩意在网上已经满地都是了，但是毕竟纸上得来终觉浅，绝知此事要躬行，不做一次不会发现要注意什么 缘起、之前的尝试 整个过程全部围绕这个核心问题： 因为我们这边校园网那真">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zerotier Moon 全设备覆盖">
+<meta property="og:url" content="https://mnizjc.qzz.io/2025/05/15/Zerotier-Moon-%E5%85%A8%E8%AE%BE%E5%A4%87%E8%A6%86%E7%9B%96/index.html">
+<meta property="og:site_name" content="OMG!IT&#39;S 11!!">
+<meta property="og:description" content="虽然叫网络工程，但是实际上就是小打小闹。毕竟我们这种穷的只能玩SDN的肯定不如那些正儿八经从网线开始的网络工程师那么厉害 说起来这件事，还挺奇妙的，中间我也确实学到了一点点东西。毕竟之前就了解过一些，奈何没钱，所以没有细究。 我知道这玩意在网上已经满地都是了，但是毕竟纸上得来终觉浅，绝知此事要躬行，不做一次不会发现要注意什么 缘起、之前的尝试 整个过程全部围绕这个核心问题： 因为我们这边校园网那真">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg">
+<meta property="article:published_time" content="2025-05-14T17:30:36.000Z">
+<meta property="article:modified_time" content="2026-02-23T14:48:15.620Z">
+<meta property="article:author" content="Mnizjc">
+<meta property="article:tag" content="learn">
+<meta property="article:tag" content="network-engineering">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Zerotier Moon 全设备覆盖",
+  "url": "https://mnizjc.qzz.io/2025/05/15/Zerotier-Moon-%E5%85%A8%E8%AE%BE%E5%A4%87%E8%A6%86%E7%9B%96/",
+  "image": "https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg",
+  "datePublished": "2025-05-14T17:30:36.000Z",
+  "dateModified": "2026-02-23T14:48:15.620Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Mnizjc",
+      "url": "https://mnizjc.qzz.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mnizjc.qzz.io/2025/05/15/Zerotier-Moon-%E5%85%A8%E8%AE%BE%E5%A4%87%E8%A6%86%E7%9B%96/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 8 || hour >= 22
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-6572853481816595',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Zerotier Moon 全设备覆盖',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/url(https:/cdn.jsdelivr.net/gh/Mnizjc/img-repository/blog-bg.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OMG!IT'S 11!!</span></a><a class="nav-page-title" href="/"><span class="site-name">Zerotier Moon 全设备覆盖</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Zerotier Moon 全设备覆盖</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-14T17:30:36.000Z" title="发表于 2025-05-15 01:30:36">2025-05-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-23T14:48:15.620Z" title="更新于 2026-02-23 22:48:15">2026-02-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B/">网络工程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>虽然叫网络工程，但是实际上就是小打小闹。毕竟我们这种穷的只能玩SDN的肯定不如那些正儿八经从网线开始的网络工程师那么厉害</p>
+<p>说起来这件事，还挺奇妙的，中间我也确实学到了一点点东西。毕竟之前就了解过一些，奈何没钱，所以没有细究。</p>
+<p>我知道这玩意在网上已经满地都是了，但是毕竟纸上得来终觉浅，绝知此事要躬行，不做一次不会发现要注意什么</p>
+<h2 id="缘起、之前的尝试">缘起、之前的尝试</h2>
+<p>整个过程全部围绕这个核心问题：</p>
+<p>因为我们这边校园网那真就是一层套一层，就连我在宿舍打开电脑，去教室远程电脑，连接信息都显示走的中继。根本没有p2p打洞成功过。但是我在家里还放了一个树莓派，它当然也是放在路由器下（说起来这个弔路由器还是移动的，虽然路由器光猫合一，但是能配置的东西少的可怜）。我之前试过把它带到学校来，可惜根本不敢用，因为当时没换壳，散热只能靠风扇，然而内个无刷电机风扇常常是用了一段时间就噪音特别大，甚至比我现在宿舍放的台式机声音还大，索性后面就没带到学校来了。但是我在树莓派上还是部署了一些好玩的服务，我还是想能连接上，并且这次五一回来我还被派了个下载视频的任务，这下不得不整一个能远程连接的方法了。虽然我想过用zerotier，但是那个走中继的p2p连接质量真的实在让人不敢恭维。那么问题出现了：<strong>我该怎么多设备组网，并且保证速度还算可观，还没有端口限制？</strong></p>
+<p>我试过用natapp，虽然用这东西也能连接，并且也还算稳定，但是这玩意的限制太多了：免费用户只能建立3个隧道，并且一个隧道只能绑定一个端口。更新之后不怕每次运行换域名了，以前每次更新还得换一次域名，此次不一样，这就是个很蛋疼的问题。Ohio，我那这玩意给树莓派建了一个ssh隧道，能用，但是只要ssh上看着当前什么都没运行，你又什么都没输入，那过一会直接给你断了。放之前我可能无所谓，但是这次下载为了方便起见，我给下载用到的内堆参数全放到了一个alias上，但是这玩意只能存在于当前shell，只要退出登陆就没了。搞得我每次重新连接都得使劲找记录然后再回车，然后再开始下载。但你不能说我必须得一直盯着它等他下载完成吧？你也许又会说，把下载链接全放一个文件夹里让它一次性下完不好吗？我也试过了，不好使。整个过程大概是这样：</p>
+<blockquote>
+<p>我用的是aria2，下载来源是ilanzou.com这么个，我也不能说是盗版蓝奏云，但是它的运行模式就和百度网盘啥的一样，每个账户还有存储空间限制。</p>
+<p>我先是拿了3个让它下载，等这个空档我去多拿几个下载链接，大概10多个吧，等它下载完前3个我让他把第二波的那10几个下载了，这次空档时间大，我去拿到了剩下将近20以上的连接。但是等到开始发现下载链接过期了，我还得重新整一次。那玩意有效期设置的超级短，并且我在树莓派上用这玩意的下载速度非常均匀的在500KB/s上下浮动，这就导致就算是10个任务，也能让我写好久。大概多久，从我上面「被派了个下载视频的任务」一边抱怨一边想怎么写一边慢吞吞打字，中途还修修改改的一直写到这里，这才下完10个。我这个写文章的习惯成功的让我每次想写一篇什么东西都能写好久好久。</p>
+<p>这下直接逼得我必须再快下载完一波才去获取下一波的下载链接再开始下载。而且还有一点：我也想过去f12里面去看看有什么，找到链接对应按键，再不管怎么说也能找到一个能返回下载链接的玩意，这样能自动获得下载链接了吧？不，这个弔网站有反开发者工具的东西，只要一打开开发者工具就中断调试。也许是我前端的功力还不够深，找不到应该在哪里找，内个下载按键只有一个图片，说明是其它有js给它绑定了click事件，但是我修为还不够找不到。这倒确实得自惭形秽。</p>
+</blockquote>
+<p>十分的难受。</p>
+<p>刚好，前段时间我哥们为了大创，开了个阿里云的服务器，后面闲置了。我就把它拿了过来，反正闲着也是闲着，拿来搭个zt的moon就非常合适。刚好今天软件测试课上有空，就拿来整了。</p>
+<h2 id="准备">准备</h2>
+<h3 id="配置moon">配置moon</h3>
+<p>既然要Zerotier的moon，那么当然得整一个zerotier one的客户端了。</p>
+<p>登陆moon待选机，装zt</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://install.zerotier.com | sudo bash</span><br></pre></td></tr></table></figure>
+<p>这没啥好说的，但是要拿来做moon服务器，得打开9993端口</p>
+<p>对于阿里云的服务器：</p>
+<p>点进服务器之后找到「网络与安全」-&gt;「安全组」</p>
+<p><img src="https://s21.ax1x.com/2025/05/15/pEjthwV.png" alt="pEjthwV.png"></p>
+<p>在「管理规则」里，可以看到下面有控制端口是否开放的设置，手动添加，按这个填就行了：</p>
+<p><img src="https://s21.ax1x.com/2025/05/15/pEjt4oT.png" alt="pEjt4oT.png"></p>
+<p>当然描述你可以随便写</p>
+<p>回到shell，在<code>/var/lib/zerotier-one</code>下执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zerotier-idtool initmoon identity.public &gt; moon.json</span><br></pre></td></tr></table></figure>
+<p>你会看到<code>moon.json</code>大概长这样：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"> <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxxxxxxxxx&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;objtype&quot;</span><span class="punctuation">:</span> <span class="string">&quot;world&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;roots&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;identity&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxx&quot;</span><span class="punctuation">,</span></span><br><span class="line">   <span class="attr">&quot;stableEndpoints&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;your.public.ip.addr/9993&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;signingKey&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxx&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;signingKey_SECRET&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxx&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;updatesMustBeSignedBy&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xxx&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;worldType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;moon&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>只需要在<code>stableEndpoints</code>内个数组里填一个这个服务器的ip地址，也就是把上述<code>your.public.ip.addr</code>改成这个服务器的实际公网ip地址</p>
+<p>有了这东西之后，执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zerotier-idtool genmoon moon.json</span><br></pre></td></tr></table></figure>
+<p>它会生成一个xxxxxxxxxx.moon文件，其中xxxxxxxxxx是上面的id</p>
+<blockquote>
+<p>当然如果你好奇的话，可以cat看一看，里面都是乱码，说明是一个二进制文件。</p>
+</blockquote>
+<p>然后新建文件夹<code>moons.d</code>，把刚才的moon文件放里面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> moons.d</span><br><span class="line">sudo <span class="built_in">mv</span> *.moon moons.d/</span><br></pre></td></tr></table></figure>
+<p>**一定要注意！新建的文件夹里有个s！**我第一次没成功就是因为这个！后面费老鼻子劲才找到问题出哪了</p>
+<p>最后重启zerotier即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart zerotier-one</span><br></pre></td></tr></table></figure>
+<p>所有需要root权限的我都加sudo了，这样不管你是不是直接用的root，只要你有sudo执行权限，都能用</p>
+<h3 id="连接moon">连接moon</h3>
+<p>linux/windows/mac通用的办法就是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zerotier-cli orbit &lt;moon-id&gt; &lt;moon-id&gt;</span><br></pre></td></tr></table></figure>
+<p><code>moon-id</code>就是刚才的xxxxxxxxxx，moon文件的文件名</p>
+<p>注意这个需要提升的权限，因为windows用的不是sudo，所以这里没加</p>
+<p>对于手机，官方客户端有orbit接口，但是没有用户界面，所以还用不成。我找到了一个非官方zerotier客户端：<a target="_blank" rel="noopener" href="https://github.com/kaaass/ZerotierFix">Zerotier Fix</a></p>
+<p>只不过这东西截至文章发布已经有段时间了，zt内核用的还是1.12。不过无所谓，能用就行。</p>
+<h3 id="验证">验证</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zerotier-cli listpeers</span><br></pre></td></tr></table></figure>
+<p>看应该是moon的内个节点后面有没有标注MOON，有就大功告成了。</p>
+<h2 id="实测">实测</h2>
+<p>我用samba服务测试了一下，这次基本是秒出文件列表，放了8英里试了一下，有点卡顿，大概1-2秒，但是相较于没有moon的时候，那简直就是大升级。ssh的响应速度也能媲美natapp了。无论如何，这种速度我很满意。</p>
+<h3 id="Appendix：natapp后台运行">Appendix：natapp后台运行</h3>
+<p>natapp更新之后，给隧道分配的域名和端口不变了，这就很方便了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">nohup</span> ./natapp --authtoken=xxx &amp;</span><br></pre></td></tr></table></figure>
+<p>然后直接看官网上分配的域名和端口，拿来用就行了。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://mnizjc.qzz.io">Mnizjc</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://mnizjc.qzz.io/2025/05/15/Zerotier-Moon-%E5%85%A8%E8%AE%BE%E5%A4%87%E8%A6%86%E7%9B%96/">https://mnizjc.qzz.io/2025/05/15/Zerotier-Moon-%E5%85%A8%E8%AE%BE%E5%A4%87%E8%A6%86%E7%9B%96/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://mnizjc.qzz.io" target="_blank">OMG!IT'S 11!!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/learn/">learn</a><a class="post-meta__tags" href="/tags/network-engineering/">network-engineering</a></div><div class="post-share"><div class="social-share" data-image="https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybywechat.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybywechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybyalipay.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybyalipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/05/15/actions-cache-v4-0-2-%E5%A4%B1%E6%95%88%E5%8E%86%E9%99%A9%E8%AE%B0/" title="actions/cache@v4.0.2 失效历险记"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3dc5cd8ba.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">actions/cache@v4.0.2 失效历险记</div></div><div class="info-2"><div class="info-item-1">在我找到了一个可以直接用git push和git pull来操作仓库的github镜像之后，我也没再继续用内个连接不稳定的github.dev了。一切都岁月静好，直到某一天…… 我兴趣来了，写了点东西，push，然后进博客页面等看看新文章什么效果。结果等了好久没动静，感觉不对劲，马上就跑来看一眼Actions什么情况 1Missing download info for actions/cache@v4.0.2 我一下就傻了，卧槽，原来你说要被弃用是真的？还是说你干了啥动作把cache给删了？ 找了好久发现好像不好使，甚至用的版本比4.0.2还tm低，我这下傻眼了。当时花了那么长时间配置Actions，直接一夜给我干回解放前？ 这是绝对不被允许发生的 但是无论是我问AI，还是自己手动在网上找相关信息，得到的结果都跟上面一样，搞得我一度想放弃。 在我最后尝试–修改actions配置的时候，看到旁边有marketplace，我之前从来没想到过有这么个东西，抱着试试看的心态去搜了一下，嘿，还真有最新版，截至目前最新版是4.2.3。速换。 实际上我完全可以不指定版本号，这样每次都能用最新...</div></div></div></a><a class="pagination-related" href="/2025/01/31/%E6%B2%9F%E9%80%9A%E3%80%81%E4%BA%BA%E6%83%85%E4%B8%96%E6%95%85/" title="沟通、人情世故"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3dc67c037.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">沟通、人情世故</div></div><div class="info-2"><div class="info-item-1">又要「沟通」，又要「沟通」，又要「沟通」，你让我怎么跟你沟通？我拿什么跟你沟通？ 今天又被提到说要「沟通」，怎么沟通？ 小的时候，我经常害怕变成累赘。当时小学入学的时候有一个小面试，我好像是有一个问题没说对，明显的错误，但是错误的原因是我有我自己的很怪的想法。我记得好像是后面准备分班或者别的什么，听到别人都分到了什么什么班级，而我没有被点名就结束了。我当时以为我这样下来是不是没学上了，在车上的时候还很害怕。后面从学校坐车回来听说家里又是送礼又是求爷爷告奶奶的，才同意我去上学。我当时真的天真的以为是不是真的因为我太笨了，去上学都没有资格。结果不是，而是因为当时被告知我因为是团场户口（相当于村里），所以不能让我去市里的小学上学。 好像是从二年级还是三年级开始，到五年级了吧，那时候我不知道为什么，有一段时间特别不想学习，不想写作业，甚至特别不想待在学校。因为只要我在学校，那必定被挑刺。我那时候尤其讨厌语文课，因为老师是我们的班主任，而她有权利管理班里的很多事务。我一上她的课就感觉很难受，很不自在，即使我有时候数学成绩比语文差，并且大多数人都觉得数学相比语文没有意思，我都会觉得数学课比语...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2023/02/05/%E6%B5%85%E8%B0%88%E4%BF%A1%E6%81%AF%E7%86%B5/" title="浅谈信息熵"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3dafe60d3.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-05</div><div class="info-item-2">浅谈信息熵</div></div><div class="info-2"><div class="info-item-1">如果你只能通过一个硬币来表示或者传递信息,你会怎么做?如果是一个骰子呢? 我们先从一个最简单的,「量子化」做的比较好的一个模型–硬币来说 现在你面前有一个盒子,里面有一黑一白两个球,你从中随机摸到一个球并且用这个硬币告诉别人你抽到了什么球,你应该怎么做? 或者,有人问了你一个「yes or no」问题,你也只能用硬币来传递信息,你该怎么做? 这个问题看起来确实挺简单的,只要简单规定一下硬币的正反面分别代表什么内容就可以用硬币来传递信息了 如果这个盒子里有三种颜色的球呢?实际上也好说,两个硬币四种情况完全可以包含所有情况了 如果这个盒子里有4种,5种,甚至于更多颜色的球呢? 现在这个问题就变成了:盒子里有n中颜色的球,你用多少个硬币可以处理所有的情况? 你完全可以想到 如果手上有个硬币那它们所能代表的情况有个 那我们就可以反过来由情况数求硬币数 如果有中情况就需要有个硬币但因实际工程上无法实现所以实际上需要个硬币 工程上无法实现并不阻碍我们对于本质的理解 但是上面的情况都有一个特点:每件事发生概率相等(古典概型) 现在回到盒子的例子中,如果这个盒子里还是只有两种颜色的球,但是数量不...</div></div></div></a><a class="pagination-related" href="/2023/12/10/Mathjax%E6%8F%92%E5%85%A5%E9%97%AD%E5%90%88%E6%9B%B2%E9%9D%A2%E7%A7%AF%E5%88%86%E7%AC%A6%E5%8F%B7/" title="Mathjax插入闭合曲面积分符号"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3dc04e47f.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-10</div><div class="info-item-2">Mathjax插入闭合曲面积分符号</div></div><div class="info-2"><div class="info-item-1">我真想不明白为什么Mathjax为什么不支持\oiint这个符号 直到我发现知乎用的好像也是mathjax, 我就放心太多了, 因为我不是唯一一个因为这破事烦的人. 我看到知乎上有人写过怎么在其中插入符号, 解决方法是拼接字符, 刚好可以学一下怎么搞了 最开始我知道\displaystyle而不知道\mathop的时候我的解决方案 1\displaystyle{\iint\kern{-26.5mu}\lower{4mu}\LARGE{\unicode{0x2B2D}}\kern{-13mu}\lower{14mu}\scriptsize{\partial V}\ \ \ \ \ } ⬭ 知道\mathop后 1\displaystyle{\mathop{\displaystyle{\iint\kern{-26.5mu}\lower{4mu}\LARGE{\unicode{0x2B2D}}}}\limits_{\partial V}\ \ } ⬭ 试试自定义命令 ⬭ 12345678910111213141516\newcommand{\newcmddef}{\text{This ...</div></div></div></a><a class="pagination-related" href="/2024/09/23/rust%E5%AE%9E%E7%8E%B0lua%E8%A7%A3%E9%87%8A%E5%99%A8%E4%B9%8B%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8/" title="rust实现lua解释器之词法分析器"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db74f259.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-23</div><div class="info-item-2">rust实现lua解释器之词法分析器</div></div><div class="info-2"><div class="info-item-1">接触了一门新语言: Rust 当初接触这玩意是因为它使用了一个我此前从来没听说过的处理内存回收问题的方法--所有权机制. 通过一系列的限制和作用域管理,把该释放的在合适的地方都释放了. 但是这个「合适」的有点不符合之前我见过的语言的习惯. 比如一个对象只是在一行之内使用一下和它相关的引用(不取得所有权的情况下使用值的东西),但是因为这玩意这一行之后就结束了,所以编译器会把它释放掉,这就导致悬空引用了. 所以有时候整这东西还要仔细考虑所有权的转移. 为了学rust,索性直接挑一个比较带劲的项目:直接用rust实现一个lua解释器. 看网上有说自己实现了一个rust解释器,还挺简单的,也就几万行代码. 主要他们使用的是c/c++,相较于rust还是少了好多特性. 所以我觉得应该要少一点吧,就选择了实现这么个玩意 因为这次实现这玩意是同时学rust,lua,编译原理. 所以自项目开始我就一直在多线程执行动作. 当然我也确实学到了很多东西,比如这次虽然只是实现了一个词法分析器,我都花了一个月,之后的内容还遥遥无期,但是我还是学到了好多,比如实现一个词法分析器的思路,以及一个其他语言很少见...</div></div></div></a><a class="pagination-related" href="/2022/10/19/%E5%81%8F%E6%89%A7%E7%9A%84%E6%84%8F%E4%B9%89/" title="偏执的意义"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3dafa11bc.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-19</div><div class="info-item-2">偏执的意义</div></div><div class="info-2"><div class="info-item-1">今天看完《辩论史上最经典的战役——2001国际大专辩论赛决赛 钱是/不是万恶之源》这场辩论赛,双方的论证都很精彩.其中反方四辩周玄毅《偏执的意义》一文,我觉得内容很深刻,于是决定把它转载过来. 以下是正文,摘自周玄毅《偏执的意义》：双方各执真理的两面_辩论 (sohu.com)  令人亘古纠结的辩题，大多是一个真理剖成两半的结果。 比如说，人性本就善恶杂糅，所以“人性本善”还是“人性本恶”就很难辩得清楚；又比如，知识与实践本是一体两面，所以“知难行易”和“知易行难”也就只能各执一词。 我刚开始学辩论的时候，最困惑的就是这个问题——说好的辩证法呢？说好的不偏执呢？说好的求真向善呢？ 如果辩论就是有意把真理切成两个谬误，让双方吵得不可开交以博人一笑，它和斗蛐蛐有什么分别？正好当时看到一个段子，说大多数辩题，其实都是类似于“斑马是黑还是白”这样的无聊闲扯，哑然失笑之后，拳拳服膺深以为然。 不过，后来看到一篇科普文章，说“斑马是黑底白条纹，还是白底黑条纹”其实并不是个无聊的问题，从胚胎发育的证据和进化论的推理来说，斑马原本都应该是一种黑色的动物，白条纹是后来才在黑底上长出来的。 这个结论...</div></div></div></a><a class="pagination-related" href="/2024/04/02/Hexo-CICD%E5%AE%9E%E5%BD%95/" title="Hexo CI&#x2F;CD实录"><img class="cover" src="https://free.picui.cn/free/2026/01/31/697cf44aaa70f.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-02</div><div class="info-item-2">Hexo CI&#x2F;CD实录</div></div><div class="info-2"><div class="info-item-1">因为我这个地区用git连接github经常出现问题，导致我有时候想写个文章，虽然写完了，但是从本地更新到github的时候非常痛苦，经常喜欢出点小问题，以下截图仅供欣赏     最后一张图的问题真的存在，并且刚才就出现了一次，然而在我写完上一篇之后我什么都没做，没删仓库没改配置  其次，每次写完一篇文章之后还要输入一次账号和github私人token（后文称ghp），为了不让自己忘掉这玩意，我当时申请完了就把它保存在一个文件里，然后就把它随手撂到了什么地方。我也不记得在哪，就只有每次写完一篇文章之后用everything搜一下在哪，不是搜路径，而是让它找到之后直接打开我好复制粘贴，用完之后就关了。 每次都不能只专注在写文章上而写完之后都必须有一些小动作才能把它正儿八经发布到博客上，太tm恶心了。所以我就开始搜怎么直接把整个hexo博客搬到云上，然后就搜到了一个叫CI/CD的东西，但是打开看了看，又感觉好复杂好累，于是一直鸽到了现在，我准备拿博客的网页当作业展示一下的时候，我又想起来了这个问题，一想就烦到没有心情看别的东西了。所以就在今天，我准备一次性把这玩意搞完，除非累到不行，否...</div></div></div></a><a class="pagination-related" href="/2024/02/12/%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E6%96%B9%E7%A8%8B%E7%BB%84%E7%AE%80%E8%BF%B0/" title="麦克斯韦方程组简述"><img class="cover" src="https://s41.ax1x.com/2026/01/30/pZhkpKe.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-12</div><div class="info-item-2">麦克斯韦方程组简述</div></div><div class="info-2"><div class="info-item-1">高斯定律(静电场) 从高中的公式说起: 高中电学的第一个公式就是库仑力公式, 它描述了两个带电粒子间静电力与距离的关系, 长这样 由于是向量所以这里加了一个半径向量对应单位向量|r|  由此可以得出点电荷电场强度公式  我们再引入一个通量的概念, 对于一个场F和面积S有通量Φ大小为  所以电通量就是  如果是用一个闭合曲面包裹, 那么就应该上积分了, 就是   这里本来应该是个闭合曲面积分, 但是要画太麻烦了, 我就懒得画了  来想一个比较特殊的情况, 该闭合曲面是一个球面, 我们知道球面面积公式  并且在球面上, 如果电荷在球心, 那么在球面上的电场强度都一样且都与面元垂直, 当常数看, 即  带入刚才的电场强度公式得  4πk这个数字还是太不优雅了, 但在电容公式中也要用到这个常数, 所以我们给换个字符吧, 叫ε0, 令  这样整个公式就变成了   注意这里是闭合曲面!  我们知道如果是等量电荷那么无论曲面大小, 穿过曲面的电场线条数都一定一样, 也就是说这个公式对任意闭合曲面都成立 这是真空中的情况, 在有电介质的情况下, 需要考虑电位移, 我们知道平行板电容器电容公式为 ...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Mnizjc</div><div class="author-info-description">I've got my nose in the air like a Boeing!</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Mnizjc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Mnizjc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:mnizjc@mnizjc.qzz.io" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">¡Buena suerte!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%98%E8%B5%B7%E3%80%81%E4%B9%8B%E5%89%8D%E7%9A%84%E5%B0%9D%E8%AF%95"><span class="toc-number">1.</span> <span class="toc-text">缘起、之前的尝试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEmoon"><span class="toc-number">2.1.</span> <span class="toc-text">配置moon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5moon"><span class="toc-number">2.2.</span> <span class="toc-text">连接moon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81"><span class="toc-number">2.3.</span> <span class="toc-text">验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%B5%8B"><span class="toc-number">3.</span> <span class="toc-text">实测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Appendix%EF%BC%9Anatapp%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C"><span class="toc-number">3.1.</span> <span class="toc-text">Appendix：natapp后台运行</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇"><img src="https://free.picui.cn/free/2026/02/01/697e3dbc384ad.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="神奇"/></a><div class="content"><a class="title" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇">神奇</a><time datetime="2026-02-18T18:21:33.000Z" title="发表于 2026-02-19 02:21:33">2026-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题"><img src="https://free.picui.cn/free/2026/02/01/697e3db4bff4f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo渲染引擎和数学公式渲染问题"/></a><div class="content"><a class="title" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题">hexo渲染引擎和数学公式渲染问题</a><time datetime="2026-02-13T15:32:43.000Z" title="发表于 2026-02-13 23:32:43">2026-02-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/05/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" title="中心极限定理"><img src="https://free.picui.cn/free/2026/01/30/697cd1575ee3c.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中心极限定理"/></a><div class="content"><a class="title" href="/2026/02/05/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" title="中心极限定理">中心极限定理</a><time datetime="2026-02-05T14:18:18.000Z" title="发表于 2026-02-05 22:18:18">2026-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/" title="又开始胡思乱想了"><img src="https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="又开始胡思乱想了"/></a><div class="content"><a class="title" href="/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/" title="又开始胡思乱想了">又开始胡思乱想了</a><time datetime="2026-02-04T18:50:25.000Z" title="发表于 2026-02-05 02:50:25">2026-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/04/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" title="傅里叶级数、傅里叶变换和不确定性原理"><img src="https://s1.ax1x.com/2020/08/27/dhZ4JS.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="傅里叶级数、傅里叶变换和不确定性原理"/></a><div class="content"><a class="title" href="/2026/02/04/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" title="傅里叶级数、傅里叶变换和不确定性原理">傅里叶级数、傅里叶变换和不确定性原理</a><time datetime="2026-02-04T10:04:19.000Z" title="发表于 2026-02-04 18:04:19">2026-02-04</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2022 - 2026 By Mnizjc</span></div><div class="footer_custom_text">salaam 'alaikum, 看什么呢哥们</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

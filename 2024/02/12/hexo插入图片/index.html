@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>hexo插入图片 | OMG!IT'S 11!!</title><meta name="author" content="Mnizjc"><meta name="copyright" content="Mnizjc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="写麦克斯韦方程组一章的时候发现自己之前配置hexo使用资源文件夹的时候没有记录是怎么设置的, 这里来记录一下 很简单, 在_config.yml中的Writting下加一行 1post_asset_folder: true 即可 如果你此前没有这方面的需求所以没设置但是今天突然要用, 你可以在设置之后自己手动新建一个文件夹, 与对应md文件同名没有后缀即可 插入个图片给你看看吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo插入图片">
+<meta property="og:url" content="https://mnizjc.qzz.io/2024/02/12/hexo%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/index.html">
+<meta property="og:site_name" content="OMG!IT&#39;S 11!!">
+<meta property="og:description" content="写麦克斯韦方程组一章的时候发现自己之前配置hexo使用资源文件夹的时候没有记录是怎么设置的, 这里来记录一下 很简单, 在_config.yml中的Writting下加一行 1post_asset_folder: true 即可 如果你此前没有这方面的需求所以没设置但是今天突然要用, 你可以在设置之后自己手动新建一个文件夹, 与对应md文件同名没有后缀即可 插入个图片给你看看吧">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://free.picui.cn/free/2026/02/01/697e3dbfe2e2b.jpg">
+<meta property="article:published_time" content="2024-02-11T17:12:56.000Z">
+<meta property="article:modified_time" content="2026-02-23T14:48:15.625Z">
+<meta property="article:author" content="Mnizjc">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://free.picui.cn/free/2026/02/01/697e3dbfe2e2b.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "hexo插入图片",
+  "url": "https://mnizjc.qzz.io/2024/02/12/hexo%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/",
+  "image": "https://free.picui.cn/free/2026/02/01/697e3dbfe2e2b.jpg",
+  "datePublished": "2024-02-11T17:12:56.000Z",
+  "dateModified": "2026-02-23T14:48:15.625Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Mnizjc",
+      "url": "https://mnizjc.qzz.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mnizjc.qzz.io/2024/02/12/hexo%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 8 || hour >= 22
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-6572853481816595',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'hexo插入图片',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/url(https:/cdn.jsdelivr.net/gh/Mnizjc/img-repository/blog-bg.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://free.picui.cn/free/2026/02/01/697e3dbfe2e2b.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OMG!IT'S 11!!</span></a><a class="nav-page-title" href="/"><span class="site-name">hexo插入图片</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">hexo插入图片</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-11T17:12:56.000Z" title="发表于 2024-02-12 01:12:56">2024-02-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-23T14:48:15.625Z" title="更新于 2026-02-23 22:48:15">2026-02-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo/">Hexo</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>写麦克斯韦方程组一章的时候发现自己之前配置hexo使用资源文件夹的时候没有记录是怎么设置的, 这里来记录一下</p>
+<p>很简单, 在<code>_config.yml</code>中的<code>Writting</code>下加一行</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>即可</p>
+<p>如果你此前没有这方面的需求所以没设置但是今天突然要用, 你可以在设置之后自己手动新建一个文件夹, 与对应md文件同名没有后缀即可</p>
+<p>插入个图片给你看看吧</p>
+<p><img src="./pic.jpg" alt="pic"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://mnizjc.qzz.io">Mnizjc</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://mnizjc.qzz.io/2024/02/12/hexo%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/">https://mnizjc.qzz.io/2024/02/12/hexo%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://mnizjc.qzz.io" target="_blank">OMG!IT'S 11!!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a></div><div class="post-share"><div class="social-share" data-image="https://free.picui.cn/free/2026/02/01/697e3dbfe2e2b.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybywechat.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybywechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybyalipay.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybyalipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="mingw+vcpkg+cmake+vscode c/c++环境配置"><img class="cover" src="https://free.picui.cn/free/2026/01/31/697cf4d82309f.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">mingw+vcpkg+cmake+vscode c/c++环境配置</div></div><div class="info-2"><div class="info-item-1">苍天保佑, 这个过程总算是圆满结束了 从我两天前冒出一个用c/c++做网络请求的想法(因为可能用得到), 到今天整个环境配置完毕, 花了我两三天的时间. 中间断断续续有超级多的动作, 这里我尽可能详细的把它记录下来. 清单 如标题所示, 我们这次主要需要四样东西:  (MinGW)[https://github.com/niXman/mingw-builds-binaries/releases] (说起来我好像有段时间没更新了) (vcpkg)[https://github.com/Microsoft/vcpkg] (CMake)[https://cmake.org/] (vscode)[https://code.visualstudio.com/]  其中mingw和vcpkg可以用git clone下载 安装 最简单就是安装cmake, 这玩意有安装向导, 跟着向导走就完了, 最后在测试一下cmake命令是否存在, 有则安装成功 然后就是mingw, 我的安装过程很简单 下载release -&gt; 把压缩包解压到什么地方 -&gt; 把解压文件夹中的bin文件夹加入pat...</div></div></div></a><a class="pagination-related" href="/2024/02/12/%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E6%96%B9%E7%A8%8B%E7%BB%84%E7%AE%80%E8%BF%B0/" title="麦克斯韦方程组简述"><img class="cover" src="https://s41.ax1x.com/2026/01/30/pZhkpKe.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">麦克斯韦方程组简述</div></div><div class="info-2"><div class="info-item-1">高斯定律(静电场) 从高中的公式说起: 高中电学的第一个公式就是库仑力公式, 它描述了两个带电粒子间静电力与距离的关系, 长这样 由于是向量所以这里加了一个半径向量对应单位向量|r|  由此可以得出点电荷电场强度公式  我们再引入一个通量的概念, 对于一个场F和面积S有通量Φ大小为  所以电通量就是  如果是用一个闭合曲面包裹, 那么就应该上积分了, 就是   这里本来应该是个闭合曲面积分, 但是要画太麻烦了, 我就懒得画了  来想一个比较特殊的情况, 该闭合曲面是一个球面, 我们知道球面面积公式  并且在球面上, 如果电荷在球心, 那么在球面上的电场强度都一样且都与面元垂直, 当常数看, 即  带入刚才的电场强度公式得  4πk这个数字还是太不优雅了, 但在电容公式中也要用到这个常数, 所以我们给换个字符吧, 叫ε0, 令  这样整个公式就变成了   注意这里是闭合曲面!  我们知道如果是等量电荷那么无论曲面大小, 穿过曲面的电场线条数都一定一样, 也就是说这个公式对任意闭合曲面都成立 这是真空中的情况, 在有电介质的情况下, 需要考虑电位移, 我们知道平行板电容器电容公式为 ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/15/actions-cache-v4-0-2-%E5%A4%B1%E6%95%88%E5%8E%86%E9%99%A9%E8%AE%B0/" title="actions&#x2F;cache@v4.0.2 失效历险记"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3dc5cd8ba.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-15</div><div class="info-item-2">actions&#x2F;cache@v4.0.2 失效历险记</div></div><div class="info-2"><div class="info-item-1">在我找到了一个可以直接用git push和git pull来操作仓库的github镜像之后，我也没再继续用内个连接不稳定的github.dev了。一切都岁月静好，直到某一天…… 我兴趣来了，写了点东西，push，然后进博客页面等看看新文章什么效果。结果等了好久没动静，感觉不对劲，马上就跑来看一眼Actions什么情况 1Missing download info for actions/cache@v4.0.2 我一下就傻了，卧槽，原来你说要被弃用是真的？还是说你干了啥动作把cache给删了？ 找了好久发现好像不好使，甚至用的版本比4.0.2还tm低，我这下傻眼了。当时花了那么长时间配置Actions，直接一夜给我干回解放前？ 这是绝对不被允许发生的 但是无论是我问AI，还是自己手动在网上找相关信息，得到的结果都跟上面一样，搞得我一度想放弃。 在我最后尝试–修改actions配置的时候，看到旁边有marketplace，我之前从来没想到过有这么个东西，抱着试试看的心态去搜了一下，嘿，还真有最新版，截至目前最新版是4.2.3。速换。 实际上我完全可以不指定版本号，这样每次都能用最新...</div></div></div></a><a class="pagination-related" href="/2023/12/10/Mathjax%E6%8F%92%E5%85%A5%E9%97%AD%E5%90%88%E6%9B%B2%E9%9D%A2%E7%A7%AF%E5%88%86%E7%AC%A6%E5%8F%B7/" title="Mathjax插入闭合曲面积分符号"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3dc04e47f.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-10</div><div class="info-item-2">Mathjax插入闭合曲面积分符号</div></div><div class="info-2"><div class="info-item-1">我真想不明白为什么Mathjax为什么不支持\oiint这个符号 直到我发现知乎用的好像也是mathjax, 我就放心太多了, 因为我不是唯一一个因为这破事烦的人. 我看到知乎上有人写过怎么在其中插入符号, 解决方法是拼接字符, 刚好可以学一下怎么搞了 最开始我知道\displaystyle而不知道\mathop的时候我的解决方案 1\displaystyle{\iint\kern{-26.5mu}\lower{4mu}\LARGE{\unicode{0x2B2D}}\kern{-13mu}\lower{14mu}\scriptsize{\partial V}\ \ \ \ \ } ⬭ 知道\mathop后 1\displaystyle{\mathop{\displaystyle{\iint\kern{-26.5mu}\lower{4mu}\LARGE{\unicode{0x2B2D}}}}\limits_{\partial V}\ \ } ⬭ 试试自定义命令 ⬭ 12345678910111213141516\newcommand{\newcmddef}{\text{This ...</div></div></div></a><a class="pagination-related" href="/2024/04/01/cicd%E6%B5%8B%E8%AF%95/" title="cicd测试"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db03531a.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-01</div><div class="info-item-2">cicd测试</div></div><div class="info-2"><div class="info-item-1">测试添加ghp后能不能正常工作，如果能就免除了每次 1hexo g -d 都需要输入账号密码的麻烦了 当前时间戳： 2024/4/1 2:43 </div></div></div></a><a class="pagination-related" href="/2025/07/26/%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E5%86%99%E4%BD%9C/" title="多端同步写作"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3dc0a5c1c.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-26</div><div class="info-item-2">多端同步写作</div></div><div class="info-2"><div class="info-item-1">非常有意思 注：这篇文章是在我的平板电脑上写的，电脑在放视频，挺爽。 前言 首先，大佬请忽视，因为我是个连git都不会用的菜鸡，所以这篇文章可能没什么技术含量。 正文 因为我把博客的源码放到了github上，所以之后我就完全可以不止在电脑上写文章了。不过我必须要承认一件事，就是这种情况下基本上不能是技术分享（除非我真的特别闲愿意在电脑外的设备搞点什么东西）。 这里再记录一下怎么高的吧，之后每次写东西都需要执行这样一套流程了： 拉仓库并配置个人信息： 1234git pull https://用户名:密码@github.com/用户名/仓库git config --global user.email &quot;user@example.com&quot;git config --global user.name usernamegit remote add origin https://xxx:xxx@github.com/xxx/xxx 这样的好处是，之后就不用输入用户名和密码了 还有一点就是，如果配置的时候打错字了 1git config --global --unset x...</div></div></div></a><a class="pagination-related" href="/2026/01/30/%E6%95%91%E6%8F%B4%E8%A1%8C%E5%8A%A801302026/" title="救援行动01302026"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db4bff4f.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-30</div><div class="info-item-2">救援行动01302026</div></div><div class="info-2"><div class="info-item-1">我做的最错误的事，就是把图片放到了内个叫什么freeimghost的一个图床上。这家图床虽然免费还能用api上传图片，但是我当时从来没想到过这个弔网站被阻断了。F! 现象很明显，就是nxdomain，至于是为什么，网站死了？被dns污染了？我也不知道，我只知道我的图片无法在网站上正常看到了。不过大概率是被墙了，毕竟我印象中，这个网站上有很多不同的人上传的不同的图片，甚至有国人，且有概率结果不是nxdomain，比如魔法上网的时候。不过或许就是因为有那么多不同的人上传，所以有一些难看的东西，就被墙了。 现在能看到的，用路过图床的图都还活着，freeimghost上的直接就死了。我只能说我还是有点素养，知道要备份，如果当时没备份，那tm真的是欲哭无泪。最主要，这不像当时在杭州，内个地方网络情况和这里还是很不一样的。很奇怪，每个省都有不同的网络监管，上海因为我没备案给我彻底阻断了。 不过也就想在做点小改动里提过这么一嘴，我是个懒癌晚期，图床问题其实挺早就发现了，只不过当时以为只是暂时的和地域性问题，所以没管，再加上这半年来准备考研，所以一直没管。这会因为写了点东西，想起来有这么个小站了...</div></div></div></a><a class="pagination-related" href="/2025/07/26/%E5%81%9A%E7%82%B9%E5%B0%8F%E6%94%B9%E5%8A%A807262025/" title="做点小改动07262025"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db74f259.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-26</div><div class="info-item-2">做点小改动07262025</div></div><div class="info-2"><div class="info-item-1">我被csdn防盗我自己图片的外链了！ 这真的太离谱了。不过刚好这次我刚好试试把之前的东西都修正一下，好多东西因为改了渲染引擎都不能正常显示，而我也有好久没管了，显得特别不负责任页特别不专业，所以这次我决定把所有东西都修正一下，顺便把一些东西都重新整理一下。 #1 CSDN防盗外链问题 &amp; 图片优化 我之前在CSDN上写过东西，那时候高三，虽然也是喜欢自己写点啥东西，但是那时候基本都是写到我的小本子上的。后面我也不知道我咋了，写点p东西也往上面放了。后面上大学之后，看到有人自己整了个网站写博客，我就觉得「哇我也要整一个」。奈何我那时候p点大，口袋里分币没有（虽然现在也没有），所以就想着怎么搞个不要钱的。到处找找到了hexo，于是就有了现在这个东西最开始的样子。看着这东西一点点长成这个样子，从艰难的裸连github到如今自动部署且何时何地都能写，我真的很开心。  codegeex怎么能知道我在想什么呢？   只不过过了这么久，中间经历过CI/CD，因为除了一点小问题我换掉了pandoc引擎（我知道pandoc很好，但是奈何这东西不知道为什么就是过不了actions部署，能直接...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Mnizjc</div><div class="author-info-description">I've got my nose in the air like a Boeing!</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Mnizjc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Mnizjc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:mnizjc@mnizjc.qzz.io" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">¡Buena suerte!</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇"><img src="https://free.picui.cn/free/2026/02/01/697e3dbc384ad.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="神奇"/></a><div class="content"><a class="title" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇">神奇</a><time datetime="2026-02-18T18:21:33.000Z" title="发表于 2026-02-19 02:21:33">2026-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题"><img src="https://free.picui.cn/free/2026/02/01/697e3db4bff4f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo渲染引擎和数学公式渲染问题"/></a><div class="content"><a class="title" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题">hexo渲染引擎和数学公式渲染问题</a><time datetime="2026-02-13T15:32:43.000Z" title="发表于 2026-02-13 23:32:43">2026-02-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/05/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" title="中心极限定理"><img src="https://free.picui.cn/free/2026/01/30/697cd1575ee3c.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中心极限定理"/></a><div class="content"><a class="title" href="/2026/02/05/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" title="中心极限定理">中心极限定理</a><time datetime="2026-02-05T14:18:18.000Z" title="发表于 2026-02-05 22:18:18">2026-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/" title="又开始胡思乱想了"><img src="https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="又开始胡思乱想了"/></a><div class="content"><a class="title" href="/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/" title="又开始胡思乱想了">又开始胡思乱想了</a><time datetime="2026-02-04T18:50:25.000Z" title="发表于 2026-02-05 02:50:25">2026-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/04/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" title="傅里叶级数、傅里叶变换和不确定性原理"><img src="https://s1.ax1x.com/2020/08/27/dhZ4JS.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="傅里叶级数、傅里叶变换和不确定性原理"/></a><div class="content"><a class="title" href="/2026/02/04/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" title="傅里叶级数、傅里叶变换和不确定性原理">傅里叶级数、傅里叶变换和不确定性原理</a><time datetime="2026-02-04T10:04:19.000Z" title="发表于 2026-02-04 18:04:19">2026-02-04</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2022 - 2026 By Mnizjc</span></div><div class="footer_custom_text">salaam 'alaikum, 看什么呢哥们</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

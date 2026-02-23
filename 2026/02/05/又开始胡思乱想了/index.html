@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>又开始胡思乱想了 | OMG!IT'S 11!!</title><meta name="author" content="Mnizjc"><meta name="copyright" content="Mnizjc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于傅里叶级数和傅里叶变换的文章这会还没写完，学习的中途莫名其妙想到了一些乱七八糟的事。 前两天是我目前法律意义上「姥姥」的八十大寿，本来在场还是挺开心的，只是最后我瞟到了妈对爸的那句看似很稀疏平常的数落：「跟智障一样」。 这件事的前两天还刚跟他闹了点矛盾，所以当时对这句话的第一反应就是「你都这样了还要劝我咋样咋样？」，当然后面也在不断和奶奶抱怨这些事，直到刚才又想起来了这一场景。 都说可怜之人必">
+<meta property="og:type" content="article">
+<meta property="og:title" content="又开始胡思乱想了">
+<meta property="og:url" content="https://mnizjc.qzz.io/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/index.html">
+<meta property="og:site_name" content="OMG!IT&#39;S 11!!">
+<meta property="og:description" content="关于傅里叶级数和傅里叶变换的文章这会还没写完，学习的中途莫名其妙想到了一些乱七八糟的事。 前两天是我目前法律意义上「姥姥」的八十大寿，本来在场还是挺开心的，只是最后我瞟到了妈对爸的那句看似很稀疏平常的数落：「跟智障一样」。 这件事的前两天还刚跟他闹了点矛盾，所以当时对这句话的第一反应就是「你都这样了还要劝我咋样咋样？」，当然后面也在不断和奶奶抱怨这些事，直到刚才又想起来了这一场景。 都说可怜之人必">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg">
+<meta property="article:published_time" content="2026-02-04T18:50:25.000Z">
+<meta property="article:modified_time" content="2026-02-23T14:48:15.626Z">
+<meta property="article:author" content="Mnizjc">
+<meta property="article:tag" content="thought">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "又开始胡思乱想了",
+  "url": "https://mnizjc.qzz.io/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/",
+  "image": "https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg",
+  "datePublished": "2026-02-04T18:50:25.000Z",
+  "dateModified": "2026-02-23T14:48:15.626Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Mnizjc",
+      "url": "https://mnizjc.qzz.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mnizjc.qzz.io/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 8 || hour >= 22
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-6572853481816595',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '又开始胡思乱想了',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/url(https:/cdn.jsdelivr.net/gh/Mnizjc/img-repository/blog-bg.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OMG!IT'S 11!!</span></a><a class="nav-page-title" href="/"><span class="site-name">又开始胡思乱想了</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">又开始胡思乱想了</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-02-04T18:50:25.000Z" title="发表于 2026-02-05 02:50:25">2026-02-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-23T14:48:15.626Z" title="更新于 2026-02-23 22:48:15">2026-02-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>关于傅里叶级数和傅里叶变换的文章这会还没写完，学习的中途莫名其妙想到了一些乱七八糟的事。</p>
+<p>前两天是我目前法律意义上「姥姥」的八十大寿，本来在场还是挺开心的，只是最后我瞟到了妈对爸的那句看似很稀疏平常的数落：「跟智障一样」。</p>
+<p>这件事的前两天还刚跟他闹了点矛盾，所以当时对这句话的第一反应就是「你都这样了还要劝我咋样咋样？」，当然后面也在不断和奶奶抱怨这些事，直到刚才又想起来了这一场景。</p>
+<p>都说可怜之人必有可恨之处，但是这句话的后半句「可恨之人必有可悲之苦」却很少有人提及。这段时间因为我越发觉得环境对一个人的影响有多严重。</p>
+<p>自我开始劝我那堂弟不要挺他父亲的建议因为我不知道他清不清楚，我清楚爸的建议并不好，而我也清楚他爸对他的管理还是比较严，我也不能说严但可以说插手很重，所以我能预测到他爸肯定会对他在一些比较重要的决策比如报志愿上涉足或插手，所以在栽过这一跟头之后，我在距离他高考还剩半年的时候，告诉他可以开始考虑选学校了，无论如何报志愿这块都不能让他插手。他也不失我所望，拒绝了他爸那可以说是他自己在异想天开的选择，报了这小伙子喜欢的专业和学校。</p>
+<p>反观我自己，因为就像我之前在胡思乱想中一直在抱怨的，家里条件特别无比巨差劲。这一路上都不能做到更好的选择，且不少情况真的都为被选择的环境所困，而我不知道且当时自己也很少想过要如何知道如何改变。说我不上进，那确实是有点不上进的念头在的。要说我没见过比我更差的吗？也见过，但是又能怎样？我真的是受限于地理位置和家庭环境，无从，甚至可以说几乎没想过，怎么办。</p>
+<p>你说婚姻，这真的是个好东西吗？无数例子都证明了，贫贱夫妻百事哀。你要说我有不愿结婚的想法是因为我不上进，但是你真的认为想结婚就上进吗？爸你不就是个例子吗？我不知道你是不是真的上进，但是我能看出来你很想结婚。我不知道你这么想结婚的目的是什么，或许有一部分原因是为了找个帮手，你干的那活奶奶都评论说除了你没人干的下来。无论是出于混口饭吃还是别的什么目的，我也确实觉得你能在这种环境撑下来，确实厉害。但是呢？一个跑了，另一个对你的态度又是这么不堪入目。就像我之前说的，咱俩都没怎么交流过，所以我不知道你怎么看这些事，我只能看到妈这么说你的时候你没有什么反应。或许是无奈？我越品越复杂，没有个结果。但是，你真的觉得这东西能叫上进吗？</p>
+<blockquote>
+<p>啊当然，「贫贱夫妻百事哀」这句出自元稹的《遣悲怀三首其二》，本意是共患难的夫妻死别无比悲痛，只不过世人常理解为生活贫贱的夫妻事事不如意。</p>
+</blockquote>
+<p>实际上，你的经历更向我说明了，在没什么基础的情况下，说想结婚，那才是不负责任的，无论是对对方，对可能的孩子，以及对自己。为什么？别人怎么想我不知道，但是我认为婚姻这东西是一种承诺，承诺对方和孩子的未来，承诺自己有个稳定的伴。但是我还是这么说，不能脱离物质说承诺就承诺，无论这个物质是唯物的物质还是金钱意义上的物质。</p>
+<p>我当然承认上进很重要，但是在没有什么基础的情况下，轻易背下太多责任，尤其是对未来的责任，会压弯背。就像这次考试，我说我没把握，那时我没啥经验，仅凭现有信息，我确实没什么把握。我当然觉得这次考试确实挺简单，但是就是因为简单，甚至说奇怪，不按规律出牌，所以我不能给出一个是或否的答案。</p>
+<p>哦这好像也说明了几个问题，首先你喜欢在没什么把握的情况下轻易下定论，包括但不限于决定和承诺，以及认知。比如你就在我说我不确定的情况下轻易下了我不行了的结论。或许有我的怨气在，但是这点你不能否认。其次你不愿否认自己确实囿于当前环境，看到的东西和别人是不一样的。无论你用于证明的局限的例子，你和我说话那居高临下的态度，以及我拿出证据后继续坚持你的想法的样子，都是证明。且我能猜到，如果我是当面跟你说这些话，你肯定又会说些别的什么东西反驳我，我甚至可以说是攻击我。</p>
+<p>而这，貌似也就是咱俩没能，或许也没法好好沟通的原因吧。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://mnizjc.qzz.io">Mnizjc</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://mnizjc.qzz.io/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/">https://mnizjc.qzz.io/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://mnizjc.qzz.io" target="_blank">OMG!IT'S 11!!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/thought/">thought</a></div><div class="post-share"><div class="social-share" data-image="https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybywechat.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybywechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybyalipay.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybyalipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/02/05/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" title="中心极限定理"><img class="cover" src="https://free.picui.cn/free/2026/01/30/697cd1575ee3c.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">中心极限定理</div></div><div class="info-2"><div class="info-item-1">之前说大数定律，是指当样本量足够大时，样本的均值会趋近于总体的均值。等会要介绍一下中心极限定理。 现在从直观的角度看看中心极限定理是怎么回事  我会仿照Grant的思路尝试先聊聊这东西，然后再找找严格证明。 从骰子开始 对于一个完全公平的骰子，投中每个面的概率都是 。这应该没有什么争议。如果有两个这样的骰子，或者说一个这样的骰子扔两次，那么得到两个点数的和的概率分布是    点数和 2 3 4 5 6 7 8 9 10 11 12     概率               我想这应该也没有什么争议吧？但是，这是怎么计算的呢？ 你可能会说「这还不简单？」，嘴上说着对于两个独立变量，P(A∩B) = P(A)P(B)，然后计算每个点数的概率。说着就拿起笔写下了这么个东西    点数 1 2 3 4 5 6     1 2 3 4 5 6 7   2 3 4 5 6 7 8   3 4 5 6 7 8 9   4 5 6 7 8 9 10   5 6 7 8 9 10 11   6 7 8 9 10 11 12    然后你发现，对于每个点数和，都有两个骰子点数相加等于它的组合，也就是...</div></div></div></a><a class="pagination-related" href="/2026/02/04/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" title="傅里叶级数、傅里叶变换和不确定性原理"><img class="cover" src="https://s1.ax1x.com/2020/08/27/dhZ4JS.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">傅里叶级数、傅里叶变换和不确定性原理</div></div><div class="info-2"><div class="info-item-1">本文不构成复习参考，仅作为个人学习记录。 这么久了，终于决定要写这玩意了。 说实话，我应该早从高中的时候就好好研究一下这玩意的，但奈何当时查资料的技能还是不够好，所以一直没写 为什么我说最终还是要写这玩意，因为从最开始的写不确定性原理，到后面写概率，好多都涉及到了FT，或许后面还有信号处理和图像处理，属于是不介绍不行了 之前写过一点，我先贴过来。这部分就看看，当个乐子，毕竟当时只是停留在知道傅里叶变换是个什么东西的阶段，还没搞明白到底怎么回事呢  先从傅里叶变换说起 不知道是因为熬夜后第二天早上大脑分泌了大量多巴胺还是怎么样,熬了一宿之后突然想填一下以前的坑,想到了我之前心血来潮想了解一下傅里叶变换,然后就去在各大网站上搜有什么形象的方式去理解傅里叶变换,然后我在b站上找到了这个,虽然我知道3Blue1Brown是个很棒的数学老师(?),经常以可视化的形式解释一些数学上的知识,但可能是因为我当时才疏学浅,即使当时了解了复数是怎么回事以及一些基本运算,但仍然没能理解.然后熬了夜之后的那天早上去看,豁然开朗,于是想记录一下 这是我第一次接触这个东西,所以这里只介绍了连续傅里叶变换 生...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/01/31/%E6%B2%9F%E9%80%9A%E3%80%81%E4%BA%BA%E6%83%85%E4%B8%96%E6%95%85/" title="沟通、人情世故"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3dc67c037.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-31</div><div class="info-item-2">沟通、人情世故</div></div><div class="info-2"><div class="info-item-1">又要「沟通」，又要「沟通」，又要「沟通」，你让我怎么跟你沟通？我拿什么跟你沟通？ 今天又被提到说要「沟通」，怎么沟通？ 小的时候，我经常害怕变成累赘。当时小学入学的时候有一个小面试，我好像是有一个问题没说对，明显的错误，但是错误的原因是我有我自己的很怪的想法。我记得好像是后面准备分班或者别的什么，听到别人都分到了什么什么班级，而我没有被点名就结束了。我当时以为我这样下来是不是没学上了，在车上的时候还很害怕。后面从学校坐车回来听说家里又是送礼又是求爷爷告奶奶的，才同意我去上学。我当时真的天真的以为是不是真的因为我太笨了，去上学都没有资格。结果不是，而是因为当时被告知我因为是团场户口（相当于村里），所以不能让我去市里的小学上学。 好像是从二年级还是三年级开始，到五年级了吧，那时候我不知道为什么，有一段时间特别不想学习，不想写作业，甚至特别不想待在学校。因为只要我在学校，那必定被挑刺。我那时候尤其讨厌语文课，因为老师是我们的班主任，而她有权利管理班里的很多事务。我一上她的课就感觉很难受，很不自在，即使我有时候数学成绩比语文差，并且大多数人都觉得数学相比语文没有意思，我都会觉得数学课比语...</div></div></div></a><a class="pagination-related" href="/2024/09/25/%E8%A1%97%E6%9C%BA/" title="街机"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3dbda8d09.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-25</div><div class="info-item-2">街机</div></div><div class="info-2"><div class="info-item-1">全文放P 不知所云 都说年轻人哪有不疯的，那我也来发个疯 仔细想想，发现这个世界（起码对于我的这个小圈子来说，你认为我是井底之蛙也好）对不同人的态度是不一样的。完全不一样。就拿在空间或者朋友圈发一些很神经的东西，比如钓鱼题，错了之后的惩罚就是比如改头像或者自己也去发一个之类的。但是，对于内些稍微有点话语权的，比如排名靠前的，或者有点实力的（无论自身真有还是靠家里），他们在这种社交网络发这东西，叫「刹帝利的高级娱乐」，我们「首陀罗」加入了就是玷污；而我们的自娱自乐叫做「首陀罗的低级趣味」，「刹帝利」们甚至不屑于看一眼。 最爽的还是高中，因为我见到了部分家庭实力派「刹帝利」们的衰落和我这种「首陀罗」都能超过他们的事实后，即使最终的结果还是不如他们，即使只有一次，我也知足了。因为「首陀罗」终究在各方实力上，比不过「刹帝利」，而如今所谓「努力」能得到的回报，已经微乎其微了。可能成正比，但是斜率小的可怜。所以现在长辈们每次把我叫过去，喊着让我「努力」，我基本就听听就好了，毕竟你们那个时代，斜率比我们这会大的多，而你们还是「首陀罗」，可见现在听了就更没啥意思了。 「刹帝利」们还存在聚集效应，...</div></div></div></a><a class="pagination-related" href="/2024/09/25/%E7%9A%BF%E7%85%AE/" title="皿煮"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db28558d.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-25</div><div class="info-item-2">皿煮</div></div><div class="info-2"><div class="info-item-1">全文扯淡 请完全忽视我 如果直接上诉的通道都不存在，或者想要上诉却要考虑这些东西到底「合不合适」，如果是这样的皿煮集中制，我觉得不如不直接刚来就说「我是独裁的」更让人感觉舒服，因为绞刑总是比凌迟来的更痛快。 如果反馈的流程过于形式而冗长，且充满可操作的空间，那么这种反馈通道存在的意义又是什么？为了应付检查？为了凸显我的「皿煮」？还是单纯为了满足我的虚荣心？ 如果反馈一个问题的存在，却要被向下反问说难道这个问题在你们之间不也存在吗？如果上面连这种本应该是他们引以为傲的「表率」作用都不在存在了，那么这种存在，除了让底层积怨，我想还有可能就是爆发吧。 如果一个名义上皿煮的投票，背地里不知道有多少无形的手在控制这一切，那么这种投票存在的意义又是什么？为了体现「我很关心你们的想法」？还是为了从中攫取更多的利益？ 如果获得一种身份，只是为了提升地位，获得利益，在得到了权利的同时忘记了义务，忘记了这种身份最本真，最核心的理想和精神，亦或是它只存在于口号中，那么拥有这种身份的人存在，是否真的能做到「为人民服务」？还是他们不过是新一代的「奴隶主」？ </div></div></div></a><a class="pagination-related" href="/2026/02/01/%E8%AE%AE%E8%AE%BA%E3%80%81%E7%BB%9F%E8%AE%A1%E3%80%81%E5%9B%A0%E6%9E%9C/" title="议论、统计、因果"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db74eed2.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-01</div><div class="info-item-2">议论、统计、因果</div></div><div class="info-2"><div class="info-item-1">之前简单记了一下一些议论的谬误，我就想到了三个问题，分别对应议论、统计、因果。 一样，我还没那么不要脸，会标记参考内容的。 议论 在身边统计学中，提到了一个词「系统性论据」，那么就引出一个问题： 什么样的论据是有效的？ 我这里引用一下豆包的回答，仅供参考。当然我也不能完全说是我自己的思考，我倒还没这么臭不要脸。  「身边统计学」行为以论证某个观点通常被认为是「扯淡」，比如「xxx家孩子非本科考上了公务员，所以考公很简单」但是我们都知道并不是这样，这属于无效论据（说实话我甚至认为这都有点属于前言不搭后语），那么这就引出一个问题：在论证一个观点时，我们通常需要论据论证观点，那么什么样的论据时有效的？  论证观点时，有效论据的核心判定标准是：与论点存在严谨的逻辑关联，且论据本身具备真实性、可验证性，同时针对论点的属性，满足代表性、充分性或排他性要求；而 “身边统计学” 这类论据的无效，本质是同时违反了逻辑关联性和代表性 / 充分性，甚至会隐含因果谬误，最终变成 “用个体偶然替代整体必然” 的无效推导。 结合你提到的 “非本科考公个例推考公简单” 的例子，我们从核心原则 + 具体判定标准...</div></div></div></a><a class="pagination-related" href="/2023/06/11/%E4%BB%80%E4%B9%88%E6%98%AF%E3%80%8C%E4%B9%96%E3%80%8D-%E4%BB%80%E4%B9%88%E6%98%AF%E3%80%8C%E5%AD%9D%E3%80%8D/" title="什么是「乖」?什么是「孝」?"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db87b647.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-11</div><div class="info-item-2">什么是「乖」?什么是「孝」?</div></div><div class="info-2"><div class="info-item-1">什么是「乖」? 这篇文章可能会引发一些人不满,所以前排提示,看着觉得不爽的请退出吧,这只是我的一家之辞 我突然想到之前疫情期间的时候,听我朋友遇到的一件事 有个小哥在做核酸的地方做志愿者,队伍里有个老人带的口罩有些破损了.小哥见状想劝这位老人换个新的正常的口罩带好.可能也是因为这个小哥连续工作了几天,比较烦躁,说话的语气可能不太好,就和这个老人吵起来了.后来传言中,老人认为小哥说让她「滚」,甚至扬言要告了小哥.然而小哥没理由这么做,明明是为了这个老人好却好心没有好报. 我不知道这个故事的结局是什么,不过我也不想知道.像这样倚老卖老的老人实在太多了. 在他们吵架的时候,周围人大多都是向着那个老人的.这就像在公交车上,经常有老人对着坐在座位上的年轻人说:「给我让个位置」而此时这个老人并没有身体上的问题或者手上拿着东西等不方便的原因,甚至还有可能是专门挑早晚高峰的时候挤车.你会发现这样的老人都抱着一种心态:「我是老人你就得让着我」,并且你仔细想想就会发现,这就是所谓的「尊老」的观念,这种观念已经被各路家长,社会说教式的宣传,再冠以「中华民族的传统美德」的美名. 这里我先声明一点:我并不...</div></div></div></a><a class="pagination-related" href="/2022/10/19/%E7%94%9F%E5%91%BD%E7%9A%84%E6%84%8F%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88/" title="生命的意义是什么"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db5ca4c3.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-19</div><div class="info-item-2">生命的意义是什么</div></div><div class="info-2"><div class="info-item-1">注意 本文内容不一定合理合逻辑,请仔细甄别 正文 之前写过一个对于生命刻进DNA里的自私,这次就是在看过RNN之后对「智能」的思考  PS.时至这篇文章为止,除了转载的,所有胡思乱想都是我高中时写的,也就是说这里的「看过」到现在我已经看过很久了  图灵提出过一个实验–图灵测试,讲的就是如果测试者和被试者被完全物理分隔开,只能通过键盘或者纸条等非面对面的方式交流.被试者可以是一个人或者一个机器,如果测试者无法通过对方的回答判断出对方是否是机器,则该机器被认为具有人类智能.现在在人工智能领域,无数人都在尝试通过一些方法在高出这样一个机器.即使大多数都只是用一些类似通用算法的神经网络并将之用于商业. 现在已经有程序通过模拟秀丽隐杆线虫的神经结构来完全模拟一只秀丽隐杆线虫的完整生命活动.不过这样按神经模拟需要消耗的算力实在太大.用这种方法模拟一个人的大脑神经活动根本不现实.但是这也引出一个问题:既然神经活动都可以被计算机模拟,连这种东西都不是你独有的了,你还有什么办法证明你是你吗? 有种东西叫学科金字塔,如果以数学为工具,那么物理就是这个金字塔的底层,在往上就是化学,生物,再往上就是人文...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Mnizjc</div><div class="author-info-description">I've got my nose in the air like a Boeing!</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Mnizjc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Mnizjc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:mnizjc@mnizjc.qzz.io" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">¡Buena suerte!</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇"><img src="https://free.picui.cn/free/2026/02/01/697e3dbc384ad.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="神奇"/></a><div class="content"><a class="title" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇">神奇</a><time datetime="2026-02-18T18:21:33.000Z" title="发表于 2026-02-19 02:21:33">2026-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题"><img src="https://free.picui.cn/free/2026/02/01/697e3db4bff4f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo渲染引擎和数学公式渲染问题"/></a><div class="content"><a class="title" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题">hexo渲染引擎和数学公式渲染问题</a><time datetime="2026-02-13T15:32:43.000Z" title="发表于 2026-02-13 23:32:43">2026-02-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/05/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" title="中心极限定理"><img src="https://free.picui.cn/free/2026/01/30/697cd1575ee3c.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中心极限定理"/></a><div class="content"><a class="title" href="/2026/02/05/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" title="中心极限定理">中心极限定理</a><time datetime="2026-02-05T14:18:18.000Z" title="发表于 2026-02-05 22:18:18">2026-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/" title="又开始胡思乱想了"><img src="https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="又开始胡思乱想了"/></a><div class="content"><a class="title" href="/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/" title="又开始胡思乱想了">又开始胡思乱想了</a><time datetime="2026-02-04T18:50:25.000Z" title="发表于 2026-02-05 02:50:25">2026-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/04/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" title="傅里叶级数、傅里叶变换和不确定性原理"><img src="https://s1.ax1x.com/2020/08/27/dhZ4JS.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="傅里叶级数、傅里叶变换和不确定性原理"/></a><div class="content"><a class="title" href="/2026/02/04/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" title="傅里叶级数、傅里叶变换和不确定性原理">傅里叶级数、傅里叶变换和不确定性原理</a><time datetime="2026-02-04T10:04:19.000Z" title="发表于 2026-02-04 18:04:19">2026-02-04</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2022 - 2026 By Mnizjc</span></div><div class="footer_custom_text">salaam 'alaikum, 看什么呢哥们</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

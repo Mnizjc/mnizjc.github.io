@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>actions/cache@v4.0.2 失效历险记 | OMG!IT'S 11!!</title><meta name="author" content="Mnizjc"><meta name="copyright" content="Mnizjc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在我找到了一个可以直接用git push和git pull来操作仓库的github镜像之后，我也没再继续用内个连接不稳定的github.dev了。一切都岁月静好，直到某一天…… 我兴趣来了，写了点东西，push，然后进博客页面等看看新文章什么效果。结果等了好久没动静，感觉不对劲，马上就跑来看一眼Actions什么情况 1Missing download info for actions&#x2F;cache">
+<meta property="og:type" content="article">
+<meta property="og:title" content="actions&#x2F;cache@v4.0.2 失效历险记">
+<meta property="og:url" content="https://mnizjc.qzz.io/2025/05/15/actions-cache-v4-0-2-%E5%A4%B1%E6%95%88%E5%8E%86%E9%99%A9%E8%AE%B0/index.html">
+<meta property="og:site_name" content="OMG!IT&#39;S 11!!">
+<meta property="og:description" content="在我找到了一个可以直接用git push和git pull来操作仓库的github镜像之后，我也没再继续用内个连接不稳定的github.dev了。一切都岁月静好，直到某一天…… 我兴趣来了，写了点东西，push，然后进博客页面等看看新文章什么效果。结果等了好久没动静，感觉不对劲，马上就跑来看一眼Actions什么情况 1Missing download info for actions&#x2F;cache">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://free.picui.cn/free/2026/02/01/697e3dc5cd8ba.jpg">
+<meta property="article:published_time" content="2025-05-15T03:58:08.000Z">
+<meta property="article:modified_time" content="2026-02-23T14:48:15.624Z">
+<meta property="article:author" content="Mnizjc">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://free.picui.cn/free/2026/02/01/697e3dc5cd8ba.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "actions/cache@v4.0.2 失效历险记",
+  "url": "https://mnizjc.qzz.io/2025/05/15/actions-cache-v4-0-2-%E5%A4%B1%E6%95%88%E5%8E%86%E9%99%A9%E8%AE%B0/",
+  "image": "https://free.picui.cn/free/2026/02/01/697e3dc5cd8ba.jpg",
+  "datePublished": "2025-05-15T03:58:08.000Z",
+  "dateModified": "2026-02-23T14:48:15.624Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Mnizjc",
+      "url": "https://mnizjc.qzz.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mnizjc.qzz.io/2025/05/15/actions-cache-v4-0-2-%E5%A4%B1%E6%95%88%E5%8E%86%E9%99%A9%E8%AE%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 8 || hour >= 22
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-6572853481816595',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'actions/cache@v4.0.2 失效历险记',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/url(https:/cdn.jsdelivr.net/gh/Mnizjc/img-repository/blog-bg.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://free.picui.cn/free/2026/02/01/697e3dc5cd8ba.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OMG!IT'S 11!!</span></a><a class="nav-page-title" href="/"><span class="site-name">actions/cache@v4.0.2 失效历险记</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">actions/cache@v4.0.2 失效历险记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-15T03:58:08.000Z" title="发表于 2025-05-15 11:58:08">2025-05-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-23T14:48:15.624Z" title="更新于 2026-02-23 22:48:15">2026-02-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo/">Hexo</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>在我找到了一个可以直接用git push和git pull来操作仓库的github镜像之后，我也没再继续用内个连接不稳定的github.dev了。一切都岁月静好，直到某一天……</p>
+<p>我兴趣来了，写了点东西，push，然后进博客页面等看看新文章什么效果。结果等了好久没动静，感觉不对劲，马上就跑来看一眼Actions什么情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Missing download info for actions/cache@v4.0.2</span><br></pre></td></tr></table></figure>
+<p>我一下就傻了，卧槽，原来你说要被弃用是真的？还是说你干了啥动作把cache给删了？</p>
+<p>找了好久发现好像不好使，甚至用的版本比4.0.2还tm低，我这下傻眼了。当时花了那么长时间配置Actions，直接一夜给我干回解放前？</p>
+<p>这是绝对不被允许发生的</p>
+<p>但是无论是我问AI，还是自己手动在网上找相关信息，得到的结果都跟上面一样，搞得我一度想放弃。</p>
+<p>在我最后尝试–修改actions配置的时候，看到旁边有marketplace，我之前从来没想到过有这么个东西，抱着试试看的心态去搜了一下，嘿，还真有最新版，截至目前最新版是4.2.3。速换。</p>
+<p>实际上我完全可以不指定版本号，这样每次都能用最新版。但是又推荐指定好版本号。hin难受。</p>
+<p>大佬忽略我这个问题吧，看一看感觉实在太弱智了</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://mnizjc.qzz.io">Mnizjc</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://mnizjc.qzz.io/2025/05/15/actions-cache-v4-0-2-%E5%A4%B1%E6%95%88%E5%8E%86%E9%99%A9%E8%AE%B0/">https://mnizjc.qzz.io/2025/05/15/actions-cache-v4-0-2-%E5%A4%B1%E6%95%88%E5%8E%86%E9%99%A9%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://mnizjc.qzz.io" target="_blank">OMG!IT'S 11!!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a><a class="post-meta__tags" href="/tags/Github/">Github</a></div><div class="post-share"><div class="social-share" data-image="https://free.picui.cn/free/2026/02/01/697e3dc5cd8ba.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybywechat.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybywechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybyalipay.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/paybyalipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/07/22/CloudFlare-Github-Pages%E5%AE%9E%E7%8E%B0%E5%8D%9A%E5%AE%A2%E5%AE%8C%E5%85%A8%E4%BD%93/" title="CloudFlare+Github Pages实现博客完全体"><img class="cover" src="https://free.picui.cn/free/2026/01/31/697cefea2bd8f.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">CloudFlare+Github Pages实现博客完全体</div></div><div class="info-2"><div class="info-item-1">一直觉得这东西正文访问速度还算不错，就是图片加载速度台恶心了，所以想试试CloudFlare，顺便把博客的域名也换一下，顺便把博客的图片换个地方托管，这样访问速度应该会快很多。 之前没有找到方便好用的图床，所以一直用的jsDelivr，但众所周知，jsDelivr被吊销许可已经有一段时间了，虽然搭建这段时间好像挺好用的，但终究不是长久之计，所以还是得找个新的图床。 实际上现在想想导致我这东西看上去加载速度慢的本质原因就是图片始终加载特别慢，通常文章正文早就加载完了，而图片还在一点点往下走，直观感觉就是这个网站有点摇摇欲坠，感觉马上就要被墙了。 早就有一段时间像搞一下加速的事了。之前看有说能用CloudFlare CDN加速，但是要托管需要域名，孩子穷，不是说.xyz之类的域名用不起，我承认这东西现在价格确实挺便宜的，而是我不知道我什么时候能把这东西搞定，如果没搞定，那这域名就白买了，所以一直想整个免费的。但是众所不周知（因为我还不太清楚），.tk等域名在freenom上已经名存实亡了，直接不允许用户注册（虽然我以前想注册的时候也没有注册成功过，但是一直以为只是因为被墙了，没想到是...</div></div></div></a><a class="pagination-related" href="/2025/05/15/Zerotier-Moon-%E5%85%A8%E8%AE%BE%E5%A4%87%E8%A6%86%E7%9B%96/" title="Zerotier Moon 全设备覆盖"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Zerotier Moon 全设备覆盖</div></div><div class="info-2"><div class="info-item-1">虽然叫网络工程，但是实际上就是小打小闹。毕竟我们这种穷的只能玩SDN的肯定不如那些正儿八经从网线开始的网络工程师那么厉害 说起来这件事，还挺奇妙的，中间我也确实学到了一点点东西。毕竟之前就了解过一些，奈何没钱，所以没有细究。 我知道这玩意在网上已经满地都是了，但是毕竟纸上得来终觉浅，绝知此事要躬行，不做一次不会发现要注意什么 缘起、之前的尝试 整个过程全部围绕这个核心问题： 因为我们这边校园网那真就是一层套一层，就连我在宿舍打开电脑，去教室远程电脑，连接信息都显示走的中继。根本没有p2p打洞成功过。但是我在家里还放了一个树莓派，它当然也是放在路由器下（说起来这个弔路由器还是移动的，虽然路由器光猫合一，但是能配置的东西少的可怜）。我之前试过把它带到学校来，可惜根本不敢用，因为当时没换壳，散热只能靠风扇，然而内个无刷电机风扇常常是用了一段时间就噪音特别大，甚至比我现在宿舍放的台式机声音还大，索性后面就没带到学校来了。但是我在树莓派上还是部署了一些好玩的服务，我还是想能连接上，并且这次五一回来我还被派了个下载视频的任务，这下不得不整一个能远程连接的方法了。虽然我想过用zerotier，...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2024/04/02/Hexo-CICD%E5%AE%9E%E5%BD%95/" title="Hexo CI&#x2F;CD实录"><img class="cover" src="https://free.picui.cn/free/2026/01/31/697cf44aaa70f.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-02</div><div class="info-item-2">Hexo CI&#x2F;CD实录</div></div><div class="info-2"><div class="info-item-1">因为我这个地区用git连接github经常出现问题，导致我有时候想写个文章，虽然写完了，但是从本地更新到github的时候非常痛苦，经常喜欢出点小问题，以下截图仅供欣赏     最后一张图的问题真的存在，并且刚才就出现了一次，然而在我写完上一篇之后我什么都没做，没删仓库没改配置  其次，每次写完一篇文章之后还要输入一次账号和github私人token（后文称ghp），为了不让自己忘掉这玩意，我当时申请完了就把它保存在一个文件里，然后就把它随手撂到了什么地方。我也不记得在哪，就只有每次写完一篇文章之后用everything搜一下在哪，不是搜路径，而是让它找到之后直接打开我好复制粘贴，用完之后就关了。 每次都不能只专注在写文章上而写完之后都必须有一些小动作才能把它正儿八经发布到博客上，太tm恶心了。所以我就开始搜怎么直接把整个hexo博客搬到云上，然后就搜到了一个叫CI/CD的东西，但是打开看了看，又感觉好复杂好累，于是一直鸽到了现在，我准备拿博客的网页当作业展示一下的时候，我又想起来了这个问题，一想就烦到没有心情看别的东西了。所以就在今天，我准备一次性把这玩意搞完，除非累到不行，否...</div></div></div></a><a class="pagination-related" href="/2022/10/12/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95/" title="hexo博客搭建踩坑实录"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db87b647.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-12</div><div class="info-item-2">hexo博客搭建踩坑实录</div></div><div class="info-2"><div class="info-item-1">说实话不踩坑是真学习不到东西的,教训总比经验让人记忆深刻 本来就想着如果自己注册个域名,搭个服务器跑这跑那的挺麻烦,所以我就选择了把这玩意部署到github上(纯懒,纯想白嫖,想寄生),但是像github pages,git这些东西我还真是第一次用,纯小白一个,才踩了这些个坑 原本就不需要花多少功夫,但是我还是因为一些破事忙了一天 实际上这些错误都是我犯糊涂所导致的 先是一个小问题:hexo上的markdown语法规则/hexo标题 这一步我还没部署到github上,还是在本地 我直接我直接 我直接没有直接嘛 不去打开那个hello-world看看还真不知道 hexo每次新建一个post都会在开头加这么个东西: 12345---title: 亲爱的标题date: 2022-10-12 18:24:05tags: (any tags you want)--- 如果我再多加一个一级标题并且和这里的title内容不一样,那结果就是 你可能花了那么久写的一篇文章,到时候后台简单报个错,前端直接当你啥都没干过一样 说实话这东西挺让人无语的 不过既然一级标题title已经解决了,那二级标题开...</div></div></div></a><a class="pagination-related" href="/2023/12/10/Mathjax%E6%8F%92%E5%85%A5%E9%97%AD%E5%90%88%E6%9B%B2%E9%9D%A2%E7%A7%AF%E5%88%86%E7%AC%A6%E5%8F%B7/" title="Mathjax插入闭合曲面积分符号"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3dc04e47f.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-10</div><div class="info-item-2">Mathjax插入闭合曲面积分符号</div></div><div class="info-2"><div class="info-item-1">我真想不明白为什么Mathjax为什么不支持\oiint这个符号 直到我发现知乎用的好像也是mathjax, 我就放心太多了, 因为我不是唯一一个因为这破事烦的人. 我看到知乎上有人写过怎么在其中插入符号, 解决方法是拼接字符, 刚好可以学一下怎么搞了 最开始我知道\displaystyle而不知道\mathop的时候我的解决方案 1\displaystyle{\iint\kern{-26.5mu}\lower{4mu}\LARGE{\unicode{0x2B2D}}\kern{-13mu}\lower{14mu}\scriptsize{\partial V}\ \ \ \ \ } ⬭ 知道\mathop后 1\displaystyle{\mathop{\displaystyle{\iint\kern{-26.5mu}\lower{4mu}\LARGE{\unicode{0x2B2D}}}}\limits_{\partial V}\ \ } ⬭ 试试自定义命令 ⬭ 12345678910111213141516\newcommand{\newcmddef}{\text{This ...</div></div></div></a><a class="pagination-related" href="/2026/01/30/%E6%95%91%E6%8F%B4%E8%A1%8C%E5%8A%A801302026/" title="救援行动01302026"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db4bff4f.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-30</div><div class="info-item-2">救援行动01302026</div></div><div class="info-2"><div class="info-item-1">我做的最错误的事，就是把图片放到了内个叫什么freeimghost的一个图床上。这家图床虽然免费还能用api上传图片，但是我当时从来没想到过这个弔网站被阻断了。F! 现象很明显，就是nxdomain，至于是为什么，网站死了？被dns污染了？我也不知道，我只知道我的图片无法在网站上正常看到了。不过大概率是被墙了，毕竟我印象中，这个网站上有很多不同的人上传的不同的图片，甚至有国人，且有概率结果不是nxdomain，比如魔法上网的时候。不过或许就是因为有那么多不同的人上传，所以有一些难看的东西，就被墙了。 现在能看到的，用路过图床的图都还活着，freeimghost上的直接就死了。我只能说我还是有点素养，知道要备份，如果当时没备份，那tm真的是欲哭无泪。最主要，这不像当时在杭州，内个地方网络情况和这里还是很不一样的。很奇怪，每个省都有不同的网络监管，上海因为我没备案给我彻底阻断了。 不过也就想在做点小改动里提过这么一嘴，我是个懒癌晚期，图床问题其实挺早就发现了，只不过当时以为只是暂时的和地域性问题，所以没管，再加上这半年来准备考研，所以一直没管。这会因为写了点东西，想起来有这么个小站了...</div></div></div></a><a class="pagination-related" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db4bff4f.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-13</div><div class="info-item-2">hexo渲染引擎和数学公式渲染问题</div></div><div class="info-2"><div class="info-item-1">前两天写了个跟傅里叶变换有关的小文章，大费周章写了好多，结果好多公式都没渲染出来。当时我看傻了，卧槽这是为啥？因为这玩意自从在github pages上搞了个自动部署之后，这个博客源码就直接放在github上了，虽然有本地保存，且有事没事比如写文章的时候会跟远程仓库同步一下，但是只是有源码，没有hexo可执行文件。 这篇文章就是一边写一边尝试解决问题，所以会存在一些前言不搭后语的情况。 事情是这样的，在内篇文章里有这么个玩意：  markdown长这样： 1234\begin{aligned}\int^{t_2}_ {t_1}f(t)(\cos(-2\pi ft)&amp;+i\sin(-2\pi ft))dt\\\\\int^{t_2}_ {t_1}f(t)\cos(2\pi ft)dt&amp;-i\cdot\int^{t_2}_ {t_1}f(t)\sin(2\pi ft)dt\end{aligned} 你看到之后可能觉得没啥，之前吐槽过这么多篇关于hexo数学公式的渲染问题，基本每次都是因为公式引擎等问题好多东西都是曲线救国，我已经麻木了。只不过这次的问题更是离谱 积分号...</div></div></div></a><a class="pagination-related" href="/2025/07/26/%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E5%86%99%E4%BD%9C/" title="多端同步写作"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3dc0a5c1c.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-26</div><div class="info-item-2">多端同步写作</div></div><div class="info-2"><div class="info-item-1">非常有意思 注：这篇文章是在我的平板电脑上写的，电脑在放视频，挺爽。 前言 首先，大佬请忽视，因为我是个连git都不会用的菜鸡，所以这篇文章可能没什么技术含量。 正文 因为我把博客的源码放到了github上，所以之后我就完全可以不止在电脑上写文章了。不过我必须要承认一件事，就是这种情况下基本上不能是技术分享（除非我真的特别闲愿意在电脑外的设备搞点什么东西）。 这里再记录一下怎么高的吧，之后每次写东西都需要执行这样一套流程了： 拉仓库并配置个人信息： 1234git pull https://用户名:密码@github.com/用户名/仓库git config --global user.email &quot;user@example.com&quot;git config --global user.name usernamegit remote add origin https://xxx:xxx@github.com/xxx/xxx 这样的好处是，之后就不用输入用户名和密码了 还有一点就是，如果配置的时候打错字了 1git config --global --unset x...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Mnizjc</div><div class="author-info-description">I've got my nose in the air like a Boeing!</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Mnizjc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Mnizjc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:mnizjc@mnizjc.qzz.io" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">¡Buena suerte!</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇"><img src="https://free.picui.cn/free/2026/02/01/697e3dbc384ad.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="神奇"/></a><div class="content"><a class="title" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇">神奇</a><time datetime="2026-02-18T18:21:33.000Z" title="发表于 2026-02-19 02:21:33">2026-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题"><img src="https://free.picui.cn/free/2026/02/01/697e3db4bff4f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo渲染引擎和数学公式渲染问题"/></a><div class="content"><a class="title" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题">hexo渲染引擎和数学公式渲染问题</a><time datetime="2026-02-13T15:32:43.000Z" title="发表于 2026-02-13 23:32:43">2026-02-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/05/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" title="中心极限定理"><img src="https://free.picui.cn/free/2026/01/30/697cd1575ee3c.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中心极限定理"/></a><div class="content"><a class="title" href="/2026/02/05/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" title="中心极限定理">中心极限定理</a><time datetime="2026-02-05T14:18:18.000Z" title="发表于 2026-02-05 22:18:18">2026-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/" title="又开始胡思乱想了"><img src="https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="又开始胡思乱想了"/></a><div class="content"><a class="title" href="/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/" title="又开始胡思乱想了">又开始胡思乱想了</a><time datetime="2026-02-04T18:50:25.000Z" title="发表于 2026-02-05 02:50:25">2026-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/04/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" title="傅里叶级数、傅里叶变换和不确定性原理"><img src="https://s1.ax1x.com/2020/08/27/dhZ4JS.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="傅里叶级数、傅里叶变换和不确定性原理"/></a><div class="content"><a class="title" href="/2026/02/04/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" title="傅里叶级数、傅里叶变换和不确定性原理">傅里叶级数、傅里叶变换和不确定性原理</a><time datetime="2026-02-04T10:04:19.000Z" title="发表于 2026-02-04 18:04:19">2026-02-04</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2022 - 2026 By Mnizjc</span></div><div class="footer_custom_text">salaam 'alaikum, 看什么呢哥们</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

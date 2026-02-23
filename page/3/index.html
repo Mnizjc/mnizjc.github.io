@@ -1,0 +1,411 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>OMG!IT'S 11!! - I've got my nose in the air like a Boeing!</title><meta name="author" content="Mnizjc"><meta name="copyright" content="Mnizjc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="I&#39;ve got my nose in the air like a Boeing!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OMG!IT&#39;S 11!!">
+<meta property="og:url" content="https://mnizjc.qzz.io/page/3/index.html">
+<meta property="og:site_name" content="OMG!IT&#39;S 11!!">
+<meta property="og:description" content="I&#39;ve got my nose in the air like a Boeing!">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png">
+<meta property="article:author" content="Mnizjc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mnizjc.qzz.io/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 8 || hour >= 22
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-6572853481816595',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'OMG!IT\'S 11!!',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 8.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/url(https:/cdn.jsdelivr.net/gh/Mnizjc/img-repository/blog-bg.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OMG!IT'S 11!!</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">OMG!IT'S 11!!</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/Mnizjc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:mnizjc@mnizjc.qzz.io" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2024/05/30/%E4%BA%8C%E9%87%8D%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86(%E4%B9%9F%E4%B8%8D%E4%B8%80%E5%AE%9A%E5%85%A8)/" title="二重不定积分(也不一定全)"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3dafee34c.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二重不定积分(也不一定全)"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/05/30/%E4%BA%8C%E9%87%8D%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86(%E4%B9%9F%E4%B8%8D%E4%B8%80%E5%AE%9A%E5%85%A8)/" title="二重不定积分(也不一定全)">二重不定积分(也不一定全)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-05-29T20:16:52.000Z" title="发表于 2024-05-30 04:16:52">2024-05-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/learn/">learn</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/math/">math</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%BD%AC%E8%BD%BD/">转载</a></span></div><div class="content"> 本文转自[https://math.stackexchange.com/questions/704186/indefinite-double-integral], 有所启发  起因 现在我查到和见过用过的计算器中,只有walframalpha能解二重不定积分,而我们并没有讲过二重积分还有不定的,甚至当时老师就直接说了: 二重积分及以上的算出来的都是个数,没有不定积分.说实话,我当时接触这玩意的时候,我也觉得这玩意没发不定积分,毕竟学到计算的时候二重积分的区域在计算中占据了不可或缺的地位,我就觉得这不就相当于直接对二重不定积分判死刑了吗.后面看到walframalpha能计算二重不定积分,并且还很明确的写了个「indefinite integral」,我就开始好奇它是怎么计算二重还不定的积分的了.  问题 在微积分中我们先介绍了不定积分,然后再介绍的定积分. 然后我们介绍了二重(定)积分和多重(定)积分的概念.是否有二重(或多重)不定积分的概念?若是,这玩意怎么定义的?为啥不学?若否,为啥? 回答 #1 答案是肯定的.若假设后文中的函数都是「光滑」的,则有   碎碎念: 为什么这...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/04/02/Hexo-CICD%E5%AE%9E%E5%BD%95/" title="Hexo CI/CD实录"><img class="post-bg" src="https://free.picui.cn/free/2026/01/31/697cf44aaa70f.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo CI/CD实录"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/04/02/Hexo-CICD%E5%AE%9E%E5%BD%95/" title="Hexo CI/CD实录">Hexo CI/CD实录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-04-01T16:12:21.000Z" title="发表于 2024-04-02 00:12:21">2024-04-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hexo/">Hexo</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Hexo/">Hexo</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/learn/">learn</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Github/">Github</a></span></div><div class="content">因为我这个地区用git连接github经常出现问题，导致我有时候想写个文章，虽然写完了，但是从本地更新到github的时候非常痛苦，经常喜欢出点小问题，以下截图仅供欣赏     最后一张图的问题真的存在，并且刚才就出现了一次，然而在我写完上一篇之后我什么都没做，没删仓库没改配置  其次，每次写完一篇文章之后还要输入一次账号和github私人token（后文称ghp），为了不让自己忘掉这玩意，我当时申请完了就把它保存在一个文件里，然后就把它随手撂到了什么地方。我也不记得在哪，就只有每次写完一篇文章之后用everything搜一下在哪，不是搜路径，而是让它找到之后直接打开我好复制粘贴，用完之后就关了。 每次都不能只专注在写文章上而写完之后都必须有一些小动作才能把它正儿八经发布到博客上，太tm恶心了。所以我就开始搜怎么直接把整个hexo博客搬到云上，然后就搜到了一个叫CI/CD的东西，但是打开看了看，又感觉好复杂好累，于是一直鸽到了现在，我准备拿博客的网页当作业展示一下的时候，我又想起来了这个问题，一想就烦到没有心情看别的东西了。所以就在今天，我准备一次性把这玩意搞完，除非累到不行，否...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/04/01/cicd%E6%B5%8B%E8%AF%95/" title="cicd测试"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3db03531a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="cicd测试"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/04/01/cicd%E6%B5%8B%E8%AF%95/" title="cicd测试">cicd测试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-03-31T18:41:52.000Z" title="发表于 2024-04-01 02:41:52">2024-04-01</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Hexo/">Hexo</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Nothingness/">Nothingness</a></span></div><div class="content">测试添加ghp后能不能正常工作，如果能就免除了每次 1hexo g -d 都需要输入账号密码的麻烦了 当前时间戳： 2024/4/1 2:43 </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="mingw+vcpkg+cmake+vscode c/c++环境配置"><img class="post-bg" src="https://free.picui.cn/free/2026/01/31/697cf4d82309f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="mingw+vcpkg+cmake+vscode c/c++环境配置"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="mingw+vcpkg+cmake+vscode c/c++环境配置">mingw+vcpkg+cmake+vscode c/c++环境配置</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-29T18:25:57.000Z" title="发表于 2024-03-01 02:25:57">2024-03-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/c-c/">c/c++</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/learn/">learn</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/hello-world/">hello world</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/c-c/">c/c++</a></span></div><div class="content">苍天保佑, 这个过程总算是圆满结束了 从我两天前冒出一个用c/c++做网络请求的想法(因为可能用得到), 到今天整个环境配置完毕, 花了我两三天的时间. 中间断断续续有超级多的动作, 这里我尽可能详细的把它记录下来. 清单 如标题所示, 我们这次主要需要四样东西:  (MinGW)[https://github.com/niXman/mingw-builds-binaries/releases] (说起来我好像有段时间没更新了) (vcpkg)[https://github.com/Microsoft/vcpkg] (CMake)[https://cmake.org/] (vscode)[https://code.visualstudio.com/]  其中mingw和vcpkg可以用git clone下载 安装 最简单就是安装cmake, 这玩意有安装向导, 跟着向导走就完了, 最后在测试一下cmake命令是否存在, 有则安装成功 然后就是mingw, 我的安装过程很简单 下载release -&gt; 把压缩包解压到什么地方 -&gt; 把解压文件夹中的bin文件夹加入pat...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/02/12/hexo%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/" title="hexo插入图片"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3dbfe2e2b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo插入图片"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/02/12/hexo%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/" title="hexo插入图片">hexo插入图片</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-11T17:12:56.000Z" title="发表于 2024-02-12 01:12:56">2024-02-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hexo/">Hexo</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Hexo/">Hexo</a></span></div><div class="content">写麦克斯韦方程组一章的时候发现自己之前配置hexo使用资源文件夹的时候没有记录是怎么设置的, 这里来记录一下 很简单, 在_config.yml中的Writting下加一行 1post_asset_folder: true 即可 如果你此前没有这方面的需求所以没设置但是今天突然要用, 你可以在设置之后自己手动新建一个文件夹, 与对应md文件同名没有后缀即可 插入个图片给你看看吧  </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/02/12/%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E6%96%B9%E7%A8%8B%E7%BB%84%E7%AE%80%E8%BF%B0/" title="麦克斯韦方程组简述"><img class="post-bg" src="https://s41.ax1x.com/2026/01/30/pZhkpKe.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="麦克斯韦方程组简述"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/02/12/%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E6%96%B9%E7%A8%8B%E7%BB%84%E7%AE%80%E8%BF%B0/" title="麦克斯韦方程组简述">麦克斯韦方程组简述</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-11T17:09:05.000Z" title="发表于 2024-02-12 01:09:05">2024-02-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%89%A9%E7%90%86/">物理</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/learn/">learn</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/math/">math</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/physics/">physics</a></span></div><div class="content">高斯定律(静电场) 从高中的公式说起: 高中电学的第一个公式就是库仑力公式, 它描述了两个带电粒子间静电力与距离的关系, 长这样 由于是向量所以这里加了一个半径向量对应单位向量|r|  由此可以得出点电荷电场强度公式  我们再引入一个通量的概念, 对于一个场F和面积S有通量Φ大小为  所以电通量就是  如果是用一个闭合曲面包裹, 那么就应该上积分了, 就是   这里本来应该是个闭合曲面积分, 但是要画太麻烦了, 我就懒得画了  来想一个比较特殊的情况, 该闭合曲面是一个球面, 我们知道球面面积公式  并且在球面上, 如果电荷在球心, 那么在球面上的电场强度都一样且都与面元垂直, 当常数看, 即  带入刚才的电场强度公式得  4πk这个数字还是太不优雅了, 但在电容公式中也要用到这个常数, 所以我们给换个字符吧, 叫ε0, 令  这样整个公式就变成了   注意这里是闭合曲面!  我们知道如果是等量电荷那么无论曲面大小, 穿过曲面的电场线条数都一定一样, 也就是说这个公式对任意闭合曲面都成立 这是真空中的情况, 在有电介质的情况下, 需要考虑电位移, 我们知道平行板电容器电容公式为 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/12/10/Mathjax%E6%8F%92%E5%85%A5%E9%97%AD%E5%90%88%E6%9B%B2%E9%9D%A2%E7%A7%AF%E5%88%86%E7%AC%A6%E5%8F%B7/" title="Mathjax插入闭合曲面积分符号"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3dc04e47f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mathjax插入闭合曲面积分符号"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/12/10/Mathjax%E6%8F%92%E5%85%A5%E9%97%AD%E5%90%88%E6%9B%B2%E9%9D%A2%E7%A7%AF%E5%88%86%E7%AC%A6%E5%8F%B7/" title="Mathjax插入闭合曲面积分符号">Mathjax插入闭合曲面积分符号</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-10T00:51:20.000Z" title="发表于 2023-12-10 08:51:20">2023-12-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hexo/">Hexo</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Hexo/">Hexo</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/learn/">learn</a></span></div><div class="content">我真想不明白为什么Mathjax为什么不支持\oiint这个符号 直到我发现知乎用的好像也是mathjax, 我就放心太多了, 因为我不是唯一一个因为这破事烦的人. 我看到知乎上有人写过怎么在其中插入符号, 解决方法是拼接字符, 刚好可以学一下怎么搞了 最开始我知道\displaystyle而不知道\mathop的时候我的解决方案 1\displaystyle{\iint\kern{-26.5mu}\lower{4mu}\LARGE{\unicode{0x2B2D}}\kern{-13mu}\lower{14mu}\scriptsize{\partial V}\ \ \ \ \ } ⬭ 知道\mathop后 1\displaystyle{\mathop{\displaystyle{\iint\kern{-26.5mu}\lower{4mu}\LARGE{\unicode{0x2B2D}}}}\limits_{\partial V}\ \ } ⬭ 试试自定义命令 ⬭ 12345678910111213141516\newcommand{\newcmddef}{\text{This ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/" title="斯托克斯旋度定理证明"><img class="post-bg" src="https://free.picui.cn/free/2026/01/30/697ccf2e13540.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="斯托克斯旋度定理证明"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/12/09/%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E6%97%8B%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/" title="斯托克斯旋度定理证明">斯托克斯旋度定理证明</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-08T19:07:30.000Z" title="发表于 2023-12-09 03:07:30">2023-12-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/math/">math</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%BD%AC%E8%BD%BD/">转载</a></span></div><div class="content">散度定理证明完了, 现在该旋度了. 旋度的一旦搞完就可以准备写麦克斯韦方程组相关的东西了. 证明前还需要说一下 Green’s 公式, 长这样  证明大致如下, 摘自 我们先对y积分在对x  对于右边带Q项  对于左边带Q项, 设L1, L2为关于y的函数  所以  同理对于带p项如图示  设L1, L2为关于x的函数, 我们有    综上所述  有了 Green’s 公式为基础, Stokes’ 旋度定理就有着落了 Stokes’ 旋度定理长这样, 摘自16.7: Stokes’ Theorem - Mathematics LibreTexts  大概说说这个公式什么情况: 对于一个向量场F在一个封闭曲线∂S上与该曲线的切向量的点积的闭合环路积分等于该场F在该封闭曲线围成的面S上旋度与面的法向量的点积的积分 我不记得同济高数教材中有没有讲这玩意, 但是我搜斯托克斯公式出现的形式大概率是  这看了咋tm死记硬背啊? 就算是搞了内个什么行列式的形式也不好记. 可以看出格林公式是斯托克斯公式的一个特例, 就是当z=0时的情况. 我们给定这样一些条件: S方程为z=f(x,y), 其中...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/12/08/%E9%AB%98%E6%96%AF%E6%95%A3%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/" title="高斯散度定理证明"><img class="post-bg" src="https://s41.ax1x.com/2026/01/30/pZhFhCV.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="高斯散度定理证明"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/12/08/%E9%AB%98%E6%96%AF%E6%95%A3%E5%BA%A6%E5%AE%9A%E7%90%86%E8%AF%81%E6%98%8E/" title="高斯散度定理证明">高斯散度定理证明</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-08T14:00:58.000Z" title="发表于 2023-12-08 22:00:58">2023-12-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/math/">math</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%BD%AC%E8%BD%BD/">转载</a></span></div><div class="content">闲来无事一时兴起, 搜索高斯散度定理, 只有证明没有推导有点不尽人意, 无能为力, 找不到只好放弃 不过也行, 这里来说说高斯散度定理的证明 转载自散度定理(Divergence Theorem) - 知乎 Gauss’ 散度定理长这样: ⬭ 或者同济高数教材中, 也就是大伙最可能见到的形式是: ⬭ 大概说说这个公式什么意思: 对于一个向量场F在一个封闭曲面∂V上与该曲面上法向量的点积的积分等于该场F在该封闭曲面所包含的体积V内散度的积分 也挺好理解, 比如空间有一个正电荷形成了一个电场, 那么这个电场肯定在这个电荷处的散度最大. 如果有一个闭合凸曲面包裹了这个电荷, 那么这个闭合凸曲面上的电场肯定都是向外发散的, 也就是与曲面上的法向量与该点处电场向量的点积一定是正的. 实际上就算不是凸曲面, 只要包裹了这个电荷结果也是正的. 我先写向量形式只不过我感觉向量的形式更好记一点, 但是后者更好用于证明 那就用后者的来证明了 三项长得都一样, 那我们就取其中一项来算 令k为z轴方向向量, n为曲面上法向量, 求证:  先从右边来简单一点 我们给定D为整个图形在xy面上的投影, 这样就...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/06/11/%E4%BB%80%E4%B9%88%E6%98%AF%E3%80%8C%E4%B9%96%E3%80%8D-%E4%BB%80%E4%B9%88%E6%98%AF%E3%80%8C%E5%AD%9D%E3%80%8D/" title="什么是「乖」?什么是「孝」?"><img class="post-bg" src="https://free.picui.cn/free/2026/02/01/697e3db87b647.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="什么是「乖」?什么是「孝」?"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/06/11/%E4%BB%80%E4%B9%88%E6%98%AF%E3%80%8C%E4%B9%96%E3%80%8D-%E4%BB%80%E4%B9%88%E6%98%AF%E3%80%8C%E5%AD%9D%E3%80%8D/" title="什么是「乖」?什么是「孝」?">什么是「乖」?什么是「孝」?</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-06-10T17:13:06.000Z" title="发表于 2023-06-11 01:13:06">2023-06-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/thought/">thought</a></span></div><div class="content">什么是「乖」? 这篇文章可能会引发一些人不满,所以前排提示,看着觉得不爽的请退出吧,这只是我的一家之辞 我突然想到之前疫情期间的时候,听我朋友遇到的一件事 有个小哥在做核酸的地方做志愿者,队伍里有个老人带的口罩有些破损了.小哥见状想劝这位老人换个新的正常的口罩带好.可能也是因为这个小哥连续工作了几天,比较烦躁,说话的语气可能不太好,就和这个老人吵起来了.后来传言中,老人认为小哥说让她「滚」,甚至扬言要告了小哥.然而小哥没理由这么做,明明是为了这个老人好却好心没有好报. 我不知道这个故事的结局是什么,不过我也不想知道.像这样倚老卖老的老人实在太多了. 在他们吵架的时候,周围人大多都是向着那个老人的.这就像在公交车上,经常有老人对着坐在座位上的年轻人说:「给我让个位置」而此时这个老人并没有身体上的问题或者手上拿着东西等不方便的原因,甚至还有可能是专门挑早晚高峰的时候挤车.你会发现这样的老人都抱着一种心态:「我是老人你就得让着我」,并且你仔细想想就会发现,这就是所谓的「尊老」的观念,这种观念已经被各路家长,社会说教式的宣传,再冠以「中华民族的传统美德」的美名. 这里我先声明一点:我并不...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/4/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/Mnizjc/img-repository/beluga.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Mnizjc</div><div class="author-info-description">I've got my nose in the air like a Boeing!</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Mnizjc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Mnizjc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:mnizjc@mnizjc.qzz.io" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">¡Buena suerte!</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇"><img src="https://free.picui.cn/free/2026/02/01/697e3dbc384ad.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="神奇"/></a><div class="content"><a class="title" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇">神奇</a><time datetime="2026-02-18T18:21:33.000Z" title="发表于 2026-02-19 02:21:33">2026-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题"><img src="https://free.picui.cn/free/2026/02/01/697e3db4bff4f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo渲染引擎和数学公式渲染问题"/></a><div class="content"><a class="title" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题">hexo渲染引擎和数学公式渲染问题</a><time datetime="2026-02-13T15:32:43.000Z" title="发表于 2026-02-13 23:32:43">2026-02-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/05/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" title="中心极限定理"><img src="https://free.picui.cn/free/2026/01/30/697cd1575ee3c.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中心极限定理"/></a><div class="content"><a class="title" href="/2026/02/05/%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" title="中心极限定理">中心极限定理</a><time datetime="2026-02-05T14:18:18.000Z" title="发表于 2026-02-05 22:18:18">2026-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/" title="又开始胡思乱想了"><img src="https://free.picui.cn/free/2026/02/01/697e3dc4cc55f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="又开始胡思乱想了"/></a><div class="content"><a class="title" href="/2026/02/05/%E5%8F%88%E5%BC%80%E5%A7%8B%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E4%BA%86/" title="又开始胡思乱想了">又开始胡思乱想了</a><time datetime="2026-02-04T18:50:25.000Z" title="发表于 2026-02-05 02:50:25">2026-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/04/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" title="傅里叶级数、傅里叶变换和不确定性原理"><img src="https://s1.ax1x.com/2020/08/27/dhZ4JS.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="傅里叶级数、傅里叶变换和不确定性原理"/></a><div class="content"><a class="title" href="/2026/02/04/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" title="傅里叶级数、傅里叶变换和不确定性原理">傅里叶级数、傅里叶变换和不确定性原理</a><time datetime="2026-02-04T10:04:19.000Z" title="发表于 2026-02-04 18:04:19">2026-02-04</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hello-World-%E6%8E%A5%E8%A7%A6%E6%96%B0%E4%B8%9C%E8%A5%BF/"><span class="card-category-list-name">Hello World--接触新东西</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/c-c/"><span class="card-category-list-name">c/c++</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/python/"><span class="card-category-list-name">python</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/rust/"><span class="card-category-list-name">rust</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/"><span class="card-category-list-name">数学</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%89%A9%E7%90%86/"><span class="card-category-list-name">物理</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B/"><span class="card-category-list-name">网络工程</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/rust/" style="font-size: 1.1em; color: #999">rust</a> <a href="/tags/Github/" style="font-size: 1.16em; color: #999b9e">Github</a> <a href="/tags/git/" style="font-size: 1.1em; color: #999">git</a> <a href="/tags/physics/" style="font-size: 1.1em; color: #999">physics</a> <a href="/tags/learn/" style="font-size: 1.5em; color: #99a9bf">learn</a> <a href="/tags/Hexo/" style="font-size: 1.39em; color: #99a4b4">Hexo</a> <a href="/tags/Nothingness/" style="font-size: 1.16em; color: #999b9e">Nothingness</a> <a href="/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 1.33em; color: #99a2af">转载</a> <a href="/tags/network-engineering/" style="font-size: 1.1em; color: #999">network-engineering</a> <a href="/tags/python/" style="font-size: 1.27em; color: #99a0a9">python</a> <a href="/tags/c-c/" style="font-size: 1.1em; color: #999">c/c++</a> <a href="/tags/math/" style="font-size: 1.44em; color: #99a7ba">math</a> <a href="/tags/hello-world/" style="font-size: 1.21em; color: #999ea4">hello world</a> <a href="/tags/thought/" style="font-size: 1.5em; color: #99a9bf">thought</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/02/">
+            <span class="card-archive-list-date">
+              二月 2026
+            </span>
+            <span class="card-archive-list-count">6</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              一月 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              七月 2025
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/01/">
+            <span class="card-archive-list-date">
+              一月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/09/">
+            <span class="card-archive-list-date">
+              九月 2024
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/05/">
+            <span class="card-archive-list-date">
+              五月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/04/">
+            <span class="card-archive-list-date">
+              四月 2024
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">49</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-02-23T14:48:50.485Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2022 - 2026 By Mnizjc</span></div><div class="footer_custom_text">salaam 'alaikum, 看什么呢哥们</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@3.0.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = [].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const from = '出自 ' + data.from
+      typedJSFn.processSubtitle(data.hitokoto, [from])
+    })
+    .catch(err => {
+      console.error('Failed to get the Hitokoto API:', err)
+      typedJSFn.processSubtitle([])
+    })
+}
+typedJSFn.run(subtitleType)
+</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
