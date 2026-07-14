@@ -1,0 +1,640 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Resend和小工具 | OMG!IT'S 11!!</title><meta name="author" content="Mnizjc"><meta name="copyright" content="Mnizjc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="我不是很早就把整个博客的部署流程全都放在github actions了吗，actions在部署失败后会发送邮件通知我，这样我就可以看到部署失败的原因并及时修复。 但是问题来了：为什么部署成功了没有邮件通知？  那他妈当然了，失败了成功了都发通知那邮箱得炸  所以我冒出来一个想法：我能不能自己整一个小工具能实现访问一个链接就能发送邮件通知？ 挺不错的想法，所以我该怎么做呢？ Cloudflare有个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Resend和小工具">
+<meta property="og:url" content="https://mnizjc.qzz.io/2026/06/06/Resend%E5%92%8C%E5%B0%8F%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:site_name" content="OMG!IT&#39;S 11!!">
+<meta property="og:description" content="我不是很早就把整个博客的部署流程全都放在github actions了吗，actions在部署失败后会发送邮件通知我，这样我就可以看到部署失败的原因并及时修复。 但是问题来了：为什么部署成功了没有邮件通知？  那他妈当然了，失败了成功了都发通知那邮箱得炸  所以我冒出来一个想法：我能不能自己整一个小工具能实现访问一个链接就能发送邮件通知？ 挺不错的想法，所以我该怎么做呢？ Cloudflare有个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://free.picui.cn/free/2026/02/01/697e3dc0a5c1c.jpg">
+<meta property="article:published_time" content="2026-06-06T14:42:12.000Z">
+<meta property="article:modified_time" content="2026-07-14T15:24:30.598Z">
+<meta property="article:author" content="Mnizjc">
+<meta property="article:tag" content="learn">
+<meta property="article:tag" content="resend">
+<meta property="article:tag" content="电子邮件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://free.picui.cn/free/2026/02/01/697e3dc0a5c1c.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Resend和小工具",
+  "url": "https://mnizjc.qzz.io/2026/06/06/Resend%E5%92%8C%E5%B0%8F%E5%B7%A5%E5%85%B7/",
+  "image": "https://free.picui.cn/free/2026/02/01/697e3dc0a5c1c.jpg",
+  "datePublished": "2026-06-06T14:42:12.000Z",
+  "dateModified": "2026-07-14T15:24:30.598Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Mnizjc",
+      "url": "https://mnizjc.qzz.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://s41.ax1x.com/2026/05/31/pmACRk4.md.png"><link rel="canonical" href="https://mnizjc.qzz.io/2026/06/06/Resend%E5%92%8C%E5%B0%8F%E5%B7%A5%E5%85%B7/index.html"><link rel="preconnect" href="//unpkg.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="what-is-site-verification" content="i-have-my-site-verified-by-myself"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 8 || hour >= 22
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6572853481816595"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-6572853481816595',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://unpkg.com/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Resend和小工具',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="bg-animation" id="web_bg" style="background-image: url(https://s41.ax1x.com/2026/05/31/pmACakQ.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s41.ax1x.com/2026/05/31/pmACRk4.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://free.picui.cn/free/2026/02/01/697e3dc0a5c1c.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">OMG!IT'S 11!!</span></a><a class="nav-page-title" href="/"><span class="site-name">Resend和小工具</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fas fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Resend和小工具</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-06-06T14:42:12.000Z" title="发表于 2026-06-06 22:42:12">2026-06-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-14T15:24:30.598Z" title="更新于 2026-07-14 23:24:30">2026-07-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>我不是很早就把整个博客的部署流程全都放在github actions了吗，actions在部署失败后会发送邮件通知我，这样我就可以看到部署失败的原因并及时修复。</p>
+<p>但是问题来了：为什么部署成功了没有邮件通知？</p>
+<blockquote>
+<p>那他妈当然了，失败了成功了都发通知那邮箱得炸</p>
+</blockquote>
+<p>所以我冒出来一个想法：我能不能自己整一个小工具能实现访问一个链接就能发送邮件通知？</p>
+<p>挺不错的想法，所以我该怎么做呢？</p>
+<p>Cloudflare有个Email Service服务，但是要花钱，遂找其他方案。</p>
+<p>我想起来我之前刚注册这个域名的时候，Cloudflare有邮件服务，但是当时只能是代发而不是直接用这个域名发送，所以有点小难受的就是我不能直接用这个域名发送邮件，只能用代发的邮箱（虽然现在也是代发居多）。于是去找解决方法，看到有个叫Resend的平台，免费支持一个域名绑定发邮件。说实话这个平台我当时搞<a href="https://mnizjc.qzz.io/2025/07/22/CloudFlare-Github-Pages%E5%AE%9E%E7%8E%B0%E5%8D%9A%E5%AE%A2%E5%AE%8C%E5%85%A8%E4%BD%93/">完全体</a>内些东西的时候就找到了，但是当时绑定域名一直失败，内玩意一直查不到我的DNS记录，也就是说当时没搞成，也就没往文章里写。</p>
+<blockquote>
+<p>那这么说的话，如果要让看不到「代发」的邮件，我可以再整另一个worker，发邮件往worker发，worker再用Resend发送邮件，这样就看不到「代发」了？并且域名邮箱还可以直接收邮件？不过感觉没有这个必要。</p>
+</blockquote>
+<p>今天又想到这个问题了，也自然想起来了这个平台，于是开始研究为啥绑定域名一直失败。因为之前这种往DNS记录里添加点什么东西来绑定域名的这种做法在我有域名之后搞过不止一次，所以我当时的惯性思维就是它让填啥我就填啥，让怎么填我就怎么填，于是：</p>
+<p><img src="https://s41.ax1x.com/2026/06/07/pmmP6mR.png" alt="resend dashboard"></p>
+<p>因为我这整的是个二级域名，所以dns里都会有个mnizjc后缀。我当时没反应过来这点，所以一直绑定失败。直到我看了一眼Resend在旁边放了一个视频教程，我看了一下，发现他们Name都没有mnizjc后缀，send就是send，resend就是resend，于是我产生了一个想法：我是不是应该把mnizjc后缀去了而不是原封不动复制粘贴？果然绑定成功了。解决了一个历史遗留问题啊</p>
+<p>Resend有nodejs库，刚刚好适配workers技术栈，所以想法是不是有可能实现一下？</p>
+<p>啊已经不是第一次写了，虽然之前写的时候那功能都特别简单，可以说是极简，并且感觉这个功能还比较私密，或者只有几个人甚至自己一个人用，又或者就用的别人现成代码，所以当时搞这些东西的时候就没有写文章记录一下。</p>
+<p>好了废话少说点，主要这次我想实现一个能直接通过curl专门发通知邮件的小工具，所以我整了这么个worker来辅助我，虽然整个东西都快做完了才想起来貌似不是特别必须用在actions上。</p>
+<p>这次实现当然得用hono框架，且这次需要用到一些常量比如Resend的API Key等，所以还有环境变量，以及跨域配置。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Hono</span>, <span class="title class_">Context</span>, <span class="title class_">Next</span> &#125; <span class="keyword">from</span> <span class="string">&quot;hono&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Resend</span> &#125; <span class="keyword">from</span> <span class="string">&quot;resend&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; env &#125; <span class="keyword">from</span> <span class="string">&quot;cloudflare:workers&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; cors &#125; <span class="keyword">from</span> <span class="string">&quot;hono/cors&quot;</span></span><br></pre></td></tr></table></figure>
+<p>这次这个小玩意用到了4个环境变量：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Env</span> &#123;</span><br><span class="line">	<span class="attr">ASSETS</span>: <span class="title class_">Fetcher</span>,</span><br><span class="line">	<span class="attr">WORKER_EMAIL</span>: <span class="built_in">string</span>,</span><br><span class="line">	<span class="attr">RESEND_API_KEY</span>: <span class="built_in">string</span>,</span><br><span class="line">	<span class="attr">SECRET_KEY</span>: <span class="built_in">string</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就虽然我引入了env，但是那intellisense，或者我应该说typescript的类型检查，特别严，我光引入了env还不能使用，并且感觉就环境变量这块，特别喜欢左右横跳，拿<code>RESEND_API_KEY</code>举例，这是初始化resend：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> resend = <span class="keyword">new</span> <span class="title class_">Resend</span>(env.<span class="property">RESEND_API_KEY</span>);</span><br></pre></td></tr></table></figure>
+<p>有时候只填了<code>RESEND_API_KEY</code>也行，有时候又会报错未定义，然后我改成<code>env.RESEND_API_KEY</code>，又说未定义，所以我就定义了上面内个interface，但是你别说，你还真别说，这么整完之后不出幺蛾子了。</p>
+<p>然后就是简单配置一下跨域：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cors</span>(&#123;</span><br><span class="line">	<span class="attr">origin</span>: <span class="string">&quot;*&quot;</span>,</span><br><span class="line">	<span class="attr">allowMethods</span>: [<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span>],</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<p>我的想法是，get<code>/</code>和<code>/send</code>的时候返回接口文档，post<code>/send</code>的时候发送邮件，所以：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">async</span> (c) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> response = <span class="keyword">await</span> (c.<span class="property">env</span> <span class="keyword">as</span> <span class="title class_">Env</span>).<span class="property">ASSETS</span>.<span class="title function_">fetch</span>(</span><br><span class="line">		<span class="keyword">new</span> <span class="title function_">URL</span>(<span class="string">&quot;./DOC.html&quot;</span>, c.<span class="property">req</span>.<span class="property">url</span>)</span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!response) &#123;</span><br><span class="line">		<span class="keyword">return</span> c.<span class="title function_">text</span>(<span class="string">&quot;404 Not Found&quot;</span>, <span class="number">404</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> html = <span class="keyword">await</span> response.<span class="title function_">text</span>()</span><br><span class="line">	<span class="keyword">return</span> c.<span class="title function_">html</span>(html)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/send&quot;</span>, <span class="keyword">async</span> (c) =&gt; &#123;</span><br><span class="line">	<span class="keyword">const</span> response = <span class="keyword">await</span> (c.<span class="property">env</span> <span class="keyword">as</span> <span class="title class_">Env</span>).<span class="property">ASSETS</span>.<span class="title function_">fetch</span>(</span><br><span class="line">		<span class="keyword">new</span> <span class="title function_">URL</span>(<span class="string">&quot;./DOC.html&quot;</span>, c.<span class="property">req</span>.<span class="property">url</span>)</span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!response) &#123;</span><br><span class="line">		<span class="keyword">return</span> c.<span class="title function_">text</span>(<span class="string">&quot;404 Not Found&quot;</span>, <span class="number">404</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> html = <span class="keyword">await</span> response.<span class="title function_">text</span>()</span><br><span class="line">	<span class="keyword">return</span> c.<span class="title function_">html</span>(html)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>啊当然内个前端页面是AI写的，但是你还真别说，deepseek画出来的网页还确实挺好看，还让它直接实现了在页面上直接测试接口的功能，前段的活用AI越来越方便了。至于为什么后端不用，一是我试过一次，效果简直不堪入目，二是我这个工具因为有包括APIKey之类的东西我不放心AI能把这些东西妥善管理。啊说起这东西，环境变量配置肯定得提一嘴：</p>
+<p>对于明文环境变量，可以直接在wrangler.jsonc里配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;vars&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;WORKER_EMAIL&quot;</span><span class="punctuation">:</span> <span class="string">&quot;notification@mnizjc.qzz.io&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<p>还有就是这里用到了静态页面，所以还要添加一个：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;assets&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;directory&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./public/&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;binding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ASSETS&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<p>然后就是一些非公开数据，比如APIKey，在项目根目录里新建一个<code>.dev.vars</code>文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RESEND_API_KEY=xxx</span><br><span class="line">SECRET_KEY=xxx</span><br></pre></td></tr></table></figure>
+<p><code>RESEND_API_KEY</code>需要自行在Resend注册后申请，<code>SECRET_KEY</code>自己拿openssl生成一个就好，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl rand -<span class="built_in">base64</span> 32</span><br></pre></td></tr></table></figure>
+<p>然后这些添加完了之后，还需要</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx wrangler </span><br></pre></td></tr></table></figure>
+<p>添加完之后得执行一次</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx wrangler types</span><br></pre></td></tr></table></figure>
+<p>才会把环境变量添加到测试环境里。</p>
+<p>接下来就该是实现发送邮件的功能了。先检查请求的Content-Type：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request_content_type = c.<span class="property">req</span>.<span class="title function_">header</span>(<span class="string">&quot;Content-Type&quot;</span>) || <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">let</span> <span class="attr">req_content</span>: req_body;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (request_content_type.<span class="title function_">startsWith</span>(content_types.<span class="property">json</span>)) &#123;</span><br><span class="line">		<span class="comment">// JSON 请求，直接解析</span></span><br><span class="line">		req_content = <span class="keyword">await</span> c.<span class="property">req</span>.<span class="title function_">json</span>();</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (</span><br><span class="line">		request_content_type.<span class="title function_">startsWith</span>(content_types.<span class="property">form_urlencoded</span>) ||</span><br><span class="line">		request_content_type.<span class="title function_">startsWith</span>(content_types.<span class="property">form_data</span>)</span><br><span class="line">	) &#123;</span><br><span class="line">		<span class="comment">// 表单请求 (urlencoded 或 multipart)，使用 parseBody 得到普通对象</span></span><br><span class="line">		<span class="keyword">const</span> formdata = <span class="keyword">await</span> c.<span class="property">req</span>.<span class="title function_">formData</span>();</span><br><span class="line">		<span class="comment">// 将 parseBody 返回的对象转换为 req_body 结构</span></span><br><span class="line">		req_content = &#123;</span><br><span class="line">			<span class="attr">from</span>: formdata.<span class="title function_">get</span>(<span class="string">&quot;from&quot;</span>) || <span class="string">&quot;&quot;</span>,</span><br><span class="line">			<span class="attr">to</span>: <span class="title function_">getMulti</span>(formdata, <span class="string">&quot;to&quot;</span>),</span><br><span class="line">			<span class="attr">subject</span>: formdata.<span class="title function_">get</span>(<span class="string">&quot;subject&quot;</span>) || <span class="string">&quot;&quot;</span>,</span><br><span class="line">			<span class="attr">text</span>: formdata.<span class="title function_">get</span>(<span class="string">&quot;text&quot;</span>) || <span class="string">&quot;&quot;</span>,</span><br><span class="line">			<span class="attr">content_type</span>: formdata.<span class="title function_">get</span>(<span class="string">&quot;content_type&quot;</span>) <span class="keyword">as</span> content_types | <span class="literal">undefined</span>,</span><br><span class="line">			<span class="attr">cc</span>: <span class="title function_">getMulti</span>(formdata, <span class="string">&quot;cc&quot;</span>),</span><br><span class="line">			<span class="attr">bcc</span>: <span class="title function_">getMulti</span>(formdata, <span class="string">&quot;bcc&quot;</span>),</span><br><span class="line">		&#125; <span class="keyword">as</span> req_body;   <span class="comment">// 可根据实际情况进一步验证</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// 不支持的 Content-Type</span></span><br><span class="line">		<span class="keyword">return</span> c.<span class="title function_">text</span>(<span class="string">&quot;Unsupported Request Media Type&quot;</span>, <span class="number">415</span>);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>这段是我简单写了一点，然后拿AI优化后的结果。AI+1</p>
+<p>这里面用到了一个辅助函数<code>getMulti</code>，用来处理表单数据中的多个值字段：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getMulti</span>(<span class="params">formdata: FormData, key: <span class="built_in">string</span></span>): <span class="built_in">string</span> | <span class="built_in">string</span>[] | <span class="literal">undefined</span> &#123;</span><br><span class="line">	<span class="comment">// 辅助函数：获取表单数据中指定键的所有值</span></span><br><span class="line">	<span class="keyword">const</span> all = formdata.<span class="title function_">getAll</span>(key).<span class="title function_">filter</span>(<span class="function"><span class="params">v</span> =&gt;</span> <span class="keyword">typeof</span> v === <span class="string">&quot;string&quot;</span>) <span class="keyword">as</span> <span class="built_in">string</span>[];</span><br><span class="line">	<span class="keyword">if</span> (all.<span class="property">length</span> === <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">	<span class="keyword">if</span> (all.<span class="property">length</span> === <span class="number">1</span>) <span class="keyword">return</span> all[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">return</span> all;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>因为最开始设计的时候只考虑了json格式，所以to参数是<code>string | string[]</code>，但是如果直接<code>parseBody</code>的话列表就会丢变成只有最后一个元素，所以我就整了这么个辅助函数。当然这也是AI辅助的。AI+2</p>
+<p>然后检查4个参数是否都传齐了：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="keyword">from</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> c.<span class="title function_">json</span>(&#123; <span class="attr">error</span>: <span class="string">&#x27;\&quot;from\&quot; is required&#x27;</span> &#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//  ...</span></span><br><span class="line">	<span class="keyword">if</span> (!text) &#123;</span><br><span class="line">		<span class="keyword">return</span> c.<span class="title function_">json</span>(&#123; <span class="attr">error</span>: <span class="string">&#x27;\&quot;text\&quot; is required&#x27;</span> &#125;)</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>然后就是检查邮箱格式对不对，这里用到邮箱的就是<code>to</code>、<code>cc</code>、<code>bcc</code>：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> to_valid = <span class="title function_">validateEmail</span>(to)</span><br><span class="line">	<span class="keyword">if</span> (<span class="title class_">Array</span>.<span class="title function_">isArray</span>(to_valid)) &#123;</span><br><span class="line">		<span class="keyword">return</span> c.<span class="title function_">json</span>(&#123; <span class="attr">error</span>: <span class="string">`\&quot;to\&quot; must be valid emails: <span class="subst">$&#123;to_valid.join(<span class="string">&quot;,&quot;</span>)&#125;</span>`</span> &#125;)</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> to_valid === <span class="string">&quot;string&quot;</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> c.<span class="title function_">json</span>(&#123; <span class="attr">error</span>: <span class="string">`\&quot;to\&quot; must be a valid email: <span class="subst">$&#123;to_valid&#125;</span>`</span> &#125;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//cc和bcc可以是字符串或数组，但是得是邮箱，格式校验</span></span><br><span class="line">	<span class="keyword">if</span> (cc) &#123;</span><br><span class="line">    <span class="comment">//  ...</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (bcc) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>另一个辅助函数<code>validateEmail</code>，用来校验邮箱格式：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">validateEmail</span>(<span class="params">email: <span class="built_in">string</span> | <span class="built_in">string</span>[]</span>): <span class="literal">true</span> | <span class="built_in">string</span> | <span class="built_in">string</span>[] &#123;</span><br><span class="line">	<span class="comment">// 辅助函数：判断单个字符串是否合法</span></span><br><span class="line">	<span class="keyword">const</span> isSingleValid = (<span class="attr">e</span>: <span class="built_in">string</span>): <span class="function"><span class="params">boolean</span> =&gt;</span> <span class="variable constant_">EMAIL_REGEX</span>.<span class="title function_">test</span>(e);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="title class_">Array</span>.<span class="title function_">isArray</span>(email)) &#123;</span><br><span class="line">		<span class="keyword">const</span> invalidList = email.<span class="title function_">filter</span>(<span class="function"><span class="params">e</span> =&gt;</span> !<span class="title function_">isSingleValid</span>(e));</span><br><span class="line">		<span class="keyword">return</span> invalidList.<span class="property">length</span> === <span class="number">0</span> ? <span class="literal">true</span> : invalidList;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_">isSingleValid</span>(email) ? <span class="literal">true</span> : email;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为我想直接传<code>to</code>检查所以参数是<code>string | string[]</code>，然后再拿AI整了这么个函数。AI+3</p>
+<p>检查的任务差不多了，接下来就是发送邮件了。这段是直接在Resend的文档里抄的，除了改改参数其他基本没变</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; data, error &#125; = <span class="keyword">await</span> resend.<span class="property">emails</span>.<span class="title function_">send</span>(&#123;</span><br><span class="line">		<span class="attr">from</span>: <span class="keyword">from</span> + <span class="string">&quot; &lt;&quot;</span> + (c.<span class="property">env</span> <span class="keyword">as</span> <span class="title class_">Env</span>).<span class="property">WORKER_EMAIL</span> + <span class="string">&quot;&gt;&quot;</span>,</span><br><span class="line">		<span class="comment">// to: &quot;to@example.com&quot;,</span></span><br><span class="line">		<span class="attr">to</span>: to,</span><br><span class="line">		<span class="comment">// subject: &quot;Hello World!&quot;,</span></span><br><span class="line">		<span class="attr">subject</span>: subject,</span><br><span class="line">		<span class="comment">// text: text,</span></span><br><span class="line">		<span class="attr">cc</span>: cc,</span><br><span class="line">		<span class="attr">bcc</span>: bcc,</span><br><span class="line">		...(email_content_type === content_types.<span class="property">text</span>)</span><br><span class="line">			? &#123; <span class="attr">text</span>: text &#125;</span><br><span class="line">			: &#123; <span class="attr">html</span>: text &#125;,</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (error) &#123;</span><br><span class="line">		<span class="keyword">return</span> c.<span class="title function_">json</span>(&#123; <span class="attr">error</span>: error.<span class="property">message</span> &#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> c.<span class="title function_">json</span>(&#123; <span class="attr">send_id</span>: data.<span class="property">id</span> &#125;)</span><br></pre></td></tr></table></figure>
+<p>奥对，这里区别<code>email_content_type</code>的部分，也是AI辅助的。AI+4。最后一个就是整个前段页面都是AI实现的，有点vibe coding的感觉了。AI+5</p>
+<p>啊当然，测试都是我自己测试的。因为功能不是很多，所以测试起来特别方便。不仅如此，还体会到了一种外包分发活等验收的感觉。等什么时候具身智能广泛使用了，那生产力又将进一步解放。等到那时候，距离理想就更进一步了。</p>
+<p>都搭建好之后，可以直接通过curl快速发通知类邮件了，而这东西可以很方便的融入一些工作流里，比如在CI/CD里，遇到什么情况通知起来也方便。</p>
+<p>感觉说了这么多，到头来好像AI辅助的还是不少啊。完整代码我放到github上了，在<a target="_blank" rel="noopener" href="https://github.com/Mnizjc/Email-Notification-Worker">这里</a>。</p>
+<blockquote>
+<p>乂，您猜怎么着，我今天当了回傻逼，把apikey明文直接发出来了，哈哈哈哈，广而告之以我为戒。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://mnizjc.qzz.io">Mnizjc</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://mnizjc.qzz.io/2026/06/06/Resend%E5%92%8C%E5%B0%8F%E5%B7%A5%E5%85%B7/">https://mnizjc.qzz.io/2026/06/06/Resend%E5%92%8C%E5%B0%8F%E5%B7%A5%E5%85%B7/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://mnizjc.qzz.io" target="_blank">OMG!IT'S 11!!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/learn/">learn</a><a class="post-meta__tags" href="/tags/resend/">resend</a><a class="post-meta__tags" href="/tags/%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6/">电子邮件</a></div><div class="post-share"><div class="social-share" data-image="https://free.picui.cn/free/2026/02/01/697e3dc0a5c1c.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://unpkg.com/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>阿里嘎多~</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="wxp://f2f6Jxc3BMnNe-lH9_CvKBEFnx0aGWJSFRx4-mdVH7iMTlE" target="_blank"><img class="post-qr-code-img" src="/img/wxpay.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://i.qianbao.qq.com/wallet/sqrcode.htm?m=tenpay&amp;f=wallet&amp;a=1&amp;u=2383981356&amp;n=%E7%8E%A9%E4%B8%96%E4%B8%8D%E6%81%AD&amp;ac=CAEQrNbi8AgY1PTu0AYyBuWFtuS7ljgBQiA3NGIzNzk2NmJhNDkwYzFiNDI3YmViMjZmOTNkNzQ3MEomMjQwOTo4OTdjOmI0YTo0ZjIwOjQ4MDc6YzRmZjpmZTFkOjJkNDQ%3D_xxx_sign" target="_blank"><img class="post-qr-code-img" src="/img/qq.png" alt="QQ"/></a><div class="post-qr-code-desc">QQ</div></li><li class="reward-item"><a href="https://qr.alipay.com/fkx12355gvnbhndq0jb7292?t=1780201999230" target="_blank"><img class="post-qr-code-img" src="/img/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/06/06/hexo%E6%B7%BB%E5%8A%A0mermaid%E5%8A%9F%E8%83%BD/" title="hexo添加mermaid功能"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db3e3b93.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">hexo添加mermaid功能</div></div><div class="info-2"><div class="info-item-1">butterfly主题配置貌似很早就更新了，但是我这两天才注意到。 在重新配置的时候，我注意到这里面有mermaid配置，所以这次试试mermaid图表。 在_config.butterfly.yml中有配置： 1234567891011121314# Mermaid# https://github.com/mermaid-js/mermaidmermaid:  enable: true  # Write Mermaid diagrams using code blocks  code_write: true  # built-in themes: default / forest / dark / neutral  theme:    light: default    dark: dark  # Enable &quot;Open in New Tab&quot; button to view diagram in a separate window  open_in_new_tab: true  # Enable zoom and pan interactions on d...</div></div></div></a><a class="pagination-related" href="/2026/06/11/%E9%9C%B8%E7%8E%8B%E8%8C%B6%E5%A7%AC%E6%B0%B4%E9%93%B6%E9%97%A8%E6%9C%89%E6%84%9F/" title="霸王茶姬水银事件有感"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db89dd7f.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">霸王茶姬水银事件有感</div></div><div class="info-2"><div class="info-item-1">叠甲声明 在开始讨论之前，我想先把我的立场和局限说清楚，避免任何可能的误解。   我不是在“断案” —— 关于霸王茶姬水银事件的所有具体细节、责任认定、事实真相，我没有能力、没有资格、也没有意愿去下判断。最终一切以官方调查通报为准。   不为任何人定罪，也不为任何人洗白 —— 我既不是在指责消费者、员工或品牌方，也不是在为任何一方的行为做合理化辩护。这里没有“站队”的意图。   我不讨论案件细节 —— 我不会去分析水银怎么来的、谁对谁错、证据链如何。这些不是我关注的重点，也超出了我能负责任讨论的范围。   我是来自我批评的 —— 我写下这些文字的出发点，是看见自己在整个舆论反应过程中（包括多次反转里）暴露出的一种共性缺失，想以此自省。我不是在教别人怎么做，而是在说“我也没做到”。   我可能也是错的 —— 我的观察基于有限、碎片化的公开信息，必然存在偏差甚至误判。如果我的表述有任何不妥，欢迎指正，我会认真反思。   最后，再次强调：本内容不构成任何事实结论，请勿用作判断事件的依据。关于事件本身，请耐心等待官方通报。 如果你愿意继续看下去，那我们就聊聊我作为旁观者的一点自我审视和拙...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2023/12/10/Mathjax%E6%8F%92%E5%85%A5%E9%97%AD%E5%90%88%E6%9B%B2%E9%9D%A2%E7%A7%AF%E5%88%86%E7%AC%A6%E5%8F%B7/" title="Mathjax插入闭合曲面积分符号"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db87b647.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-10</div><div class="info-item-2">Mathjax插入闭合曲面积分符号</div></div><div class="info-2"><div class="info-item-1">我真想不明白为什么Mathjax为什么不支持\oiint这个符号 直到我发现知乎用的好像也是mathjax, 我就放心太多了, 因为我不是唯一一个因为这破事烦的人. 我看到知乎上有人写过怎么在其中插入符号, 解决方法是拼接字符, 刚好可以学一下怎么搞了 最开始我知道\displaystyle而不知道\mathop的时候我的解决方案 1\displaystyle{\iint\kern{-26.5mu}\lower{4mu}\LARGE{\unicode{0x2B2D}}\kern{-13mu}\lower{14mu}\scriptsize{\partial V}\ \ \ \ \ } ⬭ 知道\mathop后 1\displaystyle{\mathop{\displaystyle{\iint\kern{-26.5mu}\lower{4mu}\LARGE{\unicode{0x2B2D}}}}\limits_{\partial V}\ \ } ⬭ 试试自定义命令 ⬭ 12345678910111213141516\newcommand{\newcmddef}{\text{This ...</div></div></div></a><a class="pagination-related" href="/2022/10/12/%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0/" title="四元数的实现"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db87b647.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-12</div><div class="info-item-2">四元数的实现</div></div><div class="info-2"><div class="info-item-1">实际上原题是「四位数的使用案例」,但是后面想想我好想也没使用就改了. 0.起因 在b站刷视频看到3b1b讲关于四元数的视频,这是一个比线代的旋转公式更好描述三维旋转的运算方法.他有一个可交互式视频,看的时候突然想到一个问题: 二维坐标系里与原点的连线与xy轴距离相等的单位向量是 那么三维坐标系里这样的点坐标是多少?与轴夹角多少度? 实际上这个问题我是想拿手算的,但是想想可能还是写个程序方便 以下所有数学函数均来自numpy,相关数学知识在csdn上都有介绍,这里不再赘述. 1.整个的思路 1.1 BaseRenamer 在这之前,我把python类中的一些,魔术方法用一个类替代掉了. 比如说现在我要写一个类并重载加号,它长这样 123456class someclass():	def __init__(self,*args):		# 一些init函数该干的事		def __add__(self,x):		# __add__函数该干的事 每次有这种需求的时候都要把那些方法的两个下划线带上,我就觉得很不舒服.所以我写了个类把这些方法覆盖了,重命名了一下,这是使用后的效果 123456...</div></div></div></a><a class="pagination-related" href="/2024/03/01/mingw-vcpkg-cmake-vscode-c-c-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="mingw+vcpkg+cmake+vscode c&#x2F;c++环境配置"><img class="cover" src="https://free.picui.cn/free/2026/01/31/697cf4d82309f.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-01</div><div class="info-item-2">mingw+vcpkg+cmake+vscode c&#x2F;c++环境配置</div></div><div class="info-2"><div class="info-item-1">苍天保佑, 这个过程总算是圆满结束了 从我两天前冒出一个用c/c++做网络请求的想法(因为可能用得到), 到今天整个环境配置完毕, 花了我两三天的时间. 中间断断续续有超级多的动作, 这里我尽可能详细的把它记录下来. 清单 如标题所示, 我们这次主要需要四样东西:  (MinGW)[https://github.com/niXman/mingw-builds-binaries/releases] (说起来我好像有段时间没更新了) (vcpkg)[https://github.com/Microsoft/vcpkg] (CMake)[https://cmake.org/] (vscode)[https://code.visualstudio.com/]  其中mingw和vcpkg可以用git clone下载 安装 最简单就是安装cmake, 这玩意有安装向导, 跟着向导走就完了, 最后在测试一下cmake命令是否存在, 有则安装成功 然后就是mingw, 我的安装过程很简单 下载release -&gt; 把压缩包解压到什么地方 -&gt; 把解压文件夹中的bin文件夹加入pat...</div></div></div></a><a class="pagination-related" href="/2024/02/12/%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E6%96%B9%E7%A8%8B%E7%BB%84%E7%AE%80%E8%BF%B0/" title="麦克斯韦方程组简述"><img class="cover" src="https://s41.ax1x.com/2026/01/30/pZhkpKe.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-12</div><div class="info-item-2">麦克斯韦方程组简述</div></div><div class="info-2"><div class="info-item-1">高斯定律(静电场) 从高中的公式说起: 高中电学的第一个公式就是库仑力公式, 它描述了两个带电粒子间静电力与距离的关系, 长这样 由于是向量所以这里加了一个半径向量对应单位向量|r|  由此可以得出点电荷电场强度公式  我们再引入一个通量的概念, 对于一个场F和面积S有通量Φ大小为  所以电通量就是  如果是用一个闭合曲面包裹, 那么就应该上积分了, 就是   这里本来应该是个闭合曲面积分, 但是要画太麻烦了, 我就懒得画了  来想一个比较特殊的情况, 该闭合曲面是一个球面, 我们知道球面面积公式  并且在球面上, 如果电荷在球心, 那么在球面上的电场强度都一样且都与面元垂直, 当常数看, 即  带入刚才的电场强度公式得  4πk这个数字还是太不优雅了, 但在电容公式中也要用到这个常数, 所以我们给换个字符吧, 叫ε0, 令  这样整个公式就变成了   注意这里是闭合曲面!  我们知道如果是等量电荷那么无论曲面大小, 穿过曲面的电场线条数都一定一样, 也就是说这个公式对任意闭合曲面都成立 这是真空中的情况, 在有电介质的情况下, 需要考虑电位移, 我们知道平行板电容器电容公式为 ...</div></div></div></a><a class="pagination-related" href="/2024/05/30/%E4%BA%8C%E9%87%8D%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86(%E4%B9%9F%E4%B8%8D%E4%B8%80%E5%AE%9A%E5%85%A8)/" title="二重不定积分(也不一定全)"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db03531a.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-30</div><div class="info-item-2">二重不定积分(也不一定全)</div></div><div class="info-2"><div class="info-item-1"> 本文转自[https://math.stackexchange.com/questions/704186/indefinite-double-integral], 有所启发  起因 现在我查到和见过用过的计算器中,只有walframalpha能解二重不定积分,而我们并没有讲过二重积分还有不定的,甚至当时老师就直接说了: 二重积分及以上的算出来的都是个数,没有不定积分.说实话,我当时接触这玩意的时候,我也觉得这玩意没发不定积分,毕竟学到计算的时候二重积分的区域在计算中占据了不可或缺的地位,我就觉得这不就相当于直接对二重不定积分判死刑了吗.后面看到walframalpha能计算二重不定积分,并且还很明确的写了个「indefinite integral」,我就开始好奇它是怎么计算二重还不定的积分的了.  问题 在微积分中我们先介绍了不定积分,然后再介绍的定积分. 然后我们介绍了二重(定)积分和多重(定)积分的概念.是否有二重(或多重)不定积分的概念?若是,这玩意怎么定义的?为啥不学?若否,为啥? 回答 #1 答案是肯定的.若假设后文中的函数都是「光滑」的,则有   碎碎念: 为什么这...</div></div></div></a><a class="pagination-related" href="/2022/10/14/hexo%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%97%B6%E9%9C%80%E8%A6%81%E7%9A%84%E4%B8%80%E7%82%B9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="hexo使用数学公式时需要的一点注意事项"><img class="cover" src="https://free.picui.cn/free/2026/02/01/697e3db0051c5.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-14</div><div class="info-item-2">hexo使用数学公式时需要的一点注意事项</div></div><div class="info-2"><div class="info-item-1">让它渲染公式 写数学公式时要在开头添加一句声明,比如这篇 12345678---title: hexo使用数学公式时需要的一点注意事项date: 2022-10-14 00:01:20tags: [learn,Hexo]mathjax: truecategories:- Hexo--- 这样就可以显示公式了,比如傅里叶变换  mathjax换行问题 网上都说什么把\\换成\\\\的或者修改marked.js之类的,我这都没用,所以我就曲线救国,换了个方法 单行的随便输入,多行的就去设置一个eqnarray环境,比如在四元数的实现中有一个这个: 是待运算的值其中是旋转需要绕的轴是绕轴旋转的角度 我是这么写的 123456$$\begin{eqnarray}&amp;p是待运算的值\\&amp;q=\cos\frac{\theta}{2}+\sin\frac{\theta}{2}\mathbf{v},其中\mathbf{v}是旋转需要绕的轴,\theta是绕轴旋转的角度\\&amp;f(p)=q\cdot p\cdot q^{-1}\end{eqnarray}$$ 不过习惯了alig...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s41.ax1x.com/2026/05/31/pmACRk4.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Mnizjc</div><div class="author-info-description">I've got my nose in the air like a Boeing!</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Mnizjc"><i class="fab fa-github"></i><span>Lookie Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Mnizjc" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:mnizjc@mnizjc.qzz.io" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">先问是不是，再问为什么。</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/06/11/%E9%9C%B8%E7%8E%8B%E8%8C%B6%E5%A7%AC%E6%B0%B4%E9%93%B6%E9%97%A8%E6%9C%89%E6%84%9F/" title="霸王茶姬水银事件有感"><img src="https://free.picui.cn/free/2026/02/01/697e3db89dd7f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="霸王茶姬水银事件有感"/></a><div class="content"><a class="title" href="/2026/06/11/%E9%9C%B8%E7%8E%8B%E8%8C%B6%E5%A7%AC%E6%B0%B4%E9%93%B6%E9%97%A8%E6%9C%89%E6%84%9F/" title="霸王茶姬水银事件有感">霸王茶姬水银事件有感</a><time datetime="2026-06-11T07:08:01.000Z" title="发表于 2026-06-11 15:08:01">2026-06-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/06/06/Resend%E5%92%8C%E5%B0%8F%E5%B7%A5%E5%85%B7/" title="Resend和小工具"><img src="https://free.picui.cn/free/2026/02/01/697e3dc0a5c1c.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Resend和小工具"/></a><div class="content"><a class="title" href="/2026/06/06/Resend%E5%92%8C%E5%B0%8F%E5%B7%A5%E5%85%B7/" title="Resend和小工具">Resend和小工具</a><time datetime="2026-06-06T14:42:12.000Z" title="发表于 2026-06-06 22:42:12">2026-06-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/06/06/hexo%E6%B7%BB%E5%8A%A0mermaid%E5%8A%9F%E8%83%BD/" title="hexo添加mermaid功能"><img src="https://free.picui.cn/free/2026/02/01/697e3db3e3b93.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo添加mermaid功能"/></a><div class="content"><a class="title" href="/2026/06/06/hexo%E6%B7%BB%E5%8A%A0mermaid%E5%8A%9F%E8%83%BD/" title="hexo添加mermaid功能">hexo添加mermaid功能</a><time datetime="2026-06-05T17:04:06.000Z" title="发表于 2026-06-06 01:04:06">2026-06-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇"><img src="https://free.picui.cn/free/2026/02/01/697e3dba07c2e.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="神奇"/></a><div class="content"><a class="title" href="/2026/02/19/%E7%A5%9E%E5%A5%87/" title="神奇">神奇</a><time datetime="2026-02-18T18:21:33.000Z" title="发表于 2026-02-19 02:21:33">2026-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题"><img src="https://free.picui.cn/free/2026/02/01/697e3dc4831cc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo渲染引擎和数学公式渲染问题"/></a><div class="content"><a class="title" href="/2026/02/13/hexo%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%92%8C%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/" title="hexo渲染引擎和数学公式渲染问题">hexo渲染引擎和数学公式渲染问题</a><time datetime="2026-02-13T15:32:43.000Z" title="发表于 2026-02-13 23:32:43">2026-02-13</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2022 - 2026 By Mnizjc</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div><div class="footer_custom_text">salaam 'alaikum，你怎么翻到我的博客了？<br/><a href="https://icp.gov.moe/?keyword=20260669" target="_blank">萌ICP备20260669号</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
+
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.outerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+    setTimeout(() => URL.revokeObjectURL(url), 30000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        if (typeof svg === 'string') {
+          openSvgInNewTab({ source: svg, initViewBox })
+          return
+        }
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+
+    // Avoid binding multiple times on themeChange/pjax
+    if (wrap.__mermaidGestureBound) return
+    wrap.__mermaidGestureBound = true
+
+    // Helper: map client (viewport) coordinate -> viewBox coordinate
+    const clientToViewBox = (clientX, clientY) => {
+      const rect = svg.getBoundingClientRect()
+      const vb = wrap.__mermaidCurViewBox || getSvgViewBox(svg)
+      const x = vb[0] + (clientX - rect.left) * (vb[2] / rect.width)
+      const y = vb[1] + (clientY - rect.top) * (vb[3] / rect.height)
+      return { x, y, rect, vb }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      startCenter: null
+    }
+
+    const clampVb = vb => {
+      const init = wrap.__mermaidInitViewBox || vb
+      const minW = init[2] * 0.1
+      const maxW = init[2] * 10
+      const minH = init[3] * 0.1
+      const maxH = init[3] * 10
+      vb[2] = clamp(vb[2], minW, maxW)
+      vb[3] = clamp(vb[3], minH, maxH)
+      return vb
+    }
+
+    const setCurVb = vb => {
+      vb = clampVb(vb)
+      wrap.__mermaidCurViewBox = vb
+      setSvgViewBox(svg, vb)
+    }
+
+    const onPointerDown = e => {
+      // Allow only primary button for mouse
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      if (state.pointers.size === 1) {
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        state.startCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 }
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      // Pan with 1 pointer
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = [...state.pointers.values()][0]
+        const prev = { x: e.clientX - e.movementX, y: e.clientY - e.movementY }
+        // movementX/Y unreliable on touch, compute from stored last position
+        const last = wrap.__mermaidLastSinglePointer || p
+        const dxClient = p.x - last.x
+        const dyClient = p.y - last.y
+        wrap.__mermaidLastSinglePointer = p
+
+        const { rect } = clientToViewBox(p.x, p.y)
+        const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        const dx = dxClient * (vb[2] / rect.width)
+        const dy = dyClient * (vb[3] / rect.height)
+        setCurVb([vb[0] - dx, vb[1] - dy, vb[2], vb[3]])
+        return
+      }
+
+      // Pinch zoom with 2 pointers
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist // dist bigger => zoom in (viewBox smaller)
+
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const centerClient = { x: cx, y: cy }
+
+        const pxy = clientToViewBox(centerClient.x, centerClient.y)
+        const cpx = pxy.x
+        const cpy = pxy.y
+
+        const vb = zoomAtPoint(state.startVb, factor, cpx, cpy)
+        setCurVb(vb)
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+        state.startCenter = null
+        wrap.__mermaidLastSinglePointer = null
+      } else if (state.pointers.size === 1) {
+        // reset single pointer baseline to avoid jump
+        wrap.__mermaidLastSinglePointer = [...state.pointers.values()][0]
+      }
+    }
+
+    // Wheel zoom (mouse/trackpad)
+    const onWheel = e => {
+      // ctrlKey on mac trackpad pinch; we treat both as zoom
+      e.preventDefault()
+      const delta = e.deltaY
+      const zoomFactor = delta > 0 ? 1.1 : 0.9
+      const { x, y } = clientToViewBox(e.clientX, e.clientY)
+      const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      setCurVb(zoomAtPoint(vb, zoomFactor, x, y))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (!init) return
+      wrap.__mermaidCurViewBox = init.slice()
+      setSvgViewBox(svg, init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown)
+    svg.addEventListener('pointermove', onPointerMove)
+    svg.addEventListener('pointerup', onPointerUpOrCancel)
+    svg.addEventListener('pointercancel', onPointerUpOrCancel)
+    svg.addEventListener('wheel', onWheel, { passive: false })
+    svg.addEventListener('dblclick', onDblClick)
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+
+      // Clear old render (themeChange/pjax will rerun)
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      item.__mermaidGestureBound = false
+
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://unpkg.com/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://unpkg.com/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      true
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
